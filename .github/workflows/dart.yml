@@ -1,11 +1,11 @@
-name: dart CI
+name: CI
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  build:
+  dart:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +29,21 @@ jobs:
       
       - name: Run tests
         run: dart test
+  flutter:
+    needs: dart
+    runs-on: ubuntu-latest
+    
+    steps:        
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.29.2
+      - run: flutter --version
+        
+      - name: Get dependencies
+        run: flutter pub get
+        
+      - name: Run unit tests
+        run: flutter test
+       
