@@ -1,0 +1,31 @@
+name: dart CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        
+      - name: Install dependencies
+        run: dart pub get
+        
+      - name: Analyze project source
+        run: dart analyze
+
+      - name: Verify Formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Fix dart code
+        run: dart fix --dry-run
+      
+      - name: Run tests
+        run: dart test
