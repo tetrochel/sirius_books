@@ -14,10 +14,7 @@ jobs:
         
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
-        
-      - name: Install dependencies
-        run: dart pub get
-        
+               
       - name: Analyze project source
         run: dart analyze
 
