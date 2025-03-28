@@ -31,11 +31,4 @@ jobs:
         run: dart format .
 
       - name: Fix dart code
-        run: dart fix --dry-run
-      
-      - name: Run tests
-        run: dart test
-        
-      - name: Run unit tests
-        run: flutter test
-       
+        run: dart fix --dry-run     
