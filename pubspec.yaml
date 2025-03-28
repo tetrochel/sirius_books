@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  go_router: ^14.8.1
+
 dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
