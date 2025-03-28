@@ -20,7 +20,7 @@ final GoRouter router = GoRouter(
               },
             ),
             GoRoute(
-              path: 'create',
+              path: 'new',
               builder: (context, state) => const SizedBox.shrink(),
             ),
           ],
@@ -38,14 +38,10 @@ final GoRouter router = GoRouter(
               },
             ),
             GoRoute(
-              path: 'add',
+              path: 'new',
               builder: (context, state) => const SizedBox.shrink(),
             ),
           ],
-        ),
-        GoRoute(
-          path: '/profile',
-          builder: (context, state) => const SizedBox.shrink(),
         ),
         GoRoute(
           path: '/collections',
@@ -57,18 +53,9 @@ final GoRouter router = GoRouter(
                 // final id = state.pathParameters['id'];
                 return const SizedBox.shrink();
               },
-              routes: [
-                GoRoute(
-                  path: 'create_exposition',
-                  builder: (context, state) {
-                    // final collectionId = state.pathParameters['id'];
-                    return const SizedBox.shrink();
-                  },
-                ),
-              ],
             ),
             GoRoute(
-              path: 'create',
+              path: 'new',
               builder: (context, state) => const SizedBox.shrink(),
             ),
           ],
