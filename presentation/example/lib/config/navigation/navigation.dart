@@ -2,7 +2,6 @@ import 'package:example/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
-import 'package:animations/animations.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/expositions',
