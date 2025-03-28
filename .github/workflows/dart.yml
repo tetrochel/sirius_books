@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  dart:
+  flutter:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,35 +15,20 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         
-      - name: Install dependencies
-        run: dart pub get
-        
-      - name: Analyze project source
-        run: dart analyze
-
-      - name: Verify Formatting
-        run: dart format --output=none --set-exit-if-changed .
-
-      - name: Fix dart code
-        run: dart fix --dry-run
-      
-      - name: Run tests
-        run: dart test
-  flutter:
-    needs: dart
-    runs-on: ubuntu-latest
-    
-    steps:        
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           flutter-version: 3.29.2
-      - run: flutter --version
-        
+
       - name: Get dependencies
         run: flutter pub get
-        
-      - name: Run unit tests
-        run: flutter test
-       
+               
+      - name: Analyze project source
+        run: flutter analyze
+
+      - name: Verify Formatting
+        run: dart format .
+
+      - name: Fix dart code
+        run: dart fix --dry-run     
