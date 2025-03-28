@@ -2,6 +2,7 @@ import 'package:example/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/expositions',
@@ -17,13 +18,15 @@ final GoRouter router = GoRouter(
             selectedItemColor: context.colors.primary,
             unselectedItemColor: context.colors.grey,
             items: [
-              // TODO: move strings somewhere else
               BottomNavigationBarItem(
-                  icon: Icon(Icons.calendar_today), label: 'Выставки'),
+                  icon: Icon(Icons.calendar_today),
+                  label: AppLocalizations.of(context)!.expositions),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_book), label: 'Книги'),
+                  icon: Icon(Icons.menu_book),
+                  label: AppLocalizations.of(context)!.books),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.collections_bookmark), label: 'Коллекции'),
+                  icon: Icon(Icons.collections_bookmark),
+                  label: AppLocalizations.of(context)!.collections),
             ],
             currentIndex: _getCurrentIndex(state),
             onTap: (index) {

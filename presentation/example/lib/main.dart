@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
 import 'config/navigation/navigation.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,6 +13,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale('ru'),
       theme: ThemeData(
         extensions: [
           AppColors(
