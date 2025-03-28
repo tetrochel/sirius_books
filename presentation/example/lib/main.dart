@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
+import 'config/navigation/navigation.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,7 +11,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: ThemeData(
         extensions: [
           AppColors(
@@ -30,19 +31,30 @@ class MainApp extends StatelessWidget {
           ),
         ],
       ),
-      home: Scaffold(
-        body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
-          itemBuilder: (context, index) => BookWidget(
-            name: "Евгений Онегин",
-            authorName: "Александр Пушкин",
-            genre: "Роман",
-            isFavorite: true,
-            onTap: () {},
-            onTapFavorite: () {},
-          ),
+      routerConfig: router,
+    );
+  }
+}
+
+class BookTest extends StatelessWidget {
+  const BookTest({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        itemBuilder: (context, index) => BookWidget(
+          name: "Евгений Онегин",
+          authorName: "Александр Пушкин",
+          genre: "Роман",
+          isFavorite: true,
+          onTap: () {},
+          onTapFavorite: () {},
         ),
       ),
     );

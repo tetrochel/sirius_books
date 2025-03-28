@@ -7,8 +7,10 @@ environment:
   sdk: ^3.6.2
 
 dependencies:
+  animations: ^2.0.11
   flutter:
     sdk: flutter
+  go_router: ^14.8.1
   presentation:
     path: ../../presentation
 
