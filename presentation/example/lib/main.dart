@@ -39,7 +39,7 @@ class MainApp extends StatelessWidget {
             name: "Евгений Онегин",
             authorName: "Александр Пушкин",
             genre: "Роман",
-            isFavorite: true,
+            isFavorite: index % 2 == 0,
             onTap: () {},
             onTapFavorite: () {},
           ),
