@@ -14,10 +14,10 @@ jobs:
         
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
-        
-      - name: Install dependencies
-        run: dart pub get
-        
+
+      - name: Get dependencies
+        run: flutter pub get
+               
       - name: Analyze project source
         run: dart analyze
 
@@ -40,9 +40,6 @@ jobs:
           channel: stable
           flutter-version: 3.29.2
       - run: flutter --version
-        
-      - name: Get dependencies
-        run: flutter pub get
         
       - name: Run unit tests
         run: flutter test
