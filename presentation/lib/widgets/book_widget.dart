@@ -58,6 +58,14 @@ class BookWidget extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Positioned(
+                    top: -12,
+                    right: -4,
+                    child: _BookmarkButton(
+                      isFavorite: isFavorite,
+                      onTapFavorite: onTapFavorite,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -85,6 +93,28 @@ class BookWidget extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _BookmarkButton extends StatelessWidget {
+  final bool isFavorite;
+  final void Function() onTapFavorite;
+
+  const _BookmarkButton({
+    required this.isFavorite,
+    required this.onTapFavorite,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: onTapFavorite,
+      icon: Icon(
+        isFavorite ? Icons.bookmark : Icons.bookmark_border,
+        size: 32,
+        color: isFavorite ? context.colors.primary : context.colors.grey,
       ),
     );
   }

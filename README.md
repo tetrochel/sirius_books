@@ -1,3 +1,3 @@
-# sirius_books
+# Локализация
 
-A new Flutter project.
+Локализованные сообщения добавляются в файлы lib/l10n/app_en.arb и lib/l10n/app_en.arb. После этого в корне проекта запускаем команду 'flutter gen-l10n' для генерации классов с локализациями. Пример использования в приложении: 'AppLocalizations.of(context)!.expositions'.
