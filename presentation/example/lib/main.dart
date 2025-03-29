@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
+import 'config/navigation/navigation.dart';
+import 'package:example/generated/app_localizations.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,7 +12,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: const Locale('ru'),
       theme: ThemeData(
         extensions: [
           AppColors(
@@ -34,20 +39,70 @@ class MainApp extends StatelessWidget {
           ),
         ],
       ),
-      home: Scaffold(
-        body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-          ),
-          itemBuilder: (context, index) => BookWidget(
-            name: "Евгений Онегин",
-            authorName: "Александр Пушкин",
-            genre: "Роман",
-            isFavorite: index % 2 == 0,
-            onTap: () {},
-            onTapFavorite: () {},
-          ),
+      routerConfig: router,
+    );
+  }
+}
+
+class BookTest extends StatelessWidget {
+  const BookTest({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
         ),
+        itemBuilder: (context, index) => BookWidget(
+          name: "Евгений Онегин",
+          authorName: "Александр Пушкин",
+          genre: "Роман",
+          isFavorite: true,
+          onTap: () {},
+          onTapFavorite: () {},
+        ),
+      ),
+    );
+  }
+}
+
+class AuthPage extends StatelessWidget {
+  const AuthPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AuthTextField(
+              controller: TextEditingController(),
+              focusNode: FocusNode(),
+              hint: AppLocalizations.of(context)!.email,
+              label: AppLocalizations.of(context)!.email,
+              isPassword: false,
+              prefixIcon: Icons.person,
+              obscureText: false,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AuthTextField(
+              controller: TextEditingController(),
+              focusNode: FocusNode(),
+              hint: AppLocalizations.of(context)!.password,
+              label: AppLocalizations.of(context)!.password,
+              isPassword: true,
+              prefixIcon: Icons.key,
+              obscureText: true,
+            ),
+          ),
+        ],
       ),
     );
   }

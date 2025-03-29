@@ -3,3 +3,7 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     - require_trailing_commas
+
+analyzer:
+  exclude:
+    - lib/generated

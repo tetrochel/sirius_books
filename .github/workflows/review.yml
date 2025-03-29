@@ -1,0 +1,22 @@
+name: AI Code Reviewer
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+permissions: write-all
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: AI Code Reviewer
+        uses: aidar-freeed/ai-codereviewer@v2.7.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPEN_API_KEY }}
+          OPENAI_API_MODEL: "o3-mini" 
+          exclude: "**/*.json, **/*.md, **/generated/*.dart"
