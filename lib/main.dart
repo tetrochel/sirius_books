@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sirius_books/generated/app_localizations.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +13,8 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: const Locale('ru'),
+      // TODO(ivan): Вынести определение локали в блок
+      locale: const Locale('en'),
       home: Builder(
         builder: (context) {
           return Scaffold(
