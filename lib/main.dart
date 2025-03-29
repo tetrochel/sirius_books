@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
+import 'package:sirius_books/config/navigation/navigation.dart';
 import 'package:sirius_books/features/book/ui/pages/books_page.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
@@ -12,7 +13,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       // TODO(ivan): Вынести определение локали в блок
@@ -40,45 +41,7 @@ class MainApp extends StatelessWidget {
           ),
         ],
       ),
-      home: Builder(
-        builder: (context) {
-          return Scaffold(
-            backgroundColor: context.colors.white,
-            body: BooksPage(
-              appBar: AppBarWidget(
-                title: 'Книги',
-                actions: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.search,
-                      color: context.colors.primary,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.filter_alt,
-                      color: context.colors.primary,
-                    ),
-                  ),
-                ],
-              ),
-              children: List.generate(
-                40,
-                (index) => BookWidget(
-                  name: 'Евгений Онегин',
-                  authorName: 'Александр Пушкин',
-                  genre: 'Роман',
-                  isFavorite: index.isEven,
-                  onTap: () {},
-                  onTapFavorite: () {},
-                ),
-              ),
-            ),
-          );
-        },
-      ),
+      routerConfig: router,
     );
   }
 }
