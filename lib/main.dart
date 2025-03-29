@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/config/navigation/navigation.dart';
-import 'package:sirius_books/features/book/ui/pages/books_page.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 void main() {
