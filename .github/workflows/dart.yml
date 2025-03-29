@@ -22,7 +22,7 @@ jobs:
           flutter-version: 3.29.2
 
       - name: Get dependencies
-        run: flutter pub get
+        run: find . -type f -name "pubspec.yaml" -execdir flutter pub get \;
                
       - name: Analyze project source
         run: flutter analyze
