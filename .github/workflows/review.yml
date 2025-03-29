@@ -16,7 +16,7 @@ jobs:
       - name: AI Code Reviewer
         uses: aidar-freeed/ai-codereviewer@v2.7.0
         with:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPEN_API_KEY }}
           OPENAI_API_MODEL: "gpt-4" 
           exclude: "**/*.json, **/*.md" 
