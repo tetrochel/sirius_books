@@ -37,7 +37,7 @@ class BookWidget extends StatelessWidget {
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8),
                     ),
-                    // TODO: change to image
+                    // TODO(ivan): change to image
                     child: Container(color: Colors.grey),
                   ),
                   Padding(

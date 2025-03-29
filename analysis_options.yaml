@@ -3,3 +3,7 @@ include: package:surf_lint_rules/analysis_options.yaml
 linter:
   rules:
     - require_trailing_commas
+
+analyzer:
+  exclude:
+    - lib/generated
