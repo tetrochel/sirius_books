@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
 import 'config/navigation/navigation.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:example/generated/app_localizations.dart';
 
 void main() {
   runApp(const MainApp());
@@ -60,6 +60,45 @@ class BookTest extends StatelessWidget {
           onTap: () {},
           onTapFavorite: () {},
         ),
+      ),
+    );
+  }
+}
+
+class AuthPage extends StatelessWidget {
+  const AuthPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AuthTextField(
+              controller: TextEditingController(),
+              focusNode: FocusNode(),
+              hint: AppLocalizations.of(context)!.email,
+              label: AppLocalizations.of(context)!.email,
+              isPassword: false,
+              prefixIcon: Icons.person,
+              obscureText: false,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AuthTextField(
+              controller: TextEditingController(),
+              focusNode: FocusNode(),
+              hint: AppLocalizations.of(context)!.password,
+              label: AppLocalizations.of(context)!.password,
+              isPassword: true,
+              prefixIcon: Icons.key,
+              obscureText: true,
+            ),
+          ),
+        ],
       ),
     );
   }

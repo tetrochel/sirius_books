@@ -2,7 +2,7 @@ import 'package:example/main.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:example/generated/app_localizations.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/expositions',
@@ -14,34 +14,15 @@ final GoRouter router = GoRouter(
           data: Theme.of(context).copyWith(
               highlightColor: Colors.transparent,
               splashFactory: InkRipple.splashFactory),
-          child: BottomNavigationBar(
-            selectedItemColor: context.colors.primary,
-            unselectedItemColor: context.colors.grey,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.calendar_today),
-                  label: AppLocalizations.of(context)!.expositions),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_book),
-                  label: AppLocalizations.of(context)!.books),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.collections_bookmark),
-                  label: AppLocalizations.of(context)!.collections),
-            ],
+          child: NavBar(
+            expositionsLabel: AppLocalizations.of(context)!.expositions,
+            expositionsIcon: Icons.calendar_today,
+            booksLabel: AppLocalizations.of(context)!.books,
+            booksIcon: Icons.menu_book,
+            collectionsLabel: AppLocalizations.of(context)!.collections,
+            collectionsIcon: Icons.collections_bookmark,
             currentIndex: _getCurrentIndex(state),
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  context.go('/expositions');
-                  break;
-                case 1:
-                  context.go('/books');
-                  break;
-                case 2:
-                  context.go('/collections');
-                  break;
-              }
-            },
+            onTabSelected: (index) => _switchPage(context, index),
           ),
         ),
       ),
@@ -59,7 +40,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: '/collections',
           pageBuilder: (context, state) =>
-              noTransitionPage(child: const SizedBox.shrink(), state: state),
+              noTransitionPage(child: const AuthPage(), state: state),
         ),
       ],
     ),
@@ -71,6 +52,20 @@ int _getCurrentIndex(GoRouterState state) {
   if (state.uri.toString().startsWith('/books')) return 1;
   if (state.uri.toString().startsWith('/collections')) return 2;
   return 0;
+}
+
+void _switchPage(BuildContext context, int index) {
+  switch (index) {
+    case 0:
+      context.go('/expositions');
+      break;
+    case 1:
+      context.go('/books');
+      break;
+    case 2:
+      context.go('/collections');
+      break;
+  }
 }
 
 CustomTransitionPage<void> noTransitionPage(
