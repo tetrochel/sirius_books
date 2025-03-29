@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      // TODO: Вынести определение локали в блок
+      // TODO(ivan): Вынести определение локали в блок
       locale: const Locale('en'),
       home: Builder(
         builder: (context) {
