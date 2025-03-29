@@ -19,4 +19,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPEN_API_KEY }}
           OPENAI_API_MODEL: "gpt-4" 
-          exclude: "**/*.json, **/*.md, **/generated/*.dart, /android, /dart_tool, /build, /ios, /linux, /macos, /test, /web, /windows"
+          exclude: "**/*.json, **/*.md, **/generated/*.dart, ./android, ./dart_tool, ./build, ./ios, ./linux, ./macos, ./test, ./web, ./windows"
