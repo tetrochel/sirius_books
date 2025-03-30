@@ -10,21 +10,23 @@ final GoRouter router = GoRouter(
     ShellRoute(
       builder: (context, state, child) => Scaffold(
         body: child,
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            highlightColor: Colors.transparent,
-            splashFactory: InkRipple.splashFactory,
-          ),
-          child: NavBar(
-            expositionsLabel: AppLocalizations.of(context)!.expositions,
-            expositionsIcon: Icons.calendar_today,
-            booksLabel: AppLocalizations.of(context)!.books,
-            booksIcon: Icons.menu_book,
-            collectionsLabel: AppLocalizations.of(context)!.collections,
-            collectionsIcon: Icons.collections_bookmark,
-            currentIndex: _getCurrentIndex(state),
-            onTabSelected: (index) => _switchPage(context, index),
-          ),
+        bottomNavigationBar: NavBar(
+          items: [
+            (
+              label: AppLocalizations.of(context)!.expositions,
+              icon: Icons.calendar_today,
+            ),
+            (
+              label: AppLocalizations.of(context)!.books,
+              icon: Icons.menu_book,
+            ),
+            (
+              label: AppLocalizations.of(context)!.collections,
+              icon: Icons.collections_bookmark,
+            ),
+          ],
+          currentIndex: _getCurrentIndex(state),
+          onTabSelected: (index) => _switchPage(context, index),
         ),
       ),
       routes: [
@@ -51,41 +53,7 @@ final GoRouter router = GoRouter(
           path: '/books',
           pageBuilder: (context, state) => noTransitionPage(
             state: state,
-            child: Scaffold(
-              backgroundColor: context.colors.white,
-              body: BooksPage(
-                appBar: AppBarWidget(
-                  title: AppLocalizations.of(context)!.books,
-                  actions: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.search,
-                        color: context.colors.primary,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.filter_alt,
-                        color: context.colors.primary,
-                      ),
-                    ),
-                  ],
-                ),
-                children: List.generate(
-                  40,
-                  (index) => BookWidget(
-                    name: 'Евгений Онегин',
-                    authorName: 'Александр Пушкин',
-                    genre: 'Роман',
-                    isFavorite: index.isEven,
-                    onTap: () {},
-                    onTapFavorite: () {},
-                  ),
-                ),
-              ),
-            ),
+            child: BooksPage(),
           ),
           routes: [
             GoRoute(
