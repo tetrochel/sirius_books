@@ -32,6 +32,10 @@ class MainApp extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.w600,
             ),
+            s20w400: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
+            ),
             s24w400: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,

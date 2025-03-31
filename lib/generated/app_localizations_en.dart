@@ -16,4 +16,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get collections => 'Collections';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get email => 'E-Mail';
+
+  @override
+  String get password => 'Password';
 }

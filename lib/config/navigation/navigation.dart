@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/ui/pages/books_page.dart';
+import 'package:sirius_books/features/books_collection/ui/pages/books_collections_page.dart';
+import 'package:sirius_books/features/user/ui/pages/auth_page.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 final GoRouter router = GoRouter(
@@ -9,7 +11,9 @@ final GoRouter router = GoRouter(
   routes: [
     ShellRoute(
       builder: (context, state, child) => Scaffold(
-        body: child,
+        body: SafeArea(
+          child: child,
+        ),
         bottomNavigationBar: NavBar(
           items: [
             (
@@ -32,8 +36,10 @@ final GoRouter router = GoRouter(
       routes: [
         GoRoute(
           path: '/expositions',
-          pageBuilder: (context, state) =>
-              noTransitionPage(child: const SizedBox.shrink(), state: state),
+          pageBuilder: (context, state) => noTransitionPage(
+            child: const SizedBox.shrink(),
+            state: state,
+          ),
           routes: [
             GoRoute(
               path: ':id',
@@ -72,8 +78,10 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: '/collections',
-          pageBuilder: (context, state) =>
-              noTransitionPage(child: const SizedBox.shrink(), state: state),
+          pageBuilder: (context, state) => noTransitionPage(
+            child: const BooksCollectionsPage(),
+            state: state,
+          ),
           routes: [
             GoRoute(
               path: ':id',
@@ -90,20 +98,28 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      path: '/auth',
+      builder: (context, state) => const AuthPage(),
+    ),
   ],
 );
 
 CustomTransitionPage<void> noTransitionPage({
   required GoRouterState state,
   required Widget child,
-}) {
-  return CustomTransitionPage<void>(
-    key: state.pageKey,
-    child: child,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+}) =>
+    CustomTransitionPage<void>(
+      key: state.pageKey,
+      child: child,
+      transitionsBuilder: (
+        context,
+        animation,
+        secondaryAnimation,
         child,
-  );
-}
+      ) =>
+          child,
+    );
 
 int _getCurrentIndex(GoRouterState state) {
   if (state.uri.toString().startsWith('/expositions')) return 0;
