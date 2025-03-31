@@ -17,7 +17,7 @@ class ExpositionsPage extends StatelessWidget {
       topic: '',
       location: '',
       bookList: [],
-      startDate: DateTime(2025, 2, 1),
+      startDate: DateTime(2025, 2),
       endDate: DateTime(2025, 2, 5),
     ),
   );
