@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
+import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class BooksCollectionsPage extends StatelessWidget {
@@ -14,7 +16,7 @@ class BooksCollectionsPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           sliver: SliverToBoxAdapter(
             child: UserWidget(
-              email: null,
+              email: context.watch<UserBloc>().state.userModel?.email,
               loginLabel: AppLocalizations.of(context)!.login,
               onPressed: () {
                 context.push('/auth');
