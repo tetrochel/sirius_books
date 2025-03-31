@@ -15,12 +15,20 @@ final GoRouter router = GoRouter(
               highlightColor: Colors.transparent,
               splashFactory: InkRipple.splashFactory),
           child: NavBar(
-            expositionsLabel: AppLocalizations.of(context)!.expositions,
-            expositionsIcon: Icons.calendar_today,
-            booksLabel: AppLocalizations.of(context)!.books,
-            booksIcon: Icons.menu_book,
-            collectionsLabel: AppLocalizations.of(context)!.collections,
-            collectionsIcon: Icons.collections_bookmark,
+            items: [
+              (
+                label: AppLocalizations.of(context)!.expositions,
+                icon: Icons.calendar_today,
+              ),
+              (
+                label: AppLocalizations.of(context)!.books,
+                icon: Icons.menu_book,
+              ),
+              (
+                label: AppLocalizations.of(context)!.collections,
+                icon: Icons.collections_bookmark,
+              ),
+            ],
             currentIndex: _getCurrentIndex(state),
             onTabSelected: (index) => _switchPage(context, index),
           ),

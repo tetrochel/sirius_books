@@ -115,6 +115,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Collections'**
   String get collections;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @registration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration'**
+  String get registration;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'E-Mail'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
 }
 
 class _AppLocalizationsDelegate

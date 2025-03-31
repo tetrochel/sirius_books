@@ -1,5 +1,9 @@
 {
   "expositions": "Expositions",
   "books": "Books",
-  "collections": "Collections"
+  "collections": "Collections",
+  "login": "Login",
+  "registration": "Registration",
+  "email": "E-Mail",
+  "password": "Password"
 }

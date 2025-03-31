@@ -16,8 +16,10 @@ class MainApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       // TODO(ivan): Вынести определение локали в блок
-      locale: const Locale('en'),
+      locale: const Locale('ru'),
       theme: ThemeData(
+        colorSchemeSeed: const Color(0xFF019DA1),
+        scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         extensions: const [
           AppColors(
             primary: Color(0xFF019DA1),
@@ -32,6 +34,10 @@ class MainApp extends StatelessWidget {
             s16w600: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
+            ),
+            s20w400: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
             ),
             s24w400: TextStyle(
               fontSize: 24,

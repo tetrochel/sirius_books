@@ -1,5 +1,9 @@
 {
   "expositions": "Выставки",
   "books": "Книги",
-  "collections": "Коллекции"
+  "collections": "Коллекции",
+  "login": "Войти",
+  "registration": "Регистрация",
+  "email": "E-Mail",
+  "password": "Пароль"
 }
