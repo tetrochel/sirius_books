@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get login;
 
+  /// No description provided for @registration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration'**
+  String get registration;
+
   /// No description provided for @email.
   ///
   /// In en, this message translates to:

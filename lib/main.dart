@@ -16,8 +16,9 @@ class MainApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       // TODO(ivan): Вынести определение локали в блок
-      locale: const Locale('en'),
+      locale: const Locale('ru'),
       theme: ThemeData(
+        colorSchemeSeed: const Color(0xFF019DA1),
         scaffoldBackgroundColor: const Color(0xFFFFFFFF),
         extensions: const [
           AppColors(

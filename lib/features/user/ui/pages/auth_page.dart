@@ -9,12 +9,14 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AuthTextField(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            spacing: 16,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AuthTextField(
                 controller: TextEditingController(),
                 focusNode: FocusNode(),
                 hint: AppLocalizations.of(context)!.email,
@@ -23,10 +25,7 @@ class AuthPage extends StatelessWidget {
                 prefixIcon: Icons.person,
                 obscureText: false,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AuthTextField(
+              AuthTextField(
                 controller: TextEditingController(),
                 focusNode: FocusNode(),
                 hint: AppLocalizations.of(context)!.password,
@@ -35,8 +34,33 @@ class AuthPage extends StatelessWidget {
                 prefixIcon: Icons.key,
                 obscureText: true,
               ),
-            ),
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppButton(
+                    type: ButtonType.secondary,
+                    onPressed: () {},
+                    child: Text(
+                      AppLocalizations.of(context)!.registration,
+                      style: context.textStyles.s14w400.copyWith(
+                        color: context.colors.grey,
+                      ),
+                    ),
+                  ),
+                  AppButton(
+                    type: ButtonType.primary,
+                    onPressed: () {},
+                    child: Text(
+                      AppLocalizations.of(context)!.login,
+                      style: context.textStyles.s14w400.copyWith(
+                        color: context.colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

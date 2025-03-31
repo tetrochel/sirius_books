@@ -22,6 +22,7 @@ class BookWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: context.colors.white,
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
         onTap: onTap,

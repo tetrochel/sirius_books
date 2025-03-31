@@ -3,6 +3,7 @@
   "books": "Книги",
   "collections": "Коллекции",
   "login": "Войти",
+  "registration": "Регистрация",
   "email": "E-Mail",
   "password": "Пароль"
 }
