@@ -5,9 +5,9 @@ import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
 import 'package:yx_scope/yx_scope.dart';
 
 class AppScopeContainer extends ScopeContainer {
-  late final firebaseUserDataSourceDep = dep(() => FirebaseUserDataSource());
+  late final firebaseUserDataSourceDep = dep(FirebaseUserDataSource.new);
   late final userRepositoryDep = dep(() => UserRepositoryImpl(firebaseUserDataSource: firebaseUserDataSourceDep.get));
-  late final navigationControllerDep = dep(() => NavigationController());
+  late final navigationControllerDep = dep(NavigationController.new);
   late final userBlocDep = dep(() => UserBloc(userRepository: userRepositoryDep.get, navigationController: navigationControllerDep.get));
 }
 

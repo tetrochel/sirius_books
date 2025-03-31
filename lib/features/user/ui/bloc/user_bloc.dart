@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sirius_books/config/navigation/navigator_controller.dart';
 import 'package:sirius_books/features/user/repository/user_repository.dart';
@@ -16,7 +17,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       switch (event) {
         case OnLoginPressed():
           await _handleLoginPressed(event, emit);
-        case OnSighUpPressed():
+        case OnSignUpPressed():
           await _handleSignUpPressed(event, emit);
         case OnLogOutPressed():
           await _handleLogOutPressed(event, emit);
@@ -34,12 +35,14 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       );
       emit(UserState()..userModel = user);
       //navigationController.showSnackBar(state.userModel!.role.toString());
-    } catch (e) {
-      navigationController.showSnackBar(e.toString());
+    } on FirebaseAuthException catch (e) {
+      navigationController.showSnackBar('Ошибка аутентификации: ${e.message}');
+    } on Exception catch (e) {
+      navigationController.showSnackBar('Произошла ошибка: ${e.toString()}');
     }
   }
 
-  Future<void> _handleSignUpPressed(OnSighUpPressed event, Emitter<UserState> emit) async {
+  Future<void> _handleSignUpPressed(OnSignUpPressed event, Emitter<UserState> emit) async {
 
   }
 
@@ -47,16 +50,20 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     try {
       await userRepository.logout();
       emit(UserState()..userModel = null);
-    } catch (e) {
-      navigationController.showSnackBar(e.toString());
+    } on FirebaseAuthException catch (e) {
+      navigationController.showSnackBar('Ошибка выхода: ${e.message}');
+    } on Exception catch (e) {
+      navigationController.showSnackBar('Произошла ошибка: ${e.toString()}');
     }
   }
 
-  Future<void> _handleResetPasswordPressed(OnResetPasswordPressed event,Emitter<UserState> emit) async {
+  Future<void> _handleResetPasswordPressed(OnResetPasswordPressed event, Emitter<UserState> emit) async {
     try {
       await userRepository.resetPassword(event.email);
-    } catch (e) {
-      navigationController.showSnackBar(e.toString());
+    } on FirebaseAuthException catch (e) {
+      navigationController.showSnackBar('Ошибка сброса пароля: ${e.message}');
+    } on Exception catch (e) {
+      navigationController.showSnackBar('Произошла ошибка: ${e.toString()}');
     }
   }
 }

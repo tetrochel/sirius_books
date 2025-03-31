@@ -6,27 +6,26 @@ class FirebaseUserDataSource {
   Future<UserModel?> login(String email, String password) async {
     try {
       final userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      late UserRole role;
-      if (FirebaseFirestore.instance
-              .collection('users')
-              .doc(userCredential.user!.uid)
-              .get()
-              .toString() ==
-          "keeper") {
-        role = UserRole.keeper;
-      } else {
-        role = UserRole.reader;
-      }
-      UserModel userModel = UserModel(
+
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
+
+      final role = userDoc.data()?['role'] == 'keeper'
+          ? UserRole.keeper
+          : UserRole.reader;
+
+      final userModel = UserModel(
         email: userCredential.user!.email.toString(),
         role: role,
       );
       return userModel;
-    } catch (e) {
+    } on Exception catch (_) {
       return null;
     }
   }
@@ -34,7 +33,7 @@ class FirebaseUserDataSource {
   Future<void> logout() async {
     try {
       await FirebaseAuth.instance.signOut();
-    } catch (e) {
+    } on Exception catch (_) {
       return;
     }
   }
@@ -42,7 +41,7 @@ class FirebaseUserDataSource {
   Future<void> resetPassword(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-    } catch (e) {
+    } on Exception catch (_) {
       return;
     }
   }

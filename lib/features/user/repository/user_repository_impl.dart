@@ -3,7 +3,7 @@ import 'package:sirius_books/features/user/data/model/user.dart';
 import 'package:sirius_books/features/user/repository/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  FirebaseUserDataSource firebaseUserDataSource;
+  final FirebaseUserDataSource firebaseUserDataSource;
 
   UserRepositoryImpl({
     required this.firebaseUserDataSource,

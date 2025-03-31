@@ -1,8 +1,8 @@
 sealed class UserEvent {}
 
 class OnLoginPressed extends UserEvent {
-  String password;
-  String email;
+  final String password;
+  final String email;
 
   OnLoginPressed({
     required this.email,
@@ -11,13 +11,13 @@ class OnLoginPressed extends UserEvent {
 }
 
 class OnResetPasswordPressed extends UserEvent {
-  String email;
+  final String email;
 
   OnResetPasswordPressed({
     required this.email,
   });
 }
 
-class OnSighUpPressed extends UserEvent {}
+class OnSignUpPressed extends UserEvent {}
 
 class OnLogOutPressed extends UserEvent {}
