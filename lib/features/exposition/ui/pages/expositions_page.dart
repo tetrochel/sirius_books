@@ -60,22 +60,23 @@ class ExpositionsPage extends StatelessWidget {
         ),
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          sliver: SliverGrid(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
-              mainAxisSpacing: 24,
-              childAspectRatio: 1.5,
-            ),
+          sliver: SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, index) => ExpositionWidget(
-                name: expositions[index].name,
-                onTap: () {},
-                onTapSubscribe: () {},
-                isSubscribed: subscriptions.contains(index),
-                startDate: DateFormat('dd.MM.yyyy')
-                    .format(expositions[index].startDate),
-                endDate:
-                    DateFormat('dd.MM.yyyy').format(expositions[index].endDate),
+              (context, index) => Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: AspectRatio(
+                  aspectRatio: 1.5,
+                  child: ExpositionWidget(
+                    name: expositions[index].name,
+                    onTap: () {},
+                    onTapSubscribe: () {},
+                    isSubscribed: subscriptions.contains(index),
+                    startDate: DateFormat('dd.MM.yyyy')
+                        .format(expositions[index].startDate),
+                    endDate: DateFormat('dd.MM.yyyy')
+                        .format(expositions[index].endDate),
+                  ),
+                ),
               ),
               childCount: expositions.length,
             ),
