@@ -88,9 +88,9 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   void dispose() {
-    super.dispose();
     textEditingController1.dispose();
     textEditingController2.dispose();
+    super.dispose();
   }
 
   @override
