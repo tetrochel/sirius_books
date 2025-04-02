@@ -70,7 +70,7 @@ class ExpositionsPage extends StatelessWidget {
                     name: expositions[index].name,
                     onTap: () {},
                     onTapSubscribe: () {},
-                    isSubscribed: subscriptions.contains(index),
+                    isSubscribed: subscriptions.contains(expositions[index].id),
                     startDate: DateFormat('dd.MM.yyyy')
                         .format(expositions[index].startDate),
                     endDate: DateFormat('dd.MM.yyyy')
