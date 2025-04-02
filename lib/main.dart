@@ -54,8 +54,7 @@ class MainApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp.router(
-              scaffoldMessengerKey:
-                  rootScope!.navigationControllerDep.get.scaffoldMessengerState,
+              scaffoldMessengerKey: rootScope!.navigationControllerDep.get.scaffoldMessengerState,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               // TODO(ivan): Вынести определение локали в блок
@@ -70,9 +69,17 @@ class MainApp extends StatelessWidget {
                     white: Color(0xFFFFFFFF),
                   ),
                   AppTextStyles(
+                    s12w400: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
                     s14w400: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
+                    ),
+                    s14w600: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
                     ),
                     s16w600: TextStyle(
                       fontSize: 16,

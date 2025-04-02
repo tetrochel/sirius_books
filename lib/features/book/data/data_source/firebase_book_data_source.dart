@@ -4,23 +4,18 @@ import 'package:sirius_books/features/book/data/model/book_model.dart';
 class FirebaseBookDataSource {
   Future<List<BookModel>?> getBookList() async {
     try {
-      final QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('myCollection').get();
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('myCollection').limit(20).get();
 
       final bookModelList = <BookModel>[];
       for (final doc in querySnapshot.docs) {
         // Проверка цены
         final priceString = doc.get('Стоимсоть').toString();
-        final price = priceString.isNotEmpty
-            ? double.parse(priceString.replaceAll(' ', '').replaceAll(',', '.'))
-            : 0.0;
+        final price = priceString.isNotEmpty ? double.parse(priceString.replaceAll(' ', '').replaceAll(',', '.')) : 0.0;
 
         // Проверка веса
         final weightString = doc.get('Вес').toString();
-        final weight = weightString.isNotEmpty
-            ? int.parse(weightString.replaceAll(' ', '').replaceAll(',', '')) ~/
-                100
-            : 0;
+        final weight =
+            weightString.isNotEmpty ? int.parse(weightString.replaceAll(' ', '').replaceAll(',', '')) ~/ 100 : 0;
 
         // Проверка года издания
         final yearString = doc.get('Год').toString();
