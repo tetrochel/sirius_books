@@ -18,5 +18,17 @@
   "startDate": "Дата начала",
   "endDate": "Дата окончания",
   "errorStartDateAfterEndDate": "Дата начала не может быть раньше даты окончания",
-  "filter": "Фильтр"
+  "filters": "Фильтры",
+  "name": "Имя",
+  "authorName": "Автор",
+  "year": "Год",
+  "publisher": "Издательство",
+  "genre": "Жанр",
+  "isbn": "ISBN",
+  "cover": "Переплёт",
+  "pagesCount": "Страниц",
+  "booksCount": "Экземпляров",
+  "price": "Стоимость",
+  "weight": "Вес, г.",
+  "location": "Место хранения"
 }

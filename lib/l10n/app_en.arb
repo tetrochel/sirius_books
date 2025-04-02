@@ -10,7 +10,7 @@
   "email": "E-Mail",
   "password": "Password",
   "forgotPassword": "Forgot password?",
-  "filter": "Filter",
+  "filters": "Filters",
   "repeatPassword": "Repeat password",
   "error": "Error",
   "title": "Title",
@@ -18,5 +18,17 @@
   "create": "Create",
   "startDate": "Start date",
   "endDate": "End date",
-  "errorStartDateAfterEndDate": "The start date cannot be earlier than the end date"
+  "errorStartDateAfterEndDate": "The start date cannot be earlier than the end date",
+  "name": "Name",
+  "authorName": "Author",
+  "year": "Year",
+  "publisher": "Publisher",
+  "genre": "Genre",
+  "isbn": "ISBN",
+  "cover": "Cover",
+  "pagesCount": "Pages",
+  "booksCount": "Books",
+  "price": "Price",
+  "weight": "Weight",
+  "location": "Storage location"
 }

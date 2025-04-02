@@ -42,7 +42,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get forgotPassword => 'Забыли пароль?';
 
   @override
-  String get filter => 'Фильтр';
+  String get filters => 'Фильтры';
 
   @override
   String get repeatPassword => 'Повторите пароль';
@@ -66,6 +66,41 @@ class AppLocalizationsRu extends AppLocalizations {
   String get endDate => 'Дата окончания';
 
   @override
-  String get errorStartDateAfterEndDate =>
-      'Дата начала не может быть раньше даты окончания';
+  String get errorStartDateAfterEndDate => 'Дата начала не может быть раньше даты окончания';
+
+  @override
+  String get name => 'Имя';
+
+  @override
+  String get authorName => 'Автор';
+
+  @override
+  String get year => 'Год';
+
+  @override
+  String get publisher => 'Издательство';
+
+  @override
+  String get genre => 'Жанр';
+
+  @override
+  String get isbn => 'ISBN';
+
+  @override
+  String get cover => 'Переплёт';
+
+  @override
+  String get pagesCount => 'Страниц';
+
+  @override
+  String get booksCount => 'Экземпляров';
+
+  @override
+  String get price => 'Стоимость';
+
+  @override
+  String get weight => 'Вес, г.';
+
+  @override
+  String get location => 'Место хранения';
 }
