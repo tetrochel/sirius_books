@@ -62,7 +62,7 @@ final GoRouter router = GoRouter(
           path: '/books',
           pageBuilder: (context, state) => noTransitionPage(
             state: state,
-            child: BooksPage(),
+            child: const BooksPage(),
           ),
           routes: [
             GoRoute(

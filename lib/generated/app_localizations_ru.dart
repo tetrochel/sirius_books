@@ -42,6 +42,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get title => 'Название';
 
   @override
+  String get description => 'Описание';
+
+  @override
+  String get create => 'Создать';
+
+  @override
   String get startDate => 'Дата начала';
 
   @override

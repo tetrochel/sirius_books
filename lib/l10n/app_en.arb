@@ -10,6 +10,8 @@
   "password": "Password",
   "error": "Error",
   "title": "Title",
+  "description": "Description",
+  "create": "Create",
   "startDate": "Start date",
   "endDate": "End date",
   "errorStartDateAfterEndDate": "The start date cannot be earlier than the end date"
