@@ -33,33 +33,28 @@ class FirebaseBookDataSource {
         //ai-generated methods
         // Проверка цены
         final priceString = doc.get('Стоимсоть').toString();
-        final price = priceString.isNotEmpty 
+        final price = priceString.isNotEmpty
             ? double.parse(priceString.replaceAll(' ', '').replaceAll(',', '.'))
             : 0.0;
 
         // Проверка веса
         final weightString = doc.get('Вес').toString();
         final weight = weightString.isNotEmpty
-            ? int.parse(weightString.replaceAll(' ', '').replaceAll(',', '')) ~/ 100
+            ? int.parse(weightString.replaceAll(' ', '').replaceAll(',', '')) ~/
+                100
             : 0;
 
         // Проверка года издания
         final yearString = doc.get('Год').toString();
-        final year = yearString.isNotEmpty
-            ? int.parse(yearString)
-            : 0;
+        final year = yearString.isNotEmpty ? int.parse(yearString) : 0;
 
         // Проверка количества страниц
         final pagesString = doc.get('Страниц').toString();
-        final pages = pagesString.isNotEmpty
-            ? int.parse(pagesString)
-            : 0;
+        final pages = pagesString.isNotEmpty ? int.parse(pagesString) : 0;
 
         // Проверка количества книг
         final countString = doc.get('Количество').toString();
-        final count = countString.isNotEmpty
-            ? int.parse(countString)
-            : 0;
+        final count = countString.isNotEmpty ? int.parse(countString) : 0;
 
         final idString = doc.id;
 

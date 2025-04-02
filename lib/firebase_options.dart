@@ -15,6 +15,23 @@ import 'package:flutter/foundation.dart'
 /// );
 /// ```
 class DefaultFirebaseOptions {
+  static const android = FirebaseOptions(
+    apiKey: 'AIzaSyDVGSQwMFu-RF4L-2gUXxwXPl6lCNaWF-8',
+    appId: '1:1085866437315:android:a33286bb8b9acd2fcf5076',
+    messagingSenderId: '1085866437315',
+    projectId: 'sirius-books-b73bc',
+    storageBucket: 'sirius-books-b73bc.firebasestorage.app',
+  );
+
+  static const ios = FirebaseOptions(
+    apiKey: 'AIzaSyAEsgSgXkOcMVYWTDd6igazMz9IRFEgCl8',
+    appId: '1:1085866437315:ios:6704120d130737f7cf5076',
+    messagingSenderId: '1085866437315',
+    projectId: 'sirius-books-b73bc',
+    storageBucket: 'sirius-books-b73bc.firebasestorage.app',
+    iosBundleId: 'com.example.siriusBooks',
+  );
+
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       throw UnsupportedError(
@@ -48,22 +65,4 @@ class DefaultFirebaseOptions {
         );
     }
   }
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDVGSQwMFu-RF4L-2gUXxwXPl6lCNaWF-8',
-    appId: '1:1085866437315:android:a33286bb8b9acd2fcf5076',
-    messagingSenderId: '1085866437315',
-    projectId: 'sirius-books-b73bc',
-    storageBucket: 'sirius-books-b73bc.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAEsgSgXkOcMVYWTDd6igazMz9IRFEgCl8',
-    appId: '1:1085866437315:ios:6704120d130737f7cf5076',
-    messagingSenderId: '1085866437315',
-    projectId: 'sirius-books-b73bc',
-    storageBucket: 'sirius-books-b73bc.firebasestorage.app',
-    iosBundleId: 'com.example.siriusBooks',
-  );
-
 }

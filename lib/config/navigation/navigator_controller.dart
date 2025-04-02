@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NavigationController {
-  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerState = GlobalKey<ScaffoldMessengerState>();
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerState =
+      GlobalKey<ScaffoldMessengerState>();
 
   void showSnackBar(String message) {
     ScaffoldMessenger.of(scaffoldMessengerState.currentContext!).showSnackBar(
