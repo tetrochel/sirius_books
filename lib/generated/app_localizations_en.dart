@@ -30,6 +30,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registration => 'Registration';
 
   @override
+  String get signUp => 'Sign Up';
+
+  @override
   String get email => 'E-Mail';
 
   @override
@@ -37,6 +40,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get filter => 'Filter';
+
+  @override
+  String get repeatPassword => 'Repeat password';
 
   @override
   String get error => 'Error';

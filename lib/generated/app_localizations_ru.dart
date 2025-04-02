@@ -30,6 +30,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get registration => 'Регистрация';
 
   @override
+  String get signUp => 'Зарегистрироваться';
+
+  @override
   String get email => 'E-Mail';
 
   @override
@@ -37,6 +40,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get filter => 'Фильтр';
+
+  @override
+  String get repeatPassword => 'Повторите пароль';
 
   @override
   String get error => 'Ошибка';
