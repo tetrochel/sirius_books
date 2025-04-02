@@ -1,50 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:presentation/theme/theme_picker.dart';
 
-class AuthTextField extends StatelessWidget {
+class TextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
-  final FocusNode focusNode;
+  final TextInputType inputType;
   final String hint;
   final String label;
-  final IconData prefixIcon;
-  final bool isPassword;
+  final IconData? prefixIcon;
   final String? errorText;
   final ValueChanged<String>? onChanged;
   final VoidCallback? onToggleVisibility;
   final bool obscureText;
   final String? Function(String?)? validator;
+  final TextInputFormatter? formatter;
 
-  const AuthTextField({
+  const TextFieldWidget({
     super.key,
     required this.controller,
-    required this.focusNode,
     required this.hint,
     required this.label,
-    required this.isPassword,
-    required this.prefixIcon,
+    this.prefixIcon,
     this.errorText,
     this.onChanged,
     this.onToggleVisibility,
     required this.obscureText,
     this.validator,
+    required this.inputType,
+    this.formatter,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: (formatter != null) ? [formatter!] : null,
+      maxLines: inputType == TextInputType.multiline ? 2 : 1,
       onChanged: onChanged,
       validator: validator,
       controller: controller,
-      focusNode: focusNode,
-      obscureText: isPassword && obscureText,
-      keyboardType: isPassword
-          ? TextInputType.visiblePassword
-          : TextInputType.emailAddress,
+      obscureText: inputType == TextInputType.visiblePassword && obscureText,
+      keyboardType: inputType,
       decoration: InputDecoration(
         errorText: errorText,
-        prefixIcon: Icon(prefixIcon),
+        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         prefixIconColor: context.colors.primary,
-        suffixIcon: isPassword
+        suffixIcon: inputType == TextInputType.visiblePassword
             ? IconButton(
                 icon: Icon(
                   obscureText ? Icons.visibility_off : Icons.visibility,
@@ -57,10 +57,15 @@ class AuthTextField extends StatelessWidget {
         labelText: label,
         labelStyle:
             context.textStyles.s14w400.copyWith(color: context.colors.grey),
-        border: const OutlineInputBorder(
+        border: OutlineInputBorder(
           // Make border edge circular
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          borderSide: BorderSide(color: Colors.grey, width: 1.5),
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: context.colors.grey, width: 1.5),
+        ),
+        enabledBorder: OutlineInputBorder(
+          // Make border edge circular
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+          borderSide: BorderSide(color: context.colors.grey, width: 1.5),
         ),
       ),
     );

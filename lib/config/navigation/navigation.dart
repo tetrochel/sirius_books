@@ -4,8 +4,10 @@ import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/ui/pages/books_page.dart';
 import 'package:sirius_books/features/books_collection/ui/pages/books_collections_page.dart';
 import 'package:sirius_books/features/exposition/ui/pages/expositions_page.dart';
+import 'package:sirius_books/features/exposition/ui/pages/new_exposition_page.dart';
 import 'package:sirius_books/features/filter/ui/pages/filter_page.dart';
 import 'package:sirius_books/features/user/ui/pages/auth_page.dart';
+import 'package:sirius_books/features/user/ui/pages/registration_page.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 final GoRouter router = GoRouter(
@@ -44,7 +46,7 @@ final GoRouter router = GoRouter(
           ),
           routes: [
             GoRoute(
-              path: ':id',
+              path: 'details/:id',
               builder: (context, state) {
                 // final id = state.pathParameters['id'];
                 return const SizedBox.shrink();
@@ -53,7 +55,7 @@ final GoRouter router = GoRouter(
             ),
             GoRoute(
               path: 'new',
-              builder: (context, state) => const SizedBox.shrink(),
+              builder: (context, state) => const NewExpositionPage(),
             ),
           ],
         ),
@@ -69,7 +71,7 @@ final GoRouter router = GoRouter(
           ),
           routes: [
             GoRoute(
-              path: ':id',
+              path: 'details/:id',
               builder: (context, state) {
                 // final id = state.pathParameters['id'];
                 return const SizedBox.shrink();
@@ -94,7 +96,7 @@ final GoRouter router = GoRouter(
           ),
           routes: [
             GoRoute(
-              path: ':id',
+              path: 'details/:id',
               builder: (context, state) {
                 // final id = state.pathParameters['id'];
                 return const SizedBox.shrink();
@@ -104,13 +106,19 @@ final GoRouter router = GoRouter(
               path: 'new',
               builder: (context, state) => const SizedBox.shrink(),
             ),
+            GoRoute(
+              path: 'auth',
+              builder: (context, state) => const AuthPage(),
+              routes: [
+                GoRoute(
+                  path: 'registration',
+                  builder: (context, state) => const RegistrationPage(),
+                ),
+              ],
+            ),
           ],
         ),
       ],
-    ),
-    GoRoute(
-      path: '/auth',
-      builder: (context, state) => const AuthPage(),
     ),
     GoRoute(
       path: '/filter',
