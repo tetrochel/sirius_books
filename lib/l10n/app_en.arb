@@ -5,5 +5,6 @@
   "login": "Login",
   "registration": "Registration",
   "email": "E-Mail",
-  "password": "Password"
+  "password": "Password",
+  "filter": "Filter"
 }

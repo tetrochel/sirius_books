@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/ui/pages/books_page.dart';
 import 'package:sirius_books/features/books_collection/ui/pages/books_collections_page.dart';
+import 'package:sirius_books/features/filter/ui/pages/filter_page.dart';
 import 'package:sirius_books/features/user/ui/pages/auth_page.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
@@ -59,7 +60,11 @@ final GoRouter router = GoRouter(
           path: '/books',
           pageBuilder: (context, state) => noTransitionPage(
             state: state,
-            child: BooksPage(),
+            // ColoredBox для фона
+            child: ColoredBox(
+              color: context.colors.white,
+              child: BooksPage(),
+            ),
           ),
           routes: [
             GoRoute(
@@ -79,7 +84,11 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: '/collections',
           pageBuilder: (context, state) => noTransitionPage(
-            child: const BooksCollectionsPage(),
+            // ColoredBox для фона
+            child: ColoredBox(
+              color: context.colors.white,
+              child: const BooksCollectionsPage(),
+            ),
             state: state,
           ),
           routes: [
@@ -102,6 +111,11 @@ final GoRouter router = GoRouter(
       path: '/auth',
       builder: (context, state) => const AuthPage(),
     ),
+    GoRoute(
+      path: '/filter',
+      pageBuilder: (context, state) =>
+          const ModalPage<void>(child: FilterPage()),
+    ),
   ],
 );
 
@@ -120,6 +134,21 @@ CustomTransitionPage<void> noTransitionPage({
       ) =>
           child,
     );
+
+class ModalPage<T> extends Page<T> {
+  final Widget child;
+
+  const ModalPage({required this.child});
+
+  @override
+  Route<T> createRoute(BuildContext context) => ModalBottomSheetRoute<T>(
+        backgroundColor: context.colors.white,
+        useSafeArea: true,
+        settings: this,
+        builder: (context) => child,
+        isScrollControlled: true,
+      );
+}
 
 int _getCurrentIndex(GoRouterState state) {
   if (state.uri.toString().startsWith('/expositions')) return 0;

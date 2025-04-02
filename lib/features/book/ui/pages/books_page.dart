@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
@@ -7,7 +8,7 @@ class BooksPage extends StatelessWidget {
   late final List<BookModel> books = List.generate(
     40,
     (index) => BookModel(
-      name: 'Евгений Онегин',
+      name: 'Евгений Онегин $index',
       authorName: 'Александр Пушкин',
       genre: 'Роман',
       publicationYear: index,
@@ -22,9 +23,7 @@ class BooksPage extends StatelessWidget {
     ),
   );
 
-  BooksPage({
-    super.key,
-  });
+  BooksPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class BooksPage extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  // TODO(ivan): Добавить вызов модального окна через router
+                  context.push('/filter');
                 },
                 icon: Icon(
                   Icons.filter_alt,
