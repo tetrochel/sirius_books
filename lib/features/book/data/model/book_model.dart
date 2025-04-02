@@ -1,7 +1,7 @@
 enum Cover { soft, hard, jacket }
 
 class BookModel {
-  final String firebaseId;
+  final String? firebaseId;
   final String name;
   final String authorName;
   final int publicationYear;
@@ -16,7 +16,6 @@ class BookModel {
   final String location;
 
   BookModel({
-    required this.firebaseId,
     required this.name,
     required this.authorName,
     required this.publicationYear,
@@ -29,5 +28,6 @@ class BookModel {
     required this.price,
     required this.weight,
     required this.location,
+    this.firebaseId,
   });
 }

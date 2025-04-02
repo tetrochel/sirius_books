@@ -6,7 +6,10 @@ import 'package:sirius_books/config/navigation/navigation.dart';
 import 'package:sirius_books/di.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_bloc.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_event.dart';
+import 'package:sirius_books/features/exposition/ui/bloc/exposition_bloc.dart';
+import 'package:sirius_books/features/exposition/ui/bloc/exposition_event.dart';
 import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
+import 'package:sirius_books/features/user/ui/bloc/user_event.dart';
 import 'package:sirius_books/firebase_options.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 import 'package:yx_scope_flutter/yx_scope_flutter.dart';
@@ -45,12 +48,17 @@ class MainApp extends StatelessWidget {
                 create: (context) => UserBloc(
                   userRepository: rootScope!.userRepositoryDep.get,
                   navigationController: rootScope.navigationControllerDep.get,
-                ),
+                )..add(OnFindLocally()),
               ),
               BlocProvider<BookBloc>(
                 create: (context) => BookBloc(
                   bookRepository: rootScope!.bookRepositoryDep.get,
                 )..add(OnLoadBook()),
+              ),
+              BlocProvider<ExpositionBloc>(
+                create: (context) => ExpositionBloc(
+                  expositionRepository: rootScope!.expositionRepositoryDep.get,
+                )..add(OnLoadExposition()),
               ),
             ],
             child: MaterialApp.router(

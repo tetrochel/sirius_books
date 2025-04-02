@@ -42,7 +42,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password => 'Password';
 
   @override
-  String get forgotPassword => 'Forgot password';
+  String get forgotPassword => 'Forgot password?';
 
   @override
   String get restorePassword => 'Restore password';
@@ -72,6 +72,5 @@ class AppLocalizationsEn extends AppLocalizations {
   String get endDate => 'End date';
 
   @override
-  String get errorStartDateAfterEndDate =>
-      'The start date cannot be earlier than the end date';
+  String get errorStartDateAfterEndDate => 'The start date cannot be earlier than the end date';
 }
