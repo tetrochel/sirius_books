@@ -12,10 +12,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get expositions => 'Выставки';
 
   @override
+  String get new_exposition => 'Новая выставка';
+
+  @override
   String get books => 'Книги';
 
   @override
   String get collections => 'Коллекции';
+
+  @override
+  String get collection => 'Коллекция';
 
   @override
   String get login => 'Войти';
@@ -28,4 +34,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get password => 'Пароль';
+
+  @override
+  String get error => 'Ошибка';
+
+  @override
+  String get title => 'Название';
+
+  @override
+  String get startDate => 'Дата начала';
+
+  @override
+  String get endDate => 'Дата окончания';
+
+  @override
+  String get errorStartDateAfterEndDate => 'Дата начала не может быть раньше даты окончания';
 }

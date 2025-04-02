@@ -101,6 +101,12 @@ abstract class AppLocalizations {
   /// **'Expositions'**
   String get expositions;
 
+  /// No description provided for @new_exposition.
+  ///
+  /// In en, this message translates to:
+  /// **'New exposition'**
+  String get new_exposition;
+
   /// No description provided for @books.
   ///
   /// In en, this message translates to:
@@ -112,6 +118,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Collections'**
   String get collections;
+
+  /// No description provided for @collection.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection'**
+  String get collection;
 
   /// No description provided for @login.
   ///
@@ -136,6 +148,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password'**
   String get password;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @title.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get title;
+
+  /// No description provided for @startDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Start date'**
+  String get startDate;
+
+  /// No description provided for @endDate.
+  ///
+  /// In en, this message translates to:
+  /// **'End date'**
+  String get endDate;
+
+  /// No description provided for @errorStartDateAfterEndDate.
+  ///
+  /// In en, this message translates to:
+  /// **'The start date cannot be earlier than the end date'**
+  String get errorStartDateAfterEndDate;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

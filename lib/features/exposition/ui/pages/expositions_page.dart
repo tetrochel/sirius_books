@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
+import 'package:sirius_books/config/constants.dart';
 import 'package:sirius_books/features/exposition/data/model/exposition_model.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
@@ -28,60 +29,67 @@ class ExpositionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
-      slivers: [
-        SliverAppBar(
-          pinned: true,
-          shadowColor: Colors.black,
-          backgroundColor: context.colors.white,
-          surfaceTintColor: context.colors.white,
-          title: AppBarWidget(
-            title: AppLocalizations.of(context)!.expositions,
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search,
-                  color: context.colors.primary,
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.go('/expositions/new'),
+        child: const Icon(Icons.add),
+        backgroundColor: context.colors.primary,
+        foregroundColor: context.colors.white,
+      ),
+      body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            shadowColor: Colors.black,
+            backgroundColor: context.colors.white,
+            surfaceTintColor: context.colors.white,
+            title: AppBarWidget(
+              title: AppLocalizations.of(context)!.expositions,
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.search,
+                    color: context.colors.primary,
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: () {
-                  // TODO(ivan): Добавить вызов модального окна через router
-                },
-                icon: Icon(
-                  Icons.filter_alt,
-                  color: context.colors.primary,
+                IconButton(
+                  onPressed: () {
+                    // TODO(ivan): Добавить вызов модального окна через router
+                  },
+                  icon: Icon(
+                    Icons.filter_alt,
+                    color: context.colors.primary,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          sliver: SliverGrid(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
-              mainAxisSpacing: 24,
-              childAspectRatio: 1.5,
-            ),
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => ExpositionWidget(
-                name: expositions[index].name,
-                onTap: () {},
-                onTapSubscribe: () {},
-                isSubscribed: subscriptions.contains(index),
-                startDate: DateFormat('dd.MM.yyyy')
-                    .format(expositions[index].startDate),
-                endDate:
-                    DateFormat('dd.MM.yyyy').format(expositions[index].endDate),
-              ),
-              childCount: expositions.length,
+              ],
             ),
           ),
-        ),
-      ],
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            sliver: SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                mainAxisSpacing: 24,
+                childAspectRatio: 1.5,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => ExpositionWidget(
+                  name: expositions[index].name,
+                  onTap: () {},
+                  onTapSubscribe: () {},
+                  isSubscribed: subscriptions.contains(index),
+                  startDate:
+                      defaultDateFormat.format(expositions[index].startDate),
+                  endDate: defaultDateFormat.format(expositions[index].endDate),
+                ),
+                childCount: expositions.length,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,9 +1,16 @@
 {
   "expositions": "Выставки",
+  "new_exposition": "Новая выставка",
   "books": "Книги",
   "collections": "Коллекции",
+  "collection": "Коллекция",
   "login": "Войти",
   "registration": "Регистрация",
   "email": "E-Mail",
-  "password": "Пароль"
+  "password": "Пароль",
+  "error": "Ошибка",
+  "title": "Название",
+  "startDate": "Дата начала",
+  "endDate": "Дата окончания",
+  "errorStartDateAfterEndDate": "Дата начала не может быть раньше даты окончания"
 }
