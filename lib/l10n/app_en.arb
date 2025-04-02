@@ -9,6 +9,7 @@
   "signUp": "Sign Up",
   "email": "E-Mail",
   "password": "Password",
+  "forgotPassword": "Forgot password?",
   "filter": "Filter",
   "repeatPassword": "Repeat password",
   "error": "Error",

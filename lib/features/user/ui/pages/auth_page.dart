@@ -29,6 +29,7 @@ class _AuthPageState extends State<AuthPage> {
           child: Column(
             spacing: 16,
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFieldWidget(
@@ -80,6 +81,19 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                   ),
                 ],
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  minimumSize: Size.zero,
+                  padding: EdgeInsets.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                onPressed: () {},
+                child: Text(
+                  AppLocalizations.of(context)!.forgotPassword,
+                  style: context.textStyles.s14w400
+                      .copyWith(color: context.colors.grey),
+                ),
               ),
             ],
           ),

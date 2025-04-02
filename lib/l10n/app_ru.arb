@@ -9,6 +9,7 @@
   "signUp": "Зарегистрироваться",
   "email": "E-Mail",
   "password": "Пароль",
+  "forgotPassword": "Забыли пароль?",
   "repeatPassword": "Повторите пароль",
   "error": "Ошибка",
   "title": "Название",
