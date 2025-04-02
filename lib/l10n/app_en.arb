@@ -10,6 +10,7 @@
   "email": "E-Mail",
   "password": "Password",
   "forgotPassword": "Forgot password?",
+  "restorePassword": "Restore password",
   "filter": "Filter",
   "repeatPassword": "Repeat password",
   "error": "Error",
