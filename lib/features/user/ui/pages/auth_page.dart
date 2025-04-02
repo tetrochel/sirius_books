@@ -29,7 +29,7 @@ class _AuthPageState extends State<AuthPage> {
           child: Column(
             spacing: 16,
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFieldWidget(
