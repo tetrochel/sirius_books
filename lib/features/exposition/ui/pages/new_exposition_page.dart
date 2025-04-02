@@ -176,7 +176,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
   }
 
   Future<void> _selectDate(BuildContext context, bool isEndDate) async {
-    final DateTime? picked = await showDatePicker(
+    final picked = await showDatePicker(
       context: context,
       firstDate: DateTime(2020),
       lastDate: DateTime(2100),
