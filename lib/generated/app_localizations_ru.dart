@@ -28,4 +28,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get password => 'Пароль';
+
+  @override
+  String get filter => 'Фильтр';
 }

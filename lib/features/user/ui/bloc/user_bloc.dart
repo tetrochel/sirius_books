@@ -27,7 +27,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     });
   }
 
-  Future<void> _handleLoginPressed(OnLoginPressed event, Emitter<UserState> emit) async {
+  Future<void> _handleLoginPressed(
+    OnLoginPressed event,
+    Emitter<UserState> emit,
+  ) async {
     try {
       final user = await userRepository.login(
         event.email,
@@ -42,11 +45,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     }
   }
 
-  Future<void> _handleSignUpPressed(OnSignUpPressed event, Emitter<UserState> emit) async {
+  Future<void> _handleSignUpPressed(
+    OnSignUpPressed event,
+    Emitter<UserState> emit,
+  ) async {}
 
-  }
-
-  Future<void> _handleLogOutPressed(OnLogOutPressed event, Emitter<UserState> emit) async {
+  Future<void> _handleLogOutPressed(
+    OnLogOutPressed event,
+    Emitter<UserState> emit,
+  ) async {
     try {
       await userRepository.logout();
       emit(UserState()..userModel = null);
@@ -57,7 +64,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     }
   }
 
-  Future<void> _handleResetPasswordPressed(OnResetPasswordPressed event, Emitter<UserState> emit) async {
+  Future<void> _handleResetPasswordPressed(
+    OnResetPasswordPressed event,
+    Emitter<UserState> emit,
+  ) async {
     try {
       await userRepository.resetPassword(event.email);
     } on FirebaseAuthException catch (e) {

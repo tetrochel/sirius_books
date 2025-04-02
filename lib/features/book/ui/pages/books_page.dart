@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 import 'package:sirius_books/features/book/ui/data/book_bloc.dart';
@@ -7,7 +8,6 @@ import 'package:sirius_books/features/book/ui/data/book_state.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class BooksPage extends StatefulWidget {
-
   const BooksPage({
     super.key,
   });
@@ -44,7 +44,7 @@ class _BooksPageState extends State<BooksPage> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // TODO(ivan): Добавить вызов модального окна через router
+                      context.push('/filter');
                     },
                     icon: Icon(
                       Icons.filter_alt,

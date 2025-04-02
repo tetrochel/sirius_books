@@ -6,7 +6,7 @@ class FirebaseUserDataSource {
   Future<UserModel?> login(String email, String password) async {
     try {
       final userCredential =
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );

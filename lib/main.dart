@@ -26,12 +26,12 @@ void main() async {
 }
 
 class MainApp extends StatelessWidget {
+  final AppScopeHolder appScopeHolder;
+
   const MainApp({
     required this.appScopeHolder,
     super.key,
   });
-
-  final AppScopeHolder appScopeHolder;
 
   @override
   Widget build(BuildContext context) {
