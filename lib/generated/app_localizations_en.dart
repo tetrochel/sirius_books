@@ -12,10 +12,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get expositions => 'Expositions';
 
   @override
+  String get new_exposition => 'New exposition';
+
+  @override
   String get books => 'Books';
 
   @override
   String get collections => 'Collections';
+
+  @override
+  String get collection => 'Collection';
 
   @override
   String get login => 'Login';
@@ -31,4 +37,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get filter => 'Filter';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get title => 'Title';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get create => 'Create';
+
+  @override
+  String get startDate => 'Start date';
+
+  @override
+  String get endDate => 'End date';
+
+  @override
+  String get errorStartDateAfterEndDate => 'The start date cannot be earlier than the end date';
 }
