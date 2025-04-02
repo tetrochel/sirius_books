@@ -10,6 +10,7 @@
   "email": "E-Mail",
   "password": "Пароль",
   "forgotPassword": "Забыли пароль?",
+  "restorePassword": "Восстановить пароль",
   "repeatPassword": "Повторите пароль",
   "error": "Ошибка",
   "title": "Название",
