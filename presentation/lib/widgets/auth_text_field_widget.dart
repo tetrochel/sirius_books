@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:presentation/presentation.dart';
+import 'package:presentation/theme/theme_picker.dart';
 
 class AuthTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -32,6 +32,7 @@ class AuthTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       validator: validator,
       controller: controller,
       focusNode: focusNode,
