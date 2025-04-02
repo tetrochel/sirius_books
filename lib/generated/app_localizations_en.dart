@@ -18,6 +18,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get books => 'Books';
 
   @override
+  String get bookCount => 'Book count';
+
+  @override
   String get collections => 'Collections';
 
   @override
@@ -39,7 +42,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password => 'Password';
 
   @override
-  String get forgotPassword => 'Forgot password?';
+  String get forgotPassword => 'Forgot password';
 
   @override
   String get filter => 'Filter';
