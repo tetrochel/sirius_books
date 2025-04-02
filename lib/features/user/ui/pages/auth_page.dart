@@ -88,7 +88,7 @@ class _AuthPageState extends State<AuthPage> {
                   padding: EdgeInsets.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                onPressed: () {},
+                onPressed: () => context.go('/collections/auth/reset_password'),
                 child: Text(
                   AppLocalizations.of(context)!.forgotPassword,
                   style: context.textStyles.s14w400

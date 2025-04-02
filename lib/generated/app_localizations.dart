@@ -170,6 +170,12 @@ abstract class AppLocalizations {
   /// **'Forgot password'**
   String get forgotPassword;
 
+  /// No description provided for @restorePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore password'**
+  String get restorePassword;
+
   /// No description provided for @filter.
   ///
   /// In en, this message translates to:
