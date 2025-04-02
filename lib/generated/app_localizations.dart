@@ -137,12 +137,6 @@ abstract class AppLocalizations {
   /// **'Registration'**
   String get registration;
 
-  /// No description provided for @signUp.
-  ///
-  /// In en, this message translates to:
-  /// **'Sign Up'**
-  String get signUp;
-
   /// No description provided for @email.
   ///
   /// In en, this message translates to:
@@ -155,11 +149,11 @@ abstract class AppLocalizations {
   /// **'Password'**
   String get password;
 
-  /// No description provided for @repeatPassword.
+  /// No description provided for @filter.
   ///
   /// In en, this message translates to:
-  /// **'Repeat password'**
-  String get repeatPassword;
+  /// **'Filter'**
+  String get filter;
 
   /// No description provided for @error.
   ///
@@ -172,6 +166,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Title'**
   String get title;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @create.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get create;
 
   /// No description provided for @startDate.
   ///

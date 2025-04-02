@@ -9,9 +9,12 @@
   "signUp": "Sign Up",
   "email": "E-Mail",
   "password": "Password",
+  "filter": "Filter",
   "repeatPassword": "Repeat password",
   "error": "Error",
   "title": "Title",
+  "description": "Description",
+  "create": "Create",
   "startDate": "Start date",
   "endDate": "End date",
   "errorStartDateAfterEndDate": "The start date cannot be earlier than the end date"

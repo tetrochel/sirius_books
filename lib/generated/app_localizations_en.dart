@@ -30,22 +30,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registration => 'Registration';
 
   @override
-  String get signUp => 'Sign Up';
-
-  @override
   String get email => 'E-Mail';
 
   @override
   String get password => 'Password';
 
   @override
-  String get repeatPassword => 'Repeat password';
+  String get filter => 'Filter';
 
   @override
   String get error => 'Error';
 
   @override
   String get title => 'Title';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get create => 'Create';
 
   @override
   String get startDate => 'Start date';

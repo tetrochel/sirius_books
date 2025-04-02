@@ -128,6 +128,15 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                     inputType: TextInputType.text,
                   ),
                   const SizedBox(height: 12),
+
+                  TextFieldWidget(
+                    controller: descriptionController,
+                    hint: AppLocalizations.of(context)!.description,
+                    label: AppLocalizations.of(context)!.description,
+                    obscureText: false,
+                    inputType: TextInputType.multiline,
+                  ),
+                  const SizedBox(height: 12),
                   DateFieldWidget(
                     onTap: () => _selectDate(context, false),
                     controller: startDateController,
@@ -143,7 +152,8 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                   const SizedBox(height: 12),
 
                   DropdownMenu(
-                    onSelected: (selected) => selectedCollectionId = selected as int,
+                    onSelected: (selected) =>
+                        selectedCollectionId = selected as int,
                     expandedInsets: EdgeInsets.zero,
                     initialSelection: selectedCollectionId,
                     label: Text(AppLocalizations.of(context)!.collection),
@@ -166,6 +176,30 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                         .toList(),
                   ),
                   // TODO(max): add image picker
+                ],
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.all(24),
+            sliver: SliverFillRemaining(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  AppButton(
+                    type: ButtonType.primary,
+                    onPressed: () {},
+                    child: Text(
+                      AppLocalizations.of(context)!.create,
+                      style: context.textStyles.s14w400.copyWith(
+                        color: context.colors.white,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
                 ],
               ),
             ),

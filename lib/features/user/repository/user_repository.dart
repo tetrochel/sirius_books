@@ -1,4 +1,4 @@
-import 'package:sirius_books/features/user/data/model/user.dart';
+import 'package:sirius_books/features/user/data/model/user_model.dart';
 
 abstract interface class UserRepository {
   Future<UserModel?> login(String email, String password);

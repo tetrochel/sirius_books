@@ -12,7 +12,10 @@
   "repeatPassword": "Повторите пароль",
   "error": "Ошибка",
   "title": "Название",
+  "description": "Описание",
+  "create": "Создать",
   "startDate": "Дата начала",
   "endDate": "Дата окончания",
-  "errorStartDateAfterEndDate": "Дата начала не может быть раньше даты окончания"
+  "errorStartDateAfterEndDate": "Дата начала не может быть раньше даты окончания",
+  "filter": "Фильтр"
 }

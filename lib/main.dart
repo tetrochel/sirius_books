@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:presentation/theme/theme_picker.dart';
 import 'package:sirius_books/config/navigation/navigation.dart';
 import 'package:sirius_books/di.dart';
+import 'package:sirius_books/features/book/ui/data/book_bloc.dart';
+import 'package:sirius_books/features/book/ui/data/book_event.dart';
 import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
 import 'package:sirius_books/firebase_options.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
@@ -24,12 +26,12 @@ void main() async {
 }
 
 class MainApp extends StatelessWidget {
+  final AppScopeHolder appScopeHolder;
+
   const MainApp({
     required this.appScopeHolder,
     super.key,
   });
-
-  final AppScopeHolder appScopeHolder;
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +39,23 @@ class MainApp extends StatelessWidget {
       holder: appScopeHolder,
       child: ScopeBuilder<AppScopeContainer>(
         builder: (context, rootScope) {
-          return BlocProvider(
-            create: (context) => UserBloc(
-              userRepository: rootScope.userRepositoryDep.get,
-              navigationController: rootScope.navigationControllerDep.get,
-            ),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => UserBloc(
+                  userRepository: rootScope!.userRepositoryDep.get,
+                  navigationController: rootScope.navigationControllerDep.get,
+                ),
+              ),
+              BlocProvider<BookBloc>(
+                create: (context) => BookBloc(
+                  bookRepository: rootScope!.bookRepositoryDep.get,
+                )..add(OnLoadBook()),
+              ),
+            ],
             child: MaterialApp.router(
-              scaffoldMessengerKey: rootScope!.navigationControllerDep.get.scaffoldMessengerState,
+              scaffoldMessengerKey:
+                  rootScope!.navigationControllerDep.get.scaffoldMessengerState,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               // TODO(ivan): Вынести определение локали в блок

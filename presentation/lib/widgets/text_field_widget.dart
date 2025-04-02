@@ -34,6 +34,7 @@ class TextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       inputFormatters: (formatter != null) ? [formatter!] : null,
+      maxLines: inputType == TextInputType.multiline ? 2 : 1,
       onChanged: onChanged,
       validator: validator,
       controller: controller,

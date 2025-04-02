@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sirius_books/features/user/data/model/user.dart';
+import 'package:sirius_books/features/user/data/model/user_model.dart';
 
 class FirebaseUserDataSource {
   Future<UserModel?> login(String email, String password) async {
     try {
       final userCredential =
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
