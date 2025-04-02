@@ -65,5 +65,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'sirius-books-b73bc.firebasestorage.app',
     iosBundleId: 'com.example.siriusBooks',
   );
-
 }

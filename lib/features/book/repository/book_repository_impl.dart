@@ -15,7 +15,5 @@ class BookRepositoryImpl implements BookRepository {
   }
 
   @override
-  Future<void> addBook() async {
-
-  }
+  Future<void> addBook() async {}
 }
