@@ -36,8 +36,8 @@ class BookCollectionWidget extends StatelessWidget {
                       .infinity, // TODO(Maks): probably find a better solution
                   child: CustomPaint(
                     painter: PlaceholderPainter(
-                      seed: name + bookCount,
-                      isVertical: true,
+                      seed: name,
+                      isVertical: false,
                     ),
                   ),
                 ),
@@ -45,28 +45,22 @@ class BookCollectionWidget extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Row(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 50,
-                          child: Text(
-                            name,
-                            style: context.textStyles.s24w400
-                                .copyWith(color: context.colors.primary),
-                          ),
-                        ),
-                        Text(
-                          bookCount,
-                          style: context.textStyles.s14w400
-                              .copyWith(color: context.colors.grey),
-                        ),
-                      ],
+                  SizedBox(
+                    height: 50,
+                    child: Text(
+                      name,
+                      style: context.textStyles.s24w400
+                          .copyWith(color: context.colors.primary),
                     ),
+                  ),
+                  Text(
+                    bookCount,
+                    style: context.textStyles.s14w400
+                        .copyWith(color: context.colors.grey),
                   ),
                 ],
               ),
