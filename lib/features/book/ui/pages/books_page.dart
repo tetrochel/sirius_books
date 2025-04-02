@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 import 'package:sirius_books/features/book/ui/data/book_bloc.dart';
-import 'package:sirius_books/features/book/ui/data/book_event.dart';
 import 'package:sirius_books/features/book/ui/data/book_state.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
@@ -24,7 +23,6 @@ class _BooksPageState extends State<BooksPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<BookBloc, BookState>(
       builder: (context, state) {
-        context.read<BookBloc>().add(OnLoadBook());
         books = state.bookList;
         return CustomScrollView(
           physics: const BouncingScrollPhysics(),
