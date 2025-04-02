@@ -49,7 +49,7 @@ class _AuthPageState extends State<AuthPage> {
                 children: [
                   AppButton(
                     type: ButtonType.secondary,
-                    onPressed: () => context.go('/auth/register'),
+                    onPressed: () => context.go('/auth/registration'),
                     child: Text(
                       AppLocalizations.of(context)!.registration,
                       style: context.textStyles.s14w400.copyWith(

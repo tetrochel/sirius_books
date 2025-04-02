@@ -6,7 +6,7 @@ import 'package:sirius_books/features/books_collection/ui/pages/books_collection
 import 'package:sirius_books/features/exposition/ui/pages/expositions_page.dart';
 import 'package:sirius_books/features/exposition/ui/pages/new_exposition_page.dart';
 import 'package:sirius_books/features/user/ui/pages/auth_page.dart';
-import 'package:sirius_books/features/user/ui/pages/register_page.dart';
+import 'package:sirius_books/features/user/ui/pages/registration_page.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 final GoRouter router = GoRouter(
@@ -106,8 +106,8 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const AuthPage(),
       routes: [
         GoRoute(
-          path: 'register',
-          builder: (context, state) => const RegisterPage(),
+          path: 'registration',
+          builder: (context, state) => const RegistrationPage(),
         ),
       ],
     ),

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegistrationPageState extends State<RegistrationPage> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   late final TextEditingController repeatPasswordController;
