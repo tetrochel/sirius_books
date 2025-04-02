@@ -18,6 +18,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get books => 'Книги';
 
   @override
+  String get bookCount => 'Количество книг';
+
+  @override
   String get collections => 'Коллекции';
 
   @override
@@ -39,7 +42,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get password => 'Пароль';
 
   @override
-  String get forgotPassword => 'Забыли пароль?';
+  String get forgotPassword => 'Забыли пароль';
 
   @override
   String get restorePassword => 'Восстановить пароль';

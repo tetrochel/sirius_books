@@ -8,3 +8,4 @@ export 'package:presentation/widgets/exposition_widget.dart';
 export 'package:presentation/widgets/navbar_widget.dart';
 export 'package:presentation/widgets/user_widget.dart';
 export 'package:presentation/widgets/date_field_widget.dart';
+export 'package:presentation/widgets/book_collection_widget.dart';
