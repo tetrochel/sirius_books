@@ -23,7 +23,7 @@ class BooksCollectionsPage extends StatelessWidget {
                 if (context.read<UserBloc>().state.userModel != null) {
                   context.read<UserBloc>().add(OnLogOutPressed());
                 } else {
-                  context.push('/auth');
+                  context.push('/collections/auth');
                 }
               },
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:presentation/theme/theme_picker.dart';
 
 class TextFieldWidget extends StatelessWidget {
@@ -12,6 +13,7 @@ class TextFieldWidget extends StatelessWidget {
   final VoidCallback? onToggleVisibility;
   final bool obscureText;
   final String? Function(String?)? validator;
+  final TextInputFormatter? formatter;
 
   const TextFieldWidget({
     super.key,
@@ -25,12 +27,13 @@ class TextFieldWidget extends StatelessWidget {
     required this.obscureText,
     this.validator,
     required this.inputType,
+    this.formatter,
   });
-
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: (formatter != null) ? [formatter!] : null,
       maxLines: inputType == TextInputType.multiline ? 2 : 1,
       onChanged: onChanged,
       validator: validator,

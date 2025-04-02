@@ -30,13 +30,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get registration => 'Регистрация';
 
   @override
+  String get signUp => 'Зарегистрироваться';
+
+  @override
   String get email => 'E-Mail';
 
   @override
   String get password => 'Пароль';
 
   @override
+  String get forgotPassword => 'Забыли пароль?';
+
+  @override
   String get filter => 'Фильтр';
+
+  @override
+  String get repeatPassword => 'Повторите пароль';
 
   @override
   String get error => 'Ошибка';
@@ -57,5 +66,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get endDate => 'Дата окончания';
 
   @override
-  String get errorStartDateAfterEndDate => 'Дата начала не может быть раньше даты окончания';
+  String get errorStartDateAfterEndDate =>
+      'Дата начала не может быть раньше даты окончания';
 }

@@ -20,12 +20,16 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: context.colors.white,
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             spacing: 16,
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFieldWidget(
@@ -49,7 +53,8 @@ class _AuthPageState extends State<AuthPage> {
                 children: [
                   AppButton(
                     type: ButtonType.secondary,
-                    onPressed: () {},
+                    onPressed: () =>
+                        context.go('/collections/auth/registration'),
                     child: Text(
                       AppLocalizations.of(context)!.registration,
                       style: context.textStyles.s14w400.copyWith(
@@ -76,6 +81,19 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                   ),
                 ],
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  minimumSize: Size.zero,
+                  padding: EdgeInsets.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                onPressed: () {},
+                child: Text(
+                  AppLocalizations.of(context)!.forgotPassword,
+                  style: context.textStyles.s14w400
+                      .copyWith(color: context.colors.grey),
+                ),
               ),
             ],
           ),
