@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
-import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
-import 'package:sirius_books/features/user/ui/bloc/user_event.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
-class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<AuthPage> createState() => _AuthPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class _RegisterPageState extends State<RegisterPage> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
+  late final TextEditingController repeatPasswordController;
 
   @override
   Widget build(BuildContext context) {
@@ -44,38 +41,25 @@ class _AuthPageState extends State<AuthPage> {
                 obscureText: true,
                 inputType: TextInputType.visiblePassword,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AppButton(
-                    type: ButtonType.secondary,
-                    onPressed: () => context.go('/auth/register'),
-                    child: Text(
-                      AppLocalizations.of(context)!.registration,
-                      style: context.textStyles.s14w400.copyWith(
-                        color: context.colors.grey,
-                      ),
+              TextFieldWidget(
+                controller: repeatPasswordController,
+                hint: AppLocalizations.of(context)!.repeatPassword,
+                label: AppLocalizations.of(context)!.repeatPassword,
+                obscureText: true,
+                inputType: TextInputType.visiblePassword,
+              ),
+              Container(
+                constraints: const BoxConstraints(minWidth: double.infinity),
+                child: AppButton(
+                  type: ButtonType.primary,
+                  onPressed: () {},
+                  child: Text(
+                    AppLocalizations.of(context)!.signUp,
+                    style: context.textStyles.s14w400.copyWith(
+                      color: context.colors.white,
                     ),
                   ),
-                  AppButton(
-                    type: ButtonType.primary,
-                    onPressed: () {
-                      context.read<UserBloc>().add(
-                            OnLoginPressed(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            ),
-                          );
-                      context.pop();
-                    },
-                    child: Text(
-                      AppLocalizations.of(context)!.login,
-                      style: context.textStyles.s14w400.copyWith(
-                        color: context.colors.white,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ],
           ),
@@ -88,6 +72,7 @@ class _AuthPageState extends State<AuthPage> {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    repeatPasswordController.dispose();
     super.dispose();
   }
 
@@ -96,5 +81,6 @@ class _AuthPageState extends State<AuthPage> {
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    repeatPasswordController = TextEditingController();
   }
 }

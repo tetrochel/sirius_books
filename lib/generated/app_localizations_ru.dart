@@ -30,10 +30,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get registration => 'Регистрация';
 
   @override
+  String get signUp => 'Зарегистрироваться';
+
+  @override
   String get email => 'E-Mail';
 
   @override
   String get password => 'Пароль';
+
+  @override
+  String get repeatPassword => 'Повторите пароль';
 
   @override
   String get error => 'Ошибка';
