@@ -84,26 +84,22 @@ class AuthPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: AuthTextField(
+            child: TextFieldWidget(
               controller: TextEditingController(),
-              focusNode: FocusNode(),
               hint: AppLocalizations.of(context)!.email,
               label: AppLocalizations.of(context)!.email,
-              isPassword: false,
               prefixIcon: Icons.person,
-              obscureText: false,
+              obscureText: false, inputType: TextInputType.emailAddress,
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: AuthTextField(
+            child: TextFieldWidget(
               controller: TextEditingController(),
-              focusNode: FocusNode(),
               hint: AppLocalizations.of(context)!.password,
               label: AppLocalizations.of(context)!.password,
-              isPassword: true,
               prefixIcon: Icons.key,
-              obscureText: true,
+              obscureText: true, inputType: TextInputType.visiblePassword,
             ),
           ),
         ],
