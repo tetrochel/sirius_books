@@ -1,7 +1,7 @@
 import 'package:sirius_books/config/navigation/navigator_controller.dart';
 import 'package:sirius_books/features/book/data/data_source/firebase_book_data_source.dart';
 import 'package:sirius_books/features/book/repository/book_repository_impl.dart';
-import 'package:sirius_books/features/book/ui/data/book_bloc.dart';
+import 'package:sirius_books/features/book/ui/bloc/book_bloc.dart';
 import 'package:sirius_books/features/user/data/data_source/firebase_user_data_source.dart';
 import 'package:sirius_books/features/user/repository/user_repository_impl.dart';
 import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';

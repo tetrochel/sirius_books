@@ -2,6 +2,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 
 class FirebaseBookDataSource {
+  Future<void> addBook(BookModel bookModel) async {
+    try {
+      await FirebaseFirestore.instance.collection('myCollection').add({
+        'Наименование': bookModel.name.toString(),
+        'Автор': bookModel.authorName.toString(),
+        'Год': bookModel.publicationYear.toString(),
+        'Изд-во': bookModel.publisher.toString(),
+        'ISBN': bookModel.isbn.toString(),
+        'Переплет': _convertCoverToString(bookModel.cover).toString(),
+        'Страниц': bookModel.pagesCount.toString(),
+        'Количество': bookModel.booksCount.toString(),
+        'Стоимсоть': bookModel.price.toString(),
+        'Вес': (bookModel.weight * 100).toString(),
+        'Жанр': bookModel.genre.toString(),
+        'Место': bookModel.location.toString(),
+      });
+    } on Exception catch (_) {
+      return;
+    }
+  }
+
   Future<List<BookModel>?> getBookList() async {
     try {
       final QuerySnapshot querySnapshot =
@@ -9,6 +30,7 @@ class FirebaseBookDataSource {
 
       final bookModelList = <BookModel>[];
       for (final doc in querySnapshot.docs) {
+        //ai-generated methods
         // Проверка цены
         final priceString = doc.get('Стоимсоть').toString();
         final price = priceString.isNotEmpty 
@@ -39,8 +61,11 @@ class FirebaseBookDataSource {
             ? int.parse(countString)
             : 0;
 
+        final idString = doc.id;
+
         bookModelList.add(
           BookModel(
+            firebaseId: idString,
             name: doc.get('Наименование').toString(),
             authorName: doc.get('Автор').toString(),
             publicationYear: year,
@@ -70,6 +95,17 @@ class FirebaseBookDataSource {
       return Cover.jacket;
     } else {
       return Cover.soft;
+    }
+  }
+
+  String _convertCoverToString(Cover cover) {
+    switch (cover) {
+      case Cover.hard:
+        return 'в пер';
+      case Cover.jacket:
+        return 'в пер., супер.';
+      case Cover.soft:
+        return 'мягкий';
     }
   }
 }

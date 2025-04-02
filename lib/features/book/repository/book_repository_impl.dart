@@ -15,7 +15,7 @@ class BookRepositoryImpl implements BookRepository {
   }
 
   @override
-  Future<void> addBook() async {
-
+  Future<void> addBook(BookModel bookModel) async {
+    await firebaseBookDataSource.addBook(bookModel);
   }
 }
