@@ -9,16 +9,25 @@ import 'package:yx_scope/yx_scope.dart';
 
 class AppScopeContainer extends ScopeContainer {
   late final firebaseUserDataSourceDep = dep(FirebaseUserDataSource.new);
-  late final userRepositoryDep = dep(() => UserRepositoryImpl(
-      firebaseUserDataSource: firebaseUserDataSourceDep.get));
+  late final userRepositoryDep = dep(
+    () => UserRepositoryImpl(
+      firebaseUserDataSource: firebaseUserDataSourceDep.get,
+    ),
+  );
   late final navigationControllerDep = dep(NavigationController.new);
-  late final userBlocDep = dep(() => UserBloc(
+  late final userBlocDep = dep(
+    () => UserBloc(
       userRepository: userRepositoryDep.get,
-      navigationController: navigationControllerDep.get));
+      navigationController: navigationControllerDep.get,
+    ),
+  );
 
   late final firebaseBookDataSourceDep = dep(FirebaseBookDataSource.new);
-  late final bookRepositoryDep = dep(() => BookRepositoryImpl(
-      firebaseBookDataSource: firebaseBookDataSourceDep.get));
+  late final bookRepositoryDep = dep(
+    () => BookRepositoryImpl(
+      firebaseBookDataSource: firebaseBookDataSourceDep.get,
+    ),
+  );
   late final bookBlocDep =
       dep(() => BookBloc(bookRepository: bookRepositoryDep.get));
 }

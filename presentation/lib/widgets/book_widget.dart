@@ -42,7 +42,8 @@ class BookWidget extends StatelessWidget {
                     child: CustomPaint(
                       size: Size(double.infinity, double.infinity),
                       painter: _PlaceholderPainter(
-                          'book:$name,authotName$authorName,genre:$genre'),
+                        'book:$name,authotName$authorName,genre:$genre',
+                      ),
                     ),
                   ),
                   Padding(
@@ -141,9 +142,9 @@ class _PlaceholderPainter extends CustomPainter {
       Colors.pink,
       Colors.purple,
       Colors.orange,
-      Colors.teal
+      Colors.teal,
     ];
-    final Color baseColor = colors[hash % colors.length].withOpacity(0.7);
+    final Color baseColor = colors[hash % colors.length].withValues(alpha: 0.7);
 
     final Paint paint = Paint()..color = baseColor;
     canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height), paint);
@@ -165,7 +166,7 @@ class _PlaceholderPainter extends CustomPainter {
   }
 
   void _drawGrid(Canvas canvas, Size size, Random random) {
-    final Paint paint = Paint()..color = Colors.black.withOpacity(0.1);
+    final Paint paint = Paint()..color = Colors.black.withValues(alpha: 0.1);
     final int rows = 6;
     final int cols = 10;
     final double cellWidth = size.width / cols;
@@ -184,7 +185,7 @@ class _PlaceholderPainter extends CustomPainter {
   }
 
   void _drawCircles(Canvas canvas, Size size, Random random) {
-    final Paint paint = Paint()..color = Colors.white.withOpacity(0.2);
+    final Paint paint = Paint()..color = Colors.white.withValues(alpha: 0.2);
     for (int i = 0; i < 10; i++) {
       final double radius = random.nextDouble() * 30 + 10;
       final double x = random.nextDouble() * size.width;
@@ -194,7 +195,7 @@ class _PlaceholderPainter extends CustomPainter {
   }
 
   void _drawStripes(Canvas canvas, Size size, Random random) {
-    final Paint paint = Paint()..color = Colors.black.withOpacity(0.1);
+    final Paint paint = Paint()..color = Colors.black.withValues(alpha: 0.1);
     for (double i = 0; i < size.width; i += 20) {
       canvas.drawRect(Rect.fromLTWH(i, 0, 10, size.height), paint);
     }
@@ -202,7 +203,7 @@ class _PlaceholderPainter extends CustomPainter {
 
   void _drawWaves(Canvas canvas, Size size, Random random) {
     final Paint paint = Paint()
-      ..color = Colors.white.withOpacity(0.2)
+      ..color = Colors.white.withValues(alpha: 0.2)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
 

@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/ui/pages/books_page.dart';
 import 'package:sirius_books/features/books_collection/ui/pages/books_collections_page.dart';
+import 'package:sirius_books/features/exposition/ui/pages/expositions_page.dart';
+import 'package:sirius_books/features/filter/ui/pages/filter_page.dart';
 import 'package:sirius_books/features/user/ui/pages/auth_page.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
@@ -62,7 +64,7 @@ final GoRouter router = GoRouter(
             // ColoredBox для фона
             child: ColoredBox(
               color: context.colors.white,
-              child: BooksPage(),
+              child: const BooksPage(),
             ),
           ),
           routes: [
