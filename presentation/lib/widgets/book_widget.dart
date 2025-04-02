@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:presentation/theme/theme_picker.dart';
-import 'package:presentation/utils/placeolder_painter.dart';
+import 'package:presentation/utils/placeholder_painter.dart';
 
 class BookWidget extends StatelessWidget {
   final String name;
