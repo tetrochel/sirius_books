@@ -70,7 +70,7 @@ class ExpositionsPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (context, index) => Padding(
+                (context, index) => Padding(
                   padding: const EdgeInsets.only(bottom: 24),
                   child: AspectRatio(
                     aspectRatio: 1.5,
@@ -78,11 +78,12 @@ class ExpositionsPage extends StatelessWidget {
                       name: expositions[index].name,
                       onTap: () {},
                       onTapSubscribe: () {},
-                      isSubscribed: subscriptions.contains(expositions[index].id),
+                      isSubscribed:
+                          subscriptions.contains(expositions[index].id),
                       startDate: defaultDateFormat
                           .format(expositions[index].startDate),
-                      endDate: defaultDateFormat
-                          .format(expositions[index].endDate),
+                      endDate:
+                          defaultDateFormat.format(expositions[index].endDate),
                     ),
                   ),
                 ),

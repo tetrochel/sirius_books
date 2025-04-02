@@ -30,13 +30,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registration => 'Registration';
 
   @override
+  String get signUp => 'Sign Up';
+
+  @override
   String get email => 'E-Mail';
 
   @override
   String get password => 'Password';
 
   @override
+  String get forgotPassword => 'Forgot password?';
+
+  @override
   String get filter => 'Filter';
+
+  @override
+  String get repeatPassword => 'Repeat password';
 
   @override
   String get error => 'Error';
@@ -57,5 +66,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get endDate => 'End date';
 
   @override
-  String get errorStartDateAfterEndDate => 'The start date cannot be earlier than the end date';
+  String get errorStartDateAfterEndDate =>
+      'The start date cannot be earlier than the end date';
 }
