@@ -1,20 +1,36 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sirius_books/features/book/data/model/book_model.dart';
 import 'package:sirius_books/features/book/repository/book_repository.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_event.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_state.dart';
+import 'package:sirius_books/features/filter/data/model/filter_model.dart';
 
 class BookBloc extends Bloc<BookEvent, BookState> {
   final BookRepository bookRepository;
 
+  late Map<Type, Map<String, Object>> filters;
+  List<BookModel> allLoadedBooks = [];
+
   BookBloc({
     required this.bookRepository,
   }) : super(BookState()) {
+    filters = {
+      String: {},
+      Range: {},
+      List<Cover>: {},
+    };
     on<BookEvent>((event, emit) async {
       switch (event) {
         case OnLoadBook():
           await _handleOnLoadBook(event, emit);
         case OnAddBook():
           await _handleOnAddBook(event, emit);
+        case OnFilterBooks():
+          _handleOnFilterBooks(event, emit);
+        case OnFilterChanged():
+          _handleOnFilterChanged(event, emit);
+        case OnFiltersReset():
+          _handleOnFiltersReset(event, emit);
         case OnUpdateBook():
           await _handleOnUpdateBook(event, emit);
       }
@@ -28,7 +44,8 @@ class BookBloc extends Bloc<BookEvent, BookState> {
     try {
       final bookList = await bookRepository.getAllBooks();
       if (bookList != null) {
-        emit(BookState()..bookList = bookList);
+        allLoadedBooks = bookList;
+        emit(BookState()..bookList = allLoadedBooks);
       }
     } on Exception catch (_) {
       return;
@@ -56,4 +73,51 @@ class BookBloc extends Bloc<BookEvent, BookState> {
       return;
     }
   }
+
+  void _handleOnFilterBooks(
+    OnFilterBooks event,
+    Emitter<BookState> emit,
+  ) {
+    final newBooks = <BookModel>[];
+
+    for (final book in allLoadedBooks) {
+      var good = true;
+      for (final type in filters.keys) {
+        for (final id in filters[type]!.keys) {
+          final value = filters[type]![id];
+          final currentGood = Filters.filters.firstWhere((filter) {
+            return filter.id == id;
+          }).check(book: book, value: value);
+          if (!currentGood) {
+            good = false;
+          }
+        }
+      }
+      if (good) {
+        newBooks.add(book);
+      }
+    }
+    emit(BookState()..bookList = newBooks);
+  }
+
+  void _handleOnFilterChanged(
+    OnFilterChanged event,
+    Emitter<BookState> emit,
+  ) {
+    filters[event.value.runtimeType]![event.id] = event.value;
+  }
+
+  void _handleOnFiltersReset(
+    OnFiltersReset event,
+    Emitter<BookState> emit,
+  ) {
+    filters = {
+      String: {},
+      Range: {},
+      List<Cover>: {},
+    };
+    emit(BookState()..bookList = allLoadedBooks);
+  }
 }
+
+typedef Range = (int, int);

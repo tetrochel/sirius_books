@@ -31,25 +31,22 @@ class ExpositionsPage extends StatelessWidget {
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: [
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          sliver: SliverAppBar(
-            pinned: true,
-            shadowColor: Colors.black,
-            backgroundColor: context.colors.white,
-            surfaceTintColor: context.colors.white,
-            title: AppBarWidget(
-              title: AppLocalizations.of(context)!.expositions,
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.search,
-                    color: context.colors.primary,
-                  ),
+        SliverAppBar(
+          pinned: true,
+          shadowColor: Colors.black,
+          backgroundColor: context.colors.white,
+          surfaceTintColor: context.colors.white,
+          title: AppBarWidget(
+            title: AppLocalizations.of(context)!.expositions,
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search,
+                  color: context.colors.primary,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         SliverPadding(

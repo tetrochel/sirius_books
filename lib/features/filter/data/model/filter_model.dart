@@ -29,9 +29,9 @@ class SubStringFilterModel extends FilterModel<String, String> {
       paramExtractor(book).contains(value);
 }
 
-class SubrangeFilterModel extends FilterModel<num, ({num min, num max})> {
-  final num min;
-  final num max;
+class SubrangeFilterModel extends FilterModel<int, (int, int)> {
+  final int min;
+  final int max;
 
   SubrangeFilterModel({
     required super.id,
@@ -43,9 +43,9 @@ class SubrangeFilterModel extends FilterModel<num, ({num min, num max})> {
   @override
   bool check({
     required BookModel book,
-    required ({num min, num max}) value,
+    required (int, int) value,
   }) =>
-      paramExtractor(book) >= value.min && paramExtractor(book) <= value.max;
+      paramExtractor(book) >= value.$1 && paramExtractor(book) <= value.$2;
 }
 
 class EnumFilterModel extends FilterModel<Cover, List<Cover>> {
@@ -63,7 +63,7 @@ class EnumFilterModel extends FilterModel<Cover, List<Cover>> {
 }
 
 class Filters {
-  static final filters = [
+  static final filters = <FilterModel>[
     SubStringFilterModel(
       id: 'name',
       paramExtractor: (book) => book.name,
@@ -108,7 +108,7 @@ class Filters {
     ),
     SubrangeFilterModel(
       id: 'price',
-      paramExtractor: (book) => book.price,
+      paramExtractor: (book) => book.price.toInt(),
       min: 1,
       max: 100000,
     ),

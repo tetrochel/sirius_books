@@ -111,6 +111,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get location => 'Storage location';
 
   @override
+  String get apply => 'Apply';
   String get editing => 'Editing';
 
   @override
