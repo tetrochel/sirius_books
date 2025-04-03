@@ -57,7 +57,7 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
                 surfaceTintColor: context.colors.white,
                 title: AppBarWidget(
                   title: AppLocalizations.of(context)!.collections,
-                  actions: [
+                  actions: (context.watch<UserBloc>().state.userModel != null) ? [
                     IconButton(
                       onPressed: () {
                         context.push('/collections/new');
@@ -67,7 +67,7 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
                         color: context.colors.primary,
                       ),
                     ),
-                  ],
+                  ] : [],
                 ),
                 pinned: true,
               ),

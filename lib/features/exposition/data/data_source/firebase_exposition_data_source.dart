@@ -43,7 +43,7 @@ class FirebaseExpositionDataSource {
 
         expositionModelList.add(
           ExpositionModel(
-            id: int.parse(idString),
+            id: idString,
             topic: doc.get('Тема').toString(),
             name: doc.get('Название').toString(),
             books: bookList,

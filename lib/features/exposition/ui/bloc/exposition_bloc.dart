@@ -22,10 +22,23 @@ class ExpositionBloc extends Bloc<ExpositionEvent, ExpositionState> {
   Future<void> _handleOnLoadExposition(
     OnLoadExposition event,
     Emitter<ExpositionState> emit,
-  ) async {}
+  ) async {
+    try {
+      final expositionList = await expositionRepository.getAllExposition();
+      emit(ExpositionState()..expositionModelList = expositionList);
+        } on Exception catch (_) {
+      return;
+    }
+  }
 
   Future<void> _handleOnAddExpositionPressed(
     OnAddExpositionPressed event,
     Emitter<ExpositionState> emit,
-  ) async {}
+  ) async {
+    try {
+      await expositionRepository.addExposition(event.expositionModel);
+    } on Exception catch (_) {
+      return;
+    }
+  }
 }

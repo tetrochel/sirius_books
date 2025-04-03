@@ -69,8 +69,8 @@ class MainApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp.router(
-              scaffoldMessengerKey:
-                  rootScope!.navigationControllerDep.get.scaffoldMessengerState,
+              debugShowCheckedModeBanner: false,
+              scaffoldMessengerKey: rootScope!.navigationControllerDep.get.scaffoldMessengerState,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               // TODO(ivan): Вынести определение локали в блок
