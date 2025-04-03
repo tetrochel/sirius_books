@@ -15,6 +15,24 @@ class BookModel {
   final int weight;
   final String location;
 
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  int get hashCode {
+    return firebaseId.hashCode ^
+        name.hashCode ^
+        authorName.hashCode ^
+        publicationYear.hashCode ^
+        publisher.hashCode ^
+        genre.hashCode ^
+        isbn.hashCode ^
+        cover.hashCode ^
+        pagesCount.hashCode ^
+        booksCount.hashCode ^
+        price.hashCode ^
+        weight.hashCode ^
+        location.hashCode;
+  }
+
   BookModel({
     required this.name,
     required this.authorName,
@@ -30,8 +48,6 @@ class BookModel {
     required this.location,
     this.firebaseId,
   });
-
-  //Дзен код
   factory BookModel.fromFirebase(String id, Map<String, dynamic> data) {
     final yearString = data['Год'].toString();
     final year = yearString.isNotEmpty ? int.parse(yearString) : 0;
@@ -43,14 +59,10 @@ class BookModel {
     final count = countString.isNotEmpty ? int.parse(countString) : 0;
 
     final priceString = data['Стоимсоть'].toString();
-    final price = priceString.isNotEmpty
-        ? double.parse(priceString.replaceAll(' ', '').replaceAll(',', '.'))
-        : 0.0;
+    final price = priceString.isNotEmpty ? double.parse(priceString.replaceAll(' ', '').replaceAll(',', '.')) : 0.0;
 
     final weightString = data['Вес'].toString();
-    final weight = weightString.isNotEmpty
-        ? int.parse(weightString.replaceAll(' ', '').replaceAll(',', '')) ~/ 100
-        : 0;
+    final weight = weightString.isNotEmpty ? int.parse(weightString.replaceAll(' ', '').replaceAll(',', '')) ~/ 100 : 0;
 
     final coverString = data['Переплет'].toString();
     final cover = coverString == 'в пер'
@@ -75,6 +87,28 @@ class BookModel {
       location: 'Место',
     );
   }
+
+  @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(covariant BookModel other) {
+    if (identical(this, other)) return true;
+
+    return other.firebaseId == firebaseId &&
+        other.name == name &&
+        other.authorName == authorName &&
+        other.publicationYear == publicationYear &&
+        other.publisher == publisher &&
+        other.genre == genre &&
+        other.isbn == isbn &&
+        other.cover == cover &&
+        other.pagesCount == pagesCount &&
+        other.booksCount == booksCount &&
+        other.price == price &&
+        other.weight == weight &&
+        other.location == location;
+  }
+
+  //Дзен код
 
   BookModel copyWith({
     String? firebaseId,

@@ -100,14 +100,13 @@ class _CollectionPageState extends State<CollectionPage> {
                 name: collection.books[index].name,
                 authorName: collection.books[index].authorName,
                 genre: collection.books[index].genre,
-                isFavorite: index.isEven,
                 onTap: () {
                   context.push(
                     '/books/details',
                     extra: collection.books[index],
                   );
                 },
-                onTapFavorite: () {},
+                onTapBookmark: () {},
               ),
               itemCount: collection.books.length,
             ),

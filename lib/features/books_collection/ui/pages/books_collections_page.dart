@@ -28,7 +28,6 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
           collections = state.collectionList;
         }
         return CustomScrollView(
-          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -38,8 +37,7 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
                         email: context.watch<UserBloc>().state.userModel?.email,
                         loginLabel: AppLocalizations.of(context)!.login,
                         onPressed: () {
-                          if (context.read<UserBloc>().state.userModel !=
-                              null) {
+                          if (context.read<UserBloc>().state.userModel != null) {
                             context.read<UserBloc>().add(OnLogOutPressed());
                           } else {
                             context.push('/collections/auth');
@@ -57,17 +55,19 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
                 surfaceTintColor: context.colors.white,
                 title: AppBarWidget(
                   title: AppLocalizations.of(context)!.collections,
-                  actions: (context.watch<UserBloc>().state.userModel != null) ? [
-                    IconButton(
-                      onPressed: () {
-                        context.push('/collections/new');
-                      },
-                      icon: Icon(
-                        Icons.add,
-                        color: context.colors.primary,
-                      ),
-                    ),
-                  ] : [],
+                  actions: (context.watch<UserBloc>().state.userModel != null)
+                      ? [
+                          IconButton(
+                            onPressed: () {
+                              context.push('/collections/new');
+                            },
+                            icon: Icon(
+                              Icons.add,
+                              color: context.colors.primary,
+                            ),
+                          ),
+                        ]
+                      : [],
                 ),
                 pinned: true,
               ),
@@ -111,8 +111,7 @@ class LoadingCard extends StatefulWidget {
   State<LoadingCard> createState() => _LoadingCardState();
 }
 
-class _LoadingCardState extends State<LoadingCard>
-    with SingleTickerProviderStateMixin {
+class _LoadingCardState extends State<LoadingCard> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
 

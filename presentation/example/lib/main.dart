@@ -72,9 +72,8 @@ class BookTest extends StatelessWidget {
           name: "Евгений Онегин",
           authorName: "Александр Пушкин",
           genre: "Роман",
-          isFavorite: true,
           onTap: () {},
-          onTapFavorite: () {},
+          onTapBookmark: () {},
         ),
       ),
     );

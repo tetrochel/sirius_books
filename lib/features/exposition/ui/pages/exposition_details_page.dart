@@ -55,41 +55,38 @@ class _ExpositionDetailsPageState extends State<ExpositionDetailsPage> {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
           slivers: [
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              sliver: SliverAppBar(
-                titleSpacing: 0,
-                pinned: true,
-                shadowColor: Colors.black,
-                backgroundColor: context.colors.white,
-                surfaceTintColor: context.colors.white,
-                title: AppBarWidget(
-                  title: widget.exposition.name,
-                  actions: [
-                    if (mode == Mode.view)
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            mode = Mode.edit;
-                          });
-                        },
-                        icon: Icon(
-                          Icons.edit,
-                          color: context.colors.primary,
-                        ),
-                      )
-                    else
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.check,
-                          color: context.colors.primary,
-                        ),
+            SliverAppBar(
+              titleSpacing: 0,
+              pinned: true,
+              shadowColor: Colors.black,
+              backgroundColor: context.colors.white,
+              surfaceTintColor: context.colors.white,
+              title: AppBarWidget(
+                title: widget.exposition.name,
+                disablePadding: true,
+                actions: [
+                  if (mode == Mode.view)
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          mode = Mode.edit;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.edit,
+                        color: context.colors.primary,
                       ),
-                  ],
-                ),
+                    )
+                  else
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.check,
+                        color: context.colors.primary,
+                      ),
+                    ),
+                ],
               ),
             ),
             SliverPadding(
@@ -118,9 +115,7 @@ class _ExpositionDetailsPageState extends State<ExpositionDetailsPage> {
                     readOnly: readOnly,
                   ),
                   DateFieldWidget(
-                    onTap: mode == Mode.edit
-                        ? () => _selectDate(context, false)
-                        : null,
+                    onTap: mode == Mode.edit ? () => _selectDate(context, false) : null,
                     controller: startDateController,
                     label: AppLocalizations.of(context)!.startDate,
                   ),
@@ -128,9 +123,7 @@ class _ExpositionDetailsPageState extends State<ExpositionDetailsPage> {
                     height: 14,
                   ),
                   DateFieldWidget(
-                    onTap: mode == Mode.edit
-                        ? () => _selectDate(context, true)
-                        : null,
+                    onTap: mode == Mode.edit ? () => _selectDate(context, true) : null,
                     controller: endDateController,
                     label: AppLocalizations.of(context)!.endDate,
                   ),
@@ -142,14 +135,13 @@ class _ExpositionDetailsPageState extends State<ExpositionDetailsPage> {
                 name: widget.exposition.books[index].name,
                 authorName: widget.exposition.books[index].authorName,
                 genre: widget.exposition.books[index].genre,
-                isFavorite: index.isEven,
                 onTap: () {
                   context.push(
                     '/books/details',
                     extra: widget.exposition.books[index],
                   );
                 },
-                onTapFavorite: () {},
+                onTapBookmark: () {},
               ),
               itemCount: widget.exposition.books.length,
             ),

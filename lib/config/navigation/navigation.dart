@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 import 'package:sirius_books/features/book/ui/pages/book_page.dart';
+import 'package:sirius_books/features/book/ui/pages/books_collections_modal.dart';
 import 'package:sirius_books/features/book/ui/pages/books_page.dart';
 import 'package:sirius_books/features/books_collection/data/model/book_collection_model.dart';
 import 'package:sirius_books/features/books_collection/ui/pages/books_collections_page.dart';
@@ -29,8 +30,7 @@ final GoRouter router = GoRouter(
       builder: (context, state, child) {
         var showActionButton = false;
         if (context.watch<UserBloc>().state.userModel != null &&
-            context.watch<UserBloc>().state.userModel!.role ==
-                UserRole.keeper) {
+            context.watch<UserBloc>().state.userModel!.role == UserRole.keeper) {
           showActionButton = true;
         }
         if (state.fullPath == '/collections') {
@@ -129,6 +129,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/filter',
       pageBuilder: (context, state) => ModalPage<void>(child: FilterPage()),
+    ),
+    GoRoute(
+      path: '/books_collections',
+      pageBuilder: (context, state) => ModalPage<void>(
+        child: BooksCollectionsModal(
+          book: state.extra as BookModel,
+        ),
+      ),
     ),
     GoRoute(
       path: '/expositions/new',

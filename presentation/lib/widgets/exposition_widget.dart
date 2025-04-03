@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:presentation/theme/theme_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:presentation/utils/placeholder_painter.dart';
 
 class ExpositionWidget extends StatelessWidget {
   final String name;
@@ -25,6 +26,7 @@ class ExpositionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: context.colors.white,
+      margin: const EdgeInsets.all(0),
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
         onTap: onTap,
@@ -38,8 +40,13 @@ class ExpositionWidget extends StatelessWidget {
                   topLeft: Radius.circular(8),
                   topRight: Radius.circular(8),
                 ),
-                // TODO(ivan): change to image
-                child: Container(color: Colors.grey),
+                child: CustomPaint(
+                  size: Size(double.infinity, double.infinity),
+                  painter: PlaceholderPainter(
+                    seed: name,
+                    isVertical: false,
+                  ),
+                ),
               ),
             ),
             Padding(
@@ -55,14 +62,12 @@ class ExpositionWidget extends StatelessWidget {
                           height: 70,
                           child: Text(
                             name,
-                            style: context.textStyles.s24w400
-                                .copyWith(color: context.colors.primary),
+                            style: context.textStyles.s24w400.copyWith(color: context.colors.primary),
                           ),
                         ),
                         Text(
                           "$startDate — $endDate",
-                          style: context.textStyles.s14w400
-                              .copyWith(color: context.colors.grey),
+                          style: context.textStyles.s14w400.copyWith(color: context.colors.grey),
                         ),
                       ],
                     ),
