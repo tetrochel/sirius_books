@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
+import 'package:sirius_books/features/books_collection/data/model/book_collection_model.dart';
+import 'package:sirius_books/features/books_collection/ui/bloc/collection_bloc.dart';
+import 'package:sirius_books/features/books_collection/ui/bloc/collection_event.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class NewCollectionPage extends StatefulWidget {
@@ -60,7 +65,18 @@ class _NewCollectionPageState extends State<NewCollectionPage> {
                   children: [
                     AppButton(
                       type: ButtonType.primary,
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<CollectionBloc>().add(
+                              OnAddCollection(
+                                collectionModel: CollectionModel(
+                                  name: nameController.text,
+                                  description: descriptionController.text,
+                                  books: [],
+                                ),
+                              ),
+                            );
+                        context.pop();
+                      },
                       child: Text(
                         AppLocalizations.of(context)!.create,
                         style: context.textStyles.s14w400.copyWith(

@@ -65,7 +65,7 @@ class BookModel {
       authorName: data['Автор'].toString(),
       publicationYear: year,
       publisher: data['Изд-во'].toString(),
-      genre: 'Жанр',
+      genre: data['Жанр'] ?? 'Жанр',
       isbn: data['ISBN'].toString(),
       cover: cover,
       pagesCount: pages,
