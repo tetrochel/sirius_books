@@ -27,6 +27,7 @@ class BooksCollectionsModal extends StatelessWidget {
             builder: (context) {
               final collections = context.watch<CollectionBloc>().state.collectionList;
               return CustomScrollView(
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 controller: scrollController,
                 slivers: [
                   SliverAppBar(

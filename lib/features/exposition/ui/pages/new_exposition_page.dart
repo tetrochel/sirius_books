@@ -113,7 +113,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             SliverAppBar(
               titleSpacing: 0,

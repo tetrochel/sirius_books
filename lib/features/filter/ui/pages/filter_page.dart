@@ -71,6 +71,7 @@ class FilterPage extends StatelessWidget {
         expand: false,
         builder: (context, scrollController) => SafeArea(
           child: CustomScrollView(
+            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             controller: scrollController,
             slivers: [
               SliverAppBar(
@@ -100,8 +101,7 @@ class FilterPage extends StatelessWidget {
                 ),
               ),
               SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: 24)
-                    .copyWith(bottom: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 24).copyWith(bottom: 16),
                 sliver: SliverToBoxAdapter(
                   child: AppButton(
                     type: ButtonType.primary,
@@ -111,8 +111,7 @@ class FilterPage extends StatelessWidget {
                     },
                     child: Text(
                       AppLocalizations.of(context)!.apply,
-                      style: context.textStyles.s16w600
-                          .copyWith(color: context.colors.white),
+                      style: context.textStyles.s16w600.copyWith(color: context.colors.white),
                     ),
                   ),
                 ),

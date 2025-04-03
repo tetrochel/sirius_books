@@ -55,6 +55,7 @@ class _ExpositionDetailsPageState extends State<ExpositionDetailsPage> {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             SliverAppBar(
               titleSpacing: 0,

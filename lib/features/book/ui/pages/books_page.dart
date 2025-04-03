@@ -52,7 +52,7 @@ class _BooksPageState extends State<BooksPage>
       builder: (context, state) {
         books = state.bookList;
         return CustomScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             SliverAppBar(
               pinned: true,
