@@ -10,6 +10,8 @@ import 'package:sirius_books/features/books_collection/data/model/book_collectio
 import 'package:sirius_books/features/books_collection/ui/pages/books_collections_page.dart';
 import 'package:sirius_books/features/books_collection/ui/pages/collection_page.dart';
 import 'package:sirius_books/features/books_collection/ui/pages/new_collection_page.dart';
+import 'package:sirius_books/features/exposition/data/model/exposition_model.dart';
+import 'package:sirius_books/features/exposition/ui/pages/exposition_details_page.dart';
 import 'package:sirius_books/features/exposition/ui/pages/expositions_page.dart';
 import 'package:sirius_books/features/exposition/ui/pages/new_exposition_page.dart';
 import 'package:sirius_books/features/filter/ui/pages/filter_page.dart';
@@ -82,16 +84,6 @@ final GoRouter router = GoRouter(
             ),
             state: state,
           ),
-          routes: [
-            GoRoute(
-              path: 'details/:id',
-              builder: (context, state) {
-                // final id = state.pathParameters['id'];
-                return const SizedBox.shrink();
-                // return ExpositionDetailsScreen(id: id);
-              },
-            ),
-          ],
         ),
         GoRoute(
           path: '/books',
@@ -148,6 +140,16 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/expositions/new',
       builder: (context, state) => const NewExpositionPage(),
+    ),
+    GoRoute(
+      path: '/expositions/details',
+      builder: (context, state) {
+        final exposition = state.extra as ExpositionModel;
+        return ExpositionDetailsPage(
+          exposition: exposition,
+          mode: Mode.view,
+        );
+      },
     ),
     GoRoute(
       path: '/books/new',

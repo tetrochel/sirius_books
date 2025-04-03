@@ -143,6 +143,12 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get login;
 
+  /// No description provided for @topic.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic'**
+  String get topic;
+
   /// No description provided for @registration.
   ///
   /// In en, this message translates to:

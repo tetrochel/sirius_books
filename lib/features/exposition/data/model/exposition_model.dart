@@ -4,7 +4,8 @@ class ExpositionModel {
   final int id;
   final String topic;
   final String name;
-  final List<BookModel> bookList;
+  final String? description;
+  final List<BookModel> books;
   final String location;
   final DateTime startDate;
   final DateTime endDate;
@@ -13,9 +14,10 @@ class ExpositionModel {
     required this.id,
     required this.topic,
     required this.name,
-    required this.bookList,
+    required this.books,
     required this.location,
     required this.startDate,
     required this.endDate,
+    this.description,
   });
 }
