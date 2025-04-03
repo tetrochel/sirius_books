@@ -134,4 +134,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get superB => 'Супер';
+
+  @override
+  String get delete => 'Удалить';
 }

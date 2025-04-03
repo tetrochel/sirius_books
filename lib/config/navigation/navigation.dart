@@ -19,6 +19,7 @@ import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
 import 'package:sirius_books/features/user/ui/pages/auth_page.dart';
 import 'package:sirius_books/features/user/ui/pages/registration_page.dart';
 import 'package:sirius_books/features/user/ui/pages/reset_password_page.dart';
+import 'package:sirius_books/features/utils/enums.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 final GoRouter router = GoRouter(
@@ -157,6 +158,7 @@ final GoRouter router = GoRouter(
         final collection = state.extra as CollectionModel;
         return CollectionPage(
           collection: collection,
+          mode: Mode.view,
         );
       },
     ),
