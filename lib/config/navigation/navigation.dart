@@ -122,7 +122,7 @@ final GoRouter router = GoRouter(
             // ColoredBox для фона
             child: ColoredBox(
               color: context.colors.white,
-              child: BooksCollectionsPage(),
+              child: const BooksCollectionsPage(),
             ),
             state: state,
           ),
