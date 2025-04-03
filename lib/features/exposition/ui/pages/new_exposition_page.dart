@@ -20,8 +20,8 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
   final startDateController = TextEditingController();
   final endDateController = TextEditingController();
 
-  late final List<BookCollectionModel> collections = [
-    BookCollectionModel(
+  late final List<CollectionModel> collections = [
+    CollectionModel(
       id: 1,
       name: 'Классика',
       description: 'Коллекция классической литературы',
@@ -56,7 +56,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
         ),
       ],
     ),
-    BookCollectionModel(
+    CollectionModel(
       id: 2,
       name: 'Фантастика',
       description: 'Лучшие книги в жанре научной фантастики',

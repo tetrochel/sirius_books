@@ -5,7 +5,7 @@ class LocalUserDataSource {
   Future<UserModel?> findUser() async {
     final prefs = await SharedPreferences.getInstance();
     final userEmail = prefs.getString('userEmail');
-    final userRole = prefs.getString('userEmail');
+    final userRole = prefs.getString('userRole');
     if (userEmail != null && userRole != null) {
       return UserModel(email: userEmail, role: (userRole == 'keeper') ? UserRole.keeper : UserRole.reader);
     } else {
