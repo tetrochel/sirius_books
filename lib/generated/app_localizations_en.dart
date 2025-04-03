@@ -33,6 +33,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Login';
 
   @override
+  String get topic => 'Topic';
+
+  @override
   String get registration => 'Registration';
 
   @override

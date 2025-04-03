@@ -104,7 +104,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          physics: const NeverScrollableScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
               titleSpacing: 0,
@@ -123,21 +123,18 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    TextFieldWidget(
-                      controller: nameController,
-                      hint: AppLocalizations.of(context)!.title,
+                    TextFieldWithLabelWidget(
                       label: AppLocalizations.of(context)!.title,
-                      obscureText: false,
-                      inputType: TextInputType.text,
+                      textController: nameController,
+                      readOnly: false,
                     ),
                     const SizedBox(height: 12),
 
-                    TextFieldWidget(
-                      controller: descriptionController,
-                      hint: AppLocalizations.of(context)!.description,
+                    TextFieldWithLabelWidget(
+                      textController: descriptionController,
                       label: AppLocalizations.of(context)!.description,
-                      obscureText: false,
-                      inputType: TextInputType.multiline,
+                      textInputType: TextInputType.multiline,
+                      readOnly: false,
                     ),
                     const SizedBox(height: 12),
                     DateFieldWidget(
@@ -154,13 +151,21 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                     ),
                     const SizedBox(height: 12),
 
+                    Text(
+                      AppLocalizations.of(context)!.collection,
+                      style: context.textStyles.s16w600,
+                    ),
+                    const SizedBox(height: 4),
+
                     DropdownMenu(
-                      onSelected: (selected) => selectedCollectionId = selected as int,
+                      onSelected: (selected) =>
+                          selectedCollectionId = selected as int,
                       expandedInsets: EdgeInsets.zero,
                       initialSelection: selectedCollectionId,
                       label: Text(AppLocalizations.of(context)!.collection),
                       inputDecorationTheme: InputDecorationTheme(
-                        labelStyle: context.textStyles.s14w400.copyWith(color: context.colors.grey),
+                        labelStyle: context.textStyles.s14w400
+                            .copyWith(color: context.colors.grey),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
@@ -178,18 +183,9 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                           )
                           .toList(),
                     ),
-                    // TODO(max): add image picker
-                  ],
-                ),
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.all(24),
-              sliver: SliverFillRemaining(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
+                    const SizedBox(
+                      height: 8,
+                    ),
                     AppButton(
                       type: ButtonType.primary,
                       onPressed: () {},
