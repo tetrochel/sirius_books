@@ -40,7 +40,7 @@ class _CollectionPageState extends State<CollectionPage> {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 8),

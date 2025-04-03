@@ -28,6 +28,7 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
           collections = state.collectionList;
         }
         return CustomScrollView(
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 24),

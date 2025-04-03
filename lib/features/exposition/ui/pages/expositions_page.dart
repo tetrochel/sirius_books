@@ -17,6 +17,7 @@ class ExpositionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final expositions = context.watch<ExpositionBloc>().state.expositionModelList;
     return CustomScrollView(
+      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       slivers: [
         SliverAppBar(
           pinned: true,

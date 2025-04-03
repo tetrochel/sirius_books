@@ -42,19 +42,14 @@ class _BookPageState extends State<BookPage> {
     mode = widget.mode;
     nameController = TextEditingController(text: widget.book?.name);
     authorController = TextEditingController(text: widget.book?.authorName);
-    publicationYearController =
-        TextEditingController(text: widget.book?.publicationYear.toString());
+    publicationYearController = TextEditingController(text: widget.book?.publicationYear.toString());
     publisherController = TextEditingController(text: widget.book?.publisher);
     genreController = TextEditingController(text: widget.book?.genre);
     isbnController = TextEditingController(text: widget.book?.isbn);
-    pagesCountController =
-        TextEditingController(text: widget.book?.pagesCount.toString());
-    booksCountController =
-        TextEditingController(text: widget.book?.booksCount.toString());
-    priceController =
-        TextEditingController(text: widget.book?.price.toString());
-    weightController =
-        TextEditingController(text: widget.book?.weight.toString());
+    pagesCountController = TextEditingController(text: widget.book?.pagesCount.toString());
+    booksCountController = TextEditingController(text: widget.book?.booksCount.toString());
+    priceController = TextEditingController(text: widget.book?.price.toString());
+    weightController = TextEditingController(text: widget.book?.weight.toString());
     locationController = TextEditingController(text: widget.book?.location);
   }
 
@@ -64,7 +59,7 @@ class _BookPageState extends State<BookPage> {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             SliverAppBar(
               pinned: true,
@@ -72,11 +67,9 @@ class _BookPageState extends State<BookPage> {
               backgroundColor: context.colors.white,
               surfaceTintColor: context.colors.white,
               title: AppBarWidget(
-                title: mode == Mode.view
-                    ? AppLocalizations.of(context)!.viewing
-                    : AppLocalizations.of(context)!.editing,
-                actions: (context.watch<UserBloc>().state.userModel?.role ==
-                        UserRole.keeper)
+                title:
+                    mode == Mode.view ? AppLocalizations.of(context)!.viewing : AppLocalizations.of(context)!.editing,
+                actions: (context.watch<UserBloc>().state.userModel?.role == UserRole.keeper)
                     ? [
                         if (mode == Mode.view)
                           IconButton(
@@ -115,8 +108,7 @@ class _BookPageState extends State<BookPage> {
                                               ) ??
                                               0,
                                           price: double.tryParse(
-                                                priceController.text
-                                                    .replaceAll(',', '.'),
+                                                priceController.text.replaceAll(',', '.'),
                                               ) ??
                                               0.0,
                                           weight: int.tryParse(
@@ -149,8 +141,7 @@ class _BookPageState extends State<BookPage> {
                                               ) ??
                                               0,
                                           price: double.tryParse(
-                                                priceController.text
-                                                    .replaceAll(',', '.'),
+                                                priceController.text.replaceAll(',', '.'),
                                               ) ??
                                               0.0,
                                           weight: int.tryParse(
@@ -226,9 +217,7 @@ class _BookPageState extends State<BookPage> {
                       TextFieldWithLabelWidget(
                         label: AppLocalizations.of(context)!.cover,
                         textController: TextEditingController(
-                          text: widget.book != null
-                              ? covers[widget.book!.cover.index]
-                              : null,
+                          text: widget.book != null ? covers[widget.book!.cover.index] : null,
                         ),
                         readOnly: readOnly,
                       ),
