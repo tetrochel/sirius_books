@@ -23,6 +23,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           await _handleLogOutPressed(event, emit);
         case OnResetPasswordPressed():
           await _handleResetPasswordPressed(event, emit);
+        case OnFindLocally():
+          await _handleFindLocally(event, emit);
+        case OnSaveLocally():
+          await _handleSaveLocally(event, emit);
       }
     });
   }
@@ -37,7 +41,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         event.password,
       );
       emit(UserState()..userModel = user);
-      //navigationController.showSnackBar(state.userModel!.role.toString());
+      await _handleSaveLocally(OnSaveLocally(userModel: state.userModel!), emit);
     } on FirebaseAuthException catch (e) {
       navigationController.showSnackBar('Ошибка аутентификации: ${e.message}');
     } on Exception catch (e) {
@@ -48,7 +52,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<void> _handleSignUpPressed(
     OnSignUpPressed event,
     Emitter<UserState> emit,
-  ) async {}
+  ) async {
+    await userRepository.signUp(event.email, event.password);
+  }
 
   Future<void> _handleLogOutPressed(
     OnLogOutPressed event,
@@ -74,6 +80,29 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       navigationController.showSnackBar('Ошибка сброса пароля: ${e.message}');
     } on Exception catch (e) {
       navigationController.showSnackBar('Произошла ошибка: ${e.toString()}');
+    }
+  }
+
+  Future<void> _handleFindLocally(
+    OnFindLocally event,
+    Emitter<UserState> emit,
+  ) async {
+    try {
+      final user = await userRepository.findLocally();
+      emit(UserState()..userModel = user);
+    } on Exception catch (_) {
+      return;
+    }
+  }
+
+  Future<void> _handleSaveLocally(
+    OnSaveLocally event,
+    Emitter<UserState> emit,
+  ) async {
+    try {
+      await userRepository.saveLocally(event.userModel);
+    } on Exception catch (_) {
+      return;
     }
   }
 }

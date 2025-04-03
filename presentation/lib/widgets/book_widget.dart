@@ -55,7 +55,8 @@ class BookWidget extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style: context.textStyles.s14w600.copyWith(color: context.colors.primary),
+                        style: context.textStyles.s14w600
+                            .copyWith(color: context.colors.primary),
                       ),
                       Row(
                         children: [
@@ -66,7 +67,8 @@ class BookWidget extends StatelessWidget {
                               children: [
                                 Text(
                                   genre,
-                                  style: context.textStyles.s12w400.copyWith(color: context.colors.grey),
+                                  style: context.textStyles.s12w400
+                                      .copyWith(color: context.colors.grey),
                                 ),
                                 Text(
                                   authorName,

@@ -18,6 +18,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get books => 'Книги';
 
   @override
+  String get bookCount => 'Количество книг';
+
+  @override
   String get collections => 'Коллекции';
 
   @override

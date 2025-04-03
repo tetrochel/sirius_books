@@ -8,6 +8,7 @@ import 'package:sirius_books/features/exposition/ui/pages/new_exposition_page.da
 import 'package:sirius_books/features/filter/ui/pages/filter_page.dart';
 import 'package:sirius_books/features/user/ui/pages/auth_page.dart';
 import 'package:sirius_books/features/user/ui/pages/registration_page.dart';
+import 'package:sirius_books/features/user/ui/pages/reset_password_page.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 final GoRouter router = GoRouter(
@@ -90,7 +91,7 @@ final GoRouter router = GoRouter(
             // ColoredBox для фона
             child: ColoredBox(
               color: context.colors.white,
-              child: const BooksCollectionsPage(),
+              child: BooksCollectionsPage(),
             ),
             state: state,
           ),
@@ -113,6 +114,10 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: 'registration',
                   builder: (context, state) => const RegistrationPage(),
+                ),
+                GoRoute(
+                  path: 'reset_password',
+                  builder: (context, state) => const ResetPasswordPage(),
                 ),
               ],
             ),

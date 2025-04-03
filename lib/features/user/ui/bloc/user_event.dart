@@ -1,3 +1,5 @@
+import 'package:sirius_books/features/user/data/model/user_model.dart';
+
 sealed class UserEvent {}
 
 class OnLoginPressed extends UserEvent {
@@ -18,6 +20,24 @@ class OnResetPasswordPressed extends UserEvent {
   });
 }
 
-class OnSignUpPressed extends UserEvent {}
+class OnSignUpPressed extends UserEvent {
+  final String email;
+  final String password;
+
+  OnSignUpPressed({
+    required this.email,
+    required this.password,
+  });
+}
 
 class OnLogOutPressed extends UserEvent {}
+
+class OnFindLocally extends UserEvent {}
+
+class OnSaveLocally extends UserEvent {
+  final UserModel userModel;
+
+  OnSaveLocally({
+    required this.userModel,
+  });
+}

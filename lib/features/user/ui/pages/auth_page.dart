@@ -17,6 +17,22 @@ class _AuthPageState extends State<AuthPage> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
 
+  bool obscurePassword = true;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,8 +61,13 @@ class _AuthPageState extends State<AuthPage> {
                 hint: AppLocalizations.of(context)!.password,
                 label: AppLocalizations.of(context)!.password,
                 prefixIcon: Icons.key,
-                obscureText: true,
+                obscureText: obscurePassword,
                 inputType: TextInputType.visiblePassword,
+                onToggleVisibility: () {
+                  setState(() {
+                    obscurePassword = !obscurePassword;
+                  });
+                },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,13 +86,22 @@ class _AuthPageState extends State<AuthPage> {
                   AppButton(
                     type: ButtonType.primary,
                     onPressed: () {
-                      context.read<UserBloc>().add(
-                            OnLoginPressed(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            ),
-                          );
-                      context.pop();
+                      if (emailController.text.isNotEmpty &&
+                          passwordController.text.isNotEmpty) {
+                        context.read<UserBloc>().add(
+                              OnLoginPressed(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              ),
+                            );
+                        context.pop();
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Введите данные'),
+                          ),
+                        );
+                      }
                     },
                     child: Text(
                       AppLocalizations.of(context)!.login,
@@ -88,7 +118,7 @@ class _AuthPageState extends State<AuthPage> {
                   padding: EdgeInsets.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                onPressed: () {},
+                onPressed: () => context.go('/collections/auth/reset_password'),
                 child: Text(
                   AppLocalizations.of(context)!.forgotPassword,
                   style: context.textStyles.s14w400
@@ -100,19 +130,5 @@ class _AuthPageState extends State<AuthPage> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
   }
 }

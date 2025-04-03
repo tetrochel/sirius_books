@@ -18,6 +18,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get books => 'Books';
 
   @override
+  String get bookCount => 'Book count';
+
+  @override
   String get collections => 'Collections';
 
   @override

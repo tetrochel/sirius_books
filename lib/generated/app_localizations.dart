@@ -113,6 +113,12 @@ abstract class AppLocalizations {
   /// **'Books'**
   String get books;
 
+  /// No description provided for @bookCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Book count'**
+  String get bookCount;
+
   /// No description provided for @collections.
   ///
   /// In en, this message translates to:
@@ -161,7 +167,13 @@ abstract class AppLocalizations {
   /// **'Forgot password?'**
   String get forgotPassword;
 
-  /// No description provided for @filters.
+  /// No description provided for @restorePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore password'**
+  String get restorePassword;
+
+  /// No description provided for @filter.
   ///
   /// In en, this message translates to:
   /// **'Filters'**
