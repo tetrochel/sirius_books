@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/config/constants.dart';
 import 'package:sirius_books/features/exposition/data/model/exposition_model.dart';
@@ -29,70 +28,50 @@ class ExpositionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.go('/expositions/new'),
-        child: const Icon(Icons.add),
-        backgroundColor: context.colors.primary,
-        foregroundColor: context.colors.white,
-      ),
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            pinned: true,
-            shadowColor: Colors.black,
-            backgroundColor: context.colors.white,
-            surfaceTintColor: context.colors.white,
-            title: AppBarWidget(
-              title: AppLocalizations.of(context)!.expositions,
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.search,
-                    color: context.colors.primary,
-                  ),
+    return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
+      slivers: [
+        SliverAppBar(
+          pinned: true,
+          shadowColor: Colors.black,
+          backgroundColor: context.colors.white,
+          surfaceTintColor: context.colors.white,
+          title: AppBarWidget(
+            title: AppLocalizations.of(context)!.expositions,
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.search,
+                  color: context.colors.primary,
                 ),
-                IconButton(
-                  onPressed: () {
-                    // TODO(ivan): Добавить вызов модального окна через router
-                  },
-                  icon: Icon(
-                    Icons.filter_alt,
-                    color: context.colors.primary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => Padding(
-                  padding: const EdgeInsets.only(bottom: 24),
-                  child: AspectRatio(
-                    aspectRatio: 1.5,
-                    child: ExpositionWidget(
-                      name: expositions[index].name,
-                      onTap: () {},
-                      onTapSubscribe: () {},
-                      isSubscribed:
-                          subscriptions.contains(expositions[index].id),
-                      startDate: defaultDateFormat
-                          .format(expositions[index].startDate),
-                      endDate:
-                          defaultDateFormat.format(expositions[index].endDate),
-                    ),
-                  ),
-                ),
-                childCount: expositions.length,
               ),
+            ],
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: AspectRatio(
+                  aspectRatio: 1.5,
+                  child: ExpositionWidget(
+                    name: expositions[index].name,
+                    onTap: () {},
+                    onTapSubscribe: () {},
+                    isSubscribed: subscriptions.contains(expositions[index].id),
+                    startDate: defaultDateFormat.format(expositions[index].startDate),
+                    endDate: defaultDateFormat.format(expositions[index].endDate),
+                  ),
+                ),
+              ),
+              childCount: expositions.length,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
