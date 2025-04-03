@@ -35,9 +35,9 @@ final GoRouter router = GoRouter(
               ? FloatingActionButton(
                   onPressed: () {
                     if (state.fullPath == '/expositions') {
-                      context.go('/expositions/new');
+                      context.push('/expositions/new');
                     } else {
-                      context.go('/books/new');
+                      context.push('/books/new');
                     }
                   },
                   child: const Icon(Icons.add),
@@ -85,10 +85,6 @@ final GoRouter router = GoRouter(
                 // return ExpositionDetailsScreen(id: id);
               },
             ),
-            GoRoute(
-              path: 'new',
-              builder: (context, state) => const NewExpositionPage(),
-            ),
           ],
         ),
         GoRoute(
@@ -109,10 +105,6 @@ final GoRouter router = GoRouter(
                 return const SizedBox.shrink();
                 // return BookDetailsScreen(id: id);
               },
-            ),
-            GoRoute(
-              path: 'new',
-              builder: (context, state) => const SizedBox.shrink(),
             ),
           ],
         ),
@@ -135,10 +127,6 @@ final GoRouter router = GoRouter(
               },
             ),
             GoRoute(
-              path: 'new',
-              builder: (context, state) => const SizedBox.shrink(),
-            ),
-            GoRoute(
               path: 'auth',
               builder: (context, state) => const AuthPage(),
               routes: [
@@ -159,6 +147,18 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/filter',
       pageBuilder: (context, state) => ModalPage<void>(child: FilterPage()),
+    ),
+    GoRoute(
+      path: '/expositions/new',
+      builder: (context, state) => const NewExpositionPage(),
+    ),
+    GoRoute(
+      path: '/books/new',
+      builder: (context, state) => const SizedBox.shrink(),
+    ),
+    GoRoute(
+      path: '/collections/new',
+      builder: (context, state) => const SizedBox.shrink(),
     ),
   ],
 );
