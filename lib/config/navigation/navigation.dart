@@ -40,7 +40,7 @@ final GoRouter router = GoRouter(
                     if (state.fullPath == '/expositions') {
                       context.push('/expositions/new');
                     } else {
-                      context.push('/books/new');
+                      context.push('/books/details');
                     }
                   },
                   child: const Icon(Icons.add),
@@ -105,7 +105,10 @@ final GoRouter router = GoRouter(
               path: 'details',
               builder: (context, state) {
                 final book = state.extra as BookModel?;
-                return BookPage(mode: Mode.view, book: book);
+                return BookPage(
+                  mode: book == null ? Mode.edit : Mode.view,
+                  book: book,
+                );
               },
             ),
           ],
