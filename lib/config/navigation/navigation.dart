@@ -100,18 +100,6 @@ final GoRouter router = GoRouter(
               child: const BooksPage(),
             ),
           ),
-          routes: [
-            GoRoute(
-              path: 'details',
-              builder: (context, state) {
-                final book = state.extra as BookModel?;
-                return BookPage(
-                  mode: book == null ? Mode.edit : Mode.view,
-                  book: book,
-                );
-              },
-            ),
-          ],
         ),
         GoRoute(
           path: '/collections',
@@ -164,6 +152,16 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/collections/new',
       builder: (context, state) => const SizedBox.shrink(),
+    ),
+    GoRoute(
+      path: '/books/details',
+      builder: (context, state) {
+        final book = state.extra as BookModel?;
+        return BookPage(
+          mode: book == null ? Mode.edit : Mode.view,
+          book: book,
+        );
+      },
     ),
   ],
 );
