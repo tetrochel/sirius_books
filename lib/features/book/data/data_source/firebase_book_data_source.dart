@@ -1,7 +1,48 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 
 class FirebaseBookDataSource {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<void> addBookToCollection(
+    BookModel bookModel,
+    String collectionModelId,
+  ) async {
+    try {
+      final currentUser = _auth.currentUser;
+      if (currentUser == null) return;
+
+      final collectionDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .collection('collections')
+          .doc(collectionModelId)
+          .get();
+
+      if (!collectionDoc.exists) return;
+
+      final currentBookIds =
+          List.from(collectionDoc.data()?['Список книг'] ?? []);
+
+      if (bookModel.firebaseId != null &&
+          !currentBookIds.contains(bookModel.firebaseId)) {
+        currentBookIds.add(bookModel.firebaseId);
+
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(currentUser.uid)
+            .collection('collections')
+            .doc(collectionModelId)
+            .update({
+          'Список книг': currentBookIds,
+        });
+      }
+    } on Exception catch (_) {
+      return;
+    }
+  }
+
   Future<void> addBook(BookModel bookModel) async {
     try {
       await FirebaseFirestore.instance.collection('myCollection').add({
