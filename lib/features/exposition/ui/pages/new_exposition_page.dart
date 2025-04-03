@@ -168,7 +168,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                       dropdownMenuEntries: collections
                           .map(
                             (collection) => DropdownMenuEntry(
-                              value: collection.id,
+                              value: collection.firebaseId,
                               label: collection.name,
                             ),
                           )
