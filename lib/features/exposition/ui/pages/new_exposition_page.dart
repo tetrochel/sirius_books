@@ -22,7 +22,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
 
   late final List<CollectionModel> collections = [
     CollectionModel(
-      id: 1,
+      firebaseId: 1.toString(),
       name: 'Классика',
       description: 'Коллекция классической литературы',
       books: [
@@ -57,7 +57,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
       ],
     ),
     CollectionModel(
-      id: 2,
+      firebaseId: 2.toString(),
       name: 'Фантастика',
       description: 'Лучшие книги в жанре научной фантастики',
       books: [
@@ -168,7 +168,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                       dropdownMenuEntries: collections
                           .map(
                             (collection) => DropdownMenuEntry(
-                              value: collection.id,
+                              value: collection.firebaseId,
                               label: collection.name,
                             ),
                           )

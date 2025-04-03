@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
 import 'package:sirius_books/features/user/ui/bloc/user_event.dart';
@@ -53,7 +54,29 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               AppButton(
                 type: ButtonType.secondary,
                 onPressed: () {
-                  context.read<UserBloc>().add(OnResetPasswordPressed(email: emailController.text));
+                  if (emailController.text.isNotEmpty) {
+                    context.read<UserBloc>().add(
+                          OnResetPasswordPressed(
+                            email: emailController.text,
+                          ),
+                        );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Письмо отправлено на указанную почту',
+                        ),
+                      ),
+                    );
+                    context.go('/collections');
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                          'Введите данные',
+                        ),
+                      ),
+                    );
+                  }
                 },
                 child: Text(
                   AppLocalizations.of(context)!.restorePassword,

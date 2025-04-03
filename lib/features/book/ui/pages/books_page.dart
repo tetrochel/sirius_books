@@ -71,28 +71,6 @@ class _BooksPageState extends State<BooksPage> {
                 ),
                 itemCount: books.length,
               ),
-              // SliverPadding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 24),
-              //   sliver: SliverGrid(
-              //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              //       crossAxisCount: 2,
-              //       mainAxisSpacing: 24,
-              //       crossAxisSpacing: 24,
-              //       childAspectRatio: 0.9,
-              //     ),
-              //     delegate: SliverChildBuilderDelegate(
-              //       (context, index) => BookWidget(
-              //         name: books[index].name,
-              //         authorName: books[index].authorName,
-              //         genre: books[index].genre,
-              //         isFavorite: index.isEven,
-              //         onTap: () {},
-              //         onTapFavorite: () {},
-              //       ),
-              //       childCount: books.length,
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         );

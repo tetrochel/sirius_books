@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
+import 'package:sirius_books/features/books_collection/ui/bloc/collection_bloc.dart';
+import 'package:sirius_books/features/books_collection/ui/bloc/collection_event.dart';
 import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
 import 'package:sirius_books/features/user/ui/bloc/user_event.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
@@ -94,6 +96,7 @@ class _AuthPageState extends State<AuthPage> {
                                 password: passwordController.text,
                               ),
                             );
+                        context.read<CollectionBloc>().add(OnLoadCollections());
                         context.pop();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(

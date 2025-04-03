@@ -6,6 +6,7 @@ import 'package:sirius_books/config/navigation/navigation.dart';
 import 'package:sirius_books/di.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_bloc.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_event.dart';
+import 'package:sirius_books/features/books_collection/ui/bloc/collection_bloc.dart';
 import 'package:sirius_books/features/exposition/ui/bloc/exposition_bloc.dart';
 import 'package:sirius_books/features/exposition/ui/bloc/exposition_event.dart';
 import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
@@ -59,6 +60,11 @@ class MainApp extends StatelessWidget {
                 create: (context) => ExpositionBloc(
                   expositionRepository: rootScope!.expositionRepositoryDep.get,
                 )..add(OnLoadExposition()),
+              ),
+              BlocProvider<CollectionBloc>(
+                create: (context) => CollectionBloc(
+                  collectionRepository: rootScope!.collectionRepositoryDep.get,
+                ),
               ),
             ],
             child: MaterialApp.router(
