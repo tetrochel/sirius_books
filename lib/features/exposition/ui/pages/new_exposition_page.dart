@@ -115,6 +115,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
               title: AppBarWidget(
                 title: AppLocalizations.of(context)!.new_exposition,
                 actions: const [],
+                disablePadding: true,
               ),
             ),
             SliverPadding(
@@ -154,14 +155,12 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                     const SizedBox(height: 12),
 
                     DropdownMenu(
-                      onSelected: (selected) =>
-                          selectedCollectionId = selected as int,
+                      onSelected: (selected) => selectedCollectionId = selected as int,
                       expandedInsets: EdgeInsets.zero,
                       initialSelection: selectedCollectionId,
                       label: Text(AppLocalizations.of(context)!.collection),
                       inputDecorationTheme: InputDecorationTheme(
-                        labelStyle: context.textStyles.s14w400
-                            .copyWith(color: context.colors.grey),
+                        labelStyle: context.textStyles.s14w400.copyWith(color: context.colors.grey),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(

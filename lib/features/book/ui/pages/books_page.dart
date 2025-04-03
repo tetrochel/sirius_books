@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -17,8 +18,7 @@ class BooksPage extends StatefulWidget {
   State<BooksPage> createState() => _BooksPageState();
 }
 
-class _BooksPageState extends State<BooksPage>
-    with SingleTickerProviderStateMixin {
+class _BooksPageState extends State<BooksPage> with SingleTickerProviderStateMixin {
   late List<BookModel> books;
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -82,6 +82,9 @@ class _BooksPageState extends State<BooksPage>
                     ),
                   ],
                 ),
+              ),
+              CupertinoSliverRefreshControl(
+                onRefresh: () async => context.read<BookBloc>().add(OnLoadBook()),
               ),
               if (books.isEmpty)
                 SliverFillRemaining(

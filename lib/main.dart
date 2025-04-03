@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:presentation/theme/theme_picker.dart';
 import 'package:sirius_books/config/navigation/navigation.dart';
 import 'package:sirius_books/di.dart';
@@ -68,8 +69,7 @@ class MainApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp.router(
-              scaffoldMessengerKey:
-                  rootScope!.navigationControllerDep.get.scaffoldMessengerState,
+              scaffoldMessengerKey: rootScope!.navigationControllerDep.get.scaffoldMessengerState,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               // TODO(ivan): Вынести определение локали в блок
@@ -77,34 +77,34 @@ class MainApp extends StatelessWidget {
               theme: ThemeData(
                 colorSchemeSeed: const Color(0xFF019DA1),
                 scaffoldBackgroundColor: const Color(0xFFFFFFFF),
-                extensions: const [
-                  AppColors(
+                extensions: [
+                  const AppColors(
                     primary: Color(0xFF019DA1),
                     grey: Color(0xFF7F8585),
                     white: Color(0xFFFFFFFF),
                   ),
                   AppTextStyles(
-                    s12w400: TextStyle(
+                    s12w400: GoogleFonts.montserrat(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
-                    s14w400: TextStyle(
+                    s14w400: GoogleFonts.montserrat(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
-                    s14w600: TextStyle(
+                    s14w600: GoogleFonts.montserrat(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
-                    s16w600: TextStyle(
+                    s16w600: GoogleFonts.montserrat(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
-                    s20w400: TextStyle(
+                    s20w400: GoogleFonts.montserrat(
                       fontSize: 20,
                       fontWeight: FontWeight.w400,
                     ),
-                    s24w400: TextStyle(
+                    s24w400: GoogleFonts.montserrat(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                     ),
