@@ -61,8 +61,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     Emitter<UserState> emit,
   ) async {
     try {
-      await userRepository.logout();
       emit(UserState()..userModel = null);
+      await userRepository.logout();
     } on FirebaseAuthException catch (e) {
       navigationController.showSnackBar('Ошибка выхода: ${e.message}');
     } on Exception catch (e) {
