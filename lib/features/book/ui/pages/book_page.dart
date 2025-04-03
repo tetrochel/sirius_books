@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
+import 'package:sirius_books/features/book/ui/bloc/book_bloc.dart';
+import 'package:sirius_books/features/book/ui/bloc/book_event.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 enum Mode { view, edit }
@@ -85,6 +88,21 @@ class _BookPageState extends State<BookPage> {
               else
                 IconButton(
                   onPressed: () {
+                    context.read<BookBloc>().add(OnUpdateBook(
+                      bookModel: widget.book!.copyWith(
+                        name: nameController.text,
+                        authorName: authorController.text,
+                        publicationYear: int.tryParse(publicationYearController.text) ?? 0,
+                        publisher: publisherController.text,
+                        genre: genreController.text,
+                        isbn: isbnController.text,
+                        pagesCount: int.tryParse(pagesCountController.text) ?? 0,
+                        booksCount: int.tryParse(booksCountController.text) ?? 0,
+                        price: double.tryParse(priceController.text.replaceAll(',', '.')) ?? 0.0,
+                        weight: int.tryParse(weightController.text) ?? 0,
+                        location: locationController.text,
+                      ),
+                    ),);
                     setState(() {
                       mode = Mode.view;
                     });

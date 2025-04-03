@@ -75,4 +75,36 @@ class BookModel {
       location: 'Место',
     );
   }
+
+  BookModel copyWith({
+    String? firebaseId,
+    String? name,
+    String? authorName,
+    int? publicationYear,
+    String? publisher,
+    String? genre,
+    String? isbn,
+    Cover? cover,
+    int? pagesCount,
+    int? booksCount,
+    double? price,
+    int? weight,
+    String? location,
+  }) {
+    return BookModel(
+      firebaseId: firebaseId ?? this.firebaseId,
+      name: name ?? this.name,
+      authorName: authorName ?? this.authorName,
+      publicationYear: publicationYear ?? this.publicationYear,
+      publisher: publisher ?? this.publisher,
+      genre: genre ?? this.genre,
+      isbn: isbn ?? this.isbn,
+      cover: cover ?? this.cover,
+      pagesCount: pagesCount ?? this.pagesCount,
+      booksCount: booksCount ?? this.booksCount,
+      price: price ?? this.price,
+      weight: weight ?? this.weight,
+      location: location ?? this.location,
+    );
+  }
 }

@@ -72,8 +72,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get endDate => 'End date';
 
   @override
-  String get errorStartDateAfterEndDate =>
-      'The start date cannot be earlier than the end date';
+  String get errorStartDateAfterEndDate => 'The start date cannot be earlier than the end date';
 
   @override
   String get name => 'Name';

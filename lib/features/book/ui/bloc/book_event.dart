@@ -8,3 +8,8 @@ class OnAddBook extends BookEvent {
   BookModel bookModel;
   OnAddBook({required this.bookModel});
 }
+
+class OnUpdateBook extends BookEvent {
+  BookModel bookModel;
+  OnUpdateBook({required this.bookModel});
+}

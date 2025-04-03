@@ -15,6 +15,8 @@ class BookBloc extends Bloc<BookEvent, BookState> {
           await _handleOnLoadBook(event, emit);
         case OnAddBook():
           await _handleOnAddBook(event, emit);
+        case OnUpdateBook():
+          await _handleOnUpdateBook(event, emit);
       }
     });
   }
@@ -39,6 +41,17 @@ class BookBloc extends Bloc<BookEvent, BookState> {
   ) async {
     try {
       await bookRepository.addBook(event.bookModel);
+    } on Exception catch (_) {
+      return;
+    }
+  }
+
+  Future<void> _handleOnUpdateBook(
+      OnUpdateBook event,
+      Emitter<BookState> emit,
+      ) async {
+    try {
+      await bookRepository.updateBook(event.bookModel);
     } on Exception catch (_) {
       return;
     }
