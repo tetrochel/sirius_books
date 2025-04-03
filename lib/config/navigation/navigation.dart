@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
+import 'package:sirius_books/features/book/data/model/book_model.dart';
+import 'package:sirius_books/features/book/ui/pages/book_page.dart';
 import 'package:sirius_books/features/book/ui/pages/books_page.dart';
 import 'package:sirius_books/features/books_collection/ui/pages/books_collections_page.dart';
 import 'package:sirius_books/features/exposition/ui/pages/expositions_page.dart';
@@ -21,7 +23,8 @@ final GoRouter router = GoRouter(
       builder: (context, state, child) {
         var showActionButton = false;
         if (context.watch<UserBloc>().state.userModel != null &&
-            context.watch<UserBloc>().state.userModel!.role == UserRole.keeper) {
+            context.watch<UserBloc>().state.userModel!.role ==
+                UserRole.keeper) {
           showActionButton = true;
         }
         if (state.fullPath == '/collections') {
@@ -99,11 +102,10 @@ final GoRouter router = GoRouter(
           ),
           routes: [
             GoRoute(
-              path: 'details/:id',
+              path: 'details',
               builder: (context, state) {
-                // final id = state.pathParameters['id'];
-                return const SizedBox.shrink();
-                // return BookDetailsScreen(id: id);
+                final book = state.extra as BookModel;
+                return BookPage(mode: Mode.view, book: book);
               },
             ),
           ],
@@ -120,7 +122,7 @@ final GoRouter router = GoRouter(
           ),
           routes: [
             GoRoute(
-              path: 'details/:id',
+              path: 'details',
               builder: (context, state) {
                 // final id = state.pathParameters['id'];
                 return const SizedBox.shrink();

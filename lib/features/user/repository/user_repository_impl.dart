@@ -34,7 +34,7 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<void> saveLocally(UserModel userModel) async{
+  Future<void> saveLocally(UserModel userModel) async {
     await localUserDataSource.saveUser(userModel);
   }
 

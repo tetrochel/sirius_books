@@ -298,6 +298,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Storage location'**
   String get location;
+
+  /// No description provided for @editing.
+  ///
+  /// In en, this message translates to:
+  /// **'Editing'**
+  String get editing;
+
+  /// No description provided for @viewing.
+  ///
+  /// In en, this message translates to:
+  /// **'Viewing'**
+  String get viewing;
+
+  /// No description provided for @soft.
+  ///
+  /// In en, this message translates to:
+  /// **'Soft'**
+  String get soft;
+
+  /// No description provided for @hard.
+  ///
+  /// In en, this message translates to:
+  /// **'Hard'**
+  String get hard;
+
+  /// No description provided for @superB.
+  ///
+  /// In en, this message translates to:
+  /// **'Super'**
+  String get superB;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

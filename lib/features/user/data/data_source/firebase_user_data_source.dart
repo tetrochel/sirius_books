@@ -5,7 +5,8 @@ import 'package:sirius_books/features/user/data/model/user_model.dart';
 class FirebaseUserDataSource {
   Future<void> signUp(String email, String password) async {
     try {
-      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -17,7 +18,7 @@ class FirebaseUserDataSource {
         'email': email,
         'role': 'reader',
       });
-      
+
       await login(email, password);
     } on Exception catch (_) {
       return;

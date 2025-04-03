@@ -4,4 +4,6 @@ abstract interface class BookRepository {
   Future<List<BookModel>?> getAllBooks();
 
   Future<void> addBook(BookModel bookModel);
+
+  Future<void> updateBook(BookModel bookModel);
 }

@@ -5,7 +5,9 @@ import 'package:sirius_books/features/exposition/repository/exposition_repositor
 class ExpositionRepositoryImpl implements ExpositionRepository {
   FirebaseExpositionDataSource firebaseExpositionDataSource;
 
-  ExpositionRepositoryImpl({required this.firebaseExpositionDataSource,});
+  ExpositionRepositoryImpl({
+    required this.firebaseExpositionDataSource,
+  });
 
   @override
   Future<List<ExpositionModel>> getAllExposition() async {
