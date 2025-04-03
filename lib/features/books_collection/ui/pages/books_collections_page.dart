@@ -21,66 +21,59 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CollectionBloc, CollectionState>(
-      builder: (context, state) {
-        var collections = <CollectionModel>[];
-        if (context.read<UserBloc>().state.userModel != null) {
-          context.read<CollectionBloc>().add(OnLoadCollections());
-          collections = state.collectionList;
-        }
-        return CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              sliver: SliverToBoxAdapter(
-                child: UserWidget(
-                  email: context.watch<UserBloc>().state.userModel?.email,
-                  loginLabel: AppLocalizations.of(context)!.login,
-                  onPressed: () {
-                    if (context.read<UserBloc>().state.userModel != null) {
-                      context.read<UserBloc>().add(OnLogOutPressed());
-                      context.read<CollectionBloc>().add(OnReselCollectionList());
-                    } else {
-                      context.push('/collections/auth');
-                    }
-                  },
-                ),
-              ),
+    return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          sliver: SliverToBoxAdapter(
+            child: UserWidget(
+              email: context.watch<UserBloc>().state.userModel?.email,
+              loginLabel: AppLocalizations.of(context)!.login,
+              onPressed: () {
+                if (context.read<UserBloc>().state.userModel != null) {
+                  context.read<UserBloc>().add(OnLogOutPressed());
+                } else {
+                  context.push('/collections/auth');
+                }
+              },
             ),
-            SliverAppBar(
-              shadowColor: Colors.black,
-              backgroundColor: context.colors.white,
-              surfaceTintColor: context.colors.white,
-              title: AppBarWidget(
-                title: AppLocalizations.of(context)!.collections,
-                actions: const [],
-              ),
-              pinned: true,
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          sliver: SliverAppBar(
+            shadowColor: Colors.black,
+            backgroundColor: context.colors.white,
+            surfaceTintColor: context.colors.white,
+            title: AppBarWidget(
+              title: AppLocalizations.of(context)!.collections,
+              actions: const [],
             ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => Padding(
-                    padding: const EdgeInsets.only(bottom: 24),
-                    child: AspectRatio(
-                      aspectRatio: 1.5,
-                      child: BookCollectionWidget(
-                        bookCount:
-                            '${AppLocalizations.of(context)!.bookCount.toString()}: ${collections[index].books.length.toString()}',
-                        name: collections[index].name,
-                        onTap: () {},
-                      ),
-                    ),
+            pinned: true,
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => Padding(
+                padding: const EdgeInsets.only(bottom: 24),
+                child: AspectRatio(
+                  aspectRatio: 1.5,
+                  child: BookCollectionWidget(
+                    bookCount:
+                        '${AppLocalizations.of(context)!.bookCount.toString()}: ${collections[index].books.length.toString()}',
+                    name: collections[index].name,
+                    onTap: () {},
                   ),
-                  childCount: collections.length,
                 ),
               ),
+              childCount: collections.length,
             ),
-          ],
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 }

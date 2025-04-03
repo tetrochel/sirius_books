@@ -30,31 +30,34 @@ class _BooksPageState extends State<BooksPage> {
           child: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              SliverAppBar(
-                pinned: true,
-                shadowColor: Colors.black,
-                backgroundColor: context.colors.white,
-                surfaceTintColor: context.colors.white,
-                title: AppBarWidget(
-                  title: AppLocalizations.of(context)!.books,
-                  actions: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.search,
-                        color: context.colors.primary,
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                sliver: SliverAppBar(
+                  pinned: true,
+                  shadowColor: Colors.black,
+                  backgroundColor: context.colors.white,
+                  surfaceTintColor: context.colors.white,
+                  title: AppBarWidget(
+                    title: AppLocalizations.of(context)!.books,
+                    actions: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.search,
+                          color: context.colors.primary,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        context.push('/filter');
-                      },
-                      icon: Icon(
-                        Icons.filter_alt,
-                        color: context.colors.primary,
+                      IconButton(
+                        onPressed: () {
+                          context.push('/filter');
+                        },
+                        icon: Icon(
+                          Icons.filter_alt,
+                          color: context.colors.primary,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               SliverList.builder(

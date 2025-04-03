@@ -102,109 +102,109 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            pinned: true,
-            shadowColor: Colors.black,
-            backgroundColor: context.colors.white,
-            surfaceTintColor: context.colors.white,
-            title: AppBarWidget(
-              title: AppLocalizations.of(context)!.new_exposition,
-              actions: const [],
-            ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.all(24),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  TextFieldWidget(
-                    controller: nameController,
-                    hint: AppLocalizations.of(context)!.title,
-                    label: AppLocalizations.of(context)!.title,
-                    obscureText: false,
-                    inputType: TextInputType.text,
-                  ),
-                  const SizedBox(height: 12),
-
-                  TextFieldWidget(
-                    controller: descriptionController,
-                    hint: AppLocalizations.of(context)!.description,
-                    label: AppLocalizations.of(context)!.description,
-                    obscureText: false,
-                    inputType: TextInputType.multiline,
-                  ),
-                  const SizedBox(height: 12),
-                  DateFieldWidget(
-                    onTap: () => _selectDate(context, false),
-                    controller: startDateController,
-                    label: AppLocalizations.of(context)!.startDate,
-                  ),
-                  const SizedBox(height: 12),
-
-                  DateFieldWidget(
-                    onTap: () => _selectDate(context, true),
-                    controller: endDateController,
-                    label: AppLocalizations.of(context)!.endDate,
-                  ),
-                  const SizedBox(height: 12),
-
-                  DropdownMenu(
-                    onSelected: (selected) =>
-                        selectedCollectionId = selected as int,
-                    expandedInsets: EdgeInsets.zero,
-                    initialSelection: selectedCollectionId,
-                    label: Text(AppLocalizations.of(context)!.collection),
-                    inputDecorationTheme: InputDecorationTheme(
-                      labelStyle: context.textStyles.s14w400
-                          .copyWith(color: context.colors.grey),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide:
-                            BorderSide(color: context.colors.grey, width: 1.5),
-                      ),
-                    ),
-                    dropdownMenuEntries: collections
-                        .map(
-                          (collection) => DropdownMenuEntry(
-                            value: collection.firebaseId,
-                            label: collection.name,
-                          ),
-                        )
-                        .toList(),
-                  ),
-                  // TODO(max): add image picker
-                ],
+      body: SafeArea(
+        child: CustomScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              titleSpacing: 0,
+              pinned: true,
+              shadowColor: Colors.black,
+              backgroundColor: context.colors.white,
+              surfaceTintColor: context.colors.white,
+              title: AppBarWidget(
+                title: AppLocalizations.of(context)!.new_exposition,
+                actions: const [],
               ),
             ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.all(24),
-            sliver: SliverFillRemaining(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  AppButton(
-                    type: ButtonType.primary,
-                    onPressed: () {},
-                    child: Text(
-                      AppLocalizations.of(context)!.create,
-                      style: context.textStyles.s14w400.copyWith(
-                        color: context.colors.white,
-                      ),
+            SliverPadding(
+              padding: const EdgeInsets.all(24),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    TextFieldWidget(
+                      controller: nameController,
+                      hint: AppLocalizations.of(context)!.title,
+                      label: AppLocalizations.of(context)!.title,
+                      obscureText: false,
+                      inputType: TextInputType.text,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                ],
+                    const SizedBox(height: 12),
+
+                    TextFieldWidget(
+                      controller: descriptionController,
+                      hint: AppLocalizations.of(context)!.description,
+                      label: AppLocalizations.of(context)!.description,
+                      obscureText: false,
+                      inputType: TextInputType.multiline,
+                    ),
+                    const SizedBox(height: 12),
+                    DateFieldWidget(
+                      onTap: () => _selectDate(context, false),
+                      controller: startDateController,
+                      label: AppLocalizations.of(context)!.startDate,
+                    ),
+                    const SizedBox(height: 12),
+
+                    DateFieldWidget(
+                      onTap: () => _selectDate(context, true),
+                      controller: endDateController,
+                      label: AppLocalizations.of(context)!.endDate,
+                    ),
+                    const SizedBox(height: 12),
+
+                    DropdownMenu(
+                      onSelected: (selected) => selectedCollectionId = selected as int,
+                      expandedInsets: EdgeInsets.zero,
+                      initialSelection: selectedCollectionId,
+                      label: Text(AppLocalizations.of(context)!.collection),
+                      inputDecorationTheme: InputDecorationTheme(
+                        labelStyle: context.textStyles.s14w400.copyWith(color: context.colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          borderSide: BorderSide(color: context.colors.grey, width: 1.5),
+                        ),
+                      ),
+                      dropdownMenuEntries: collections
+                          .map(
+                            (collection) => DropdownMenuEntry(
+                              value: collection.id,
+                              label: collection.name,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    // TODO(max): add image picker
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+            SliverPadding(
+              padding: const EdgeInsets.all(24),
+              sliver: SliverFillRemaining(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    AppButton(
+                      type: ButtonType.primary,
+                      onPressed: () {},
+                      child: Text(
+                        AppLocalizations.of(context)!.create,
+                        style: context.textStyles.s14w400.copyWith(
+                          color: context.colors.white,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
