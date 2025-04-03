@@ -30,6 +30,7 @@ class TextFieldWithLabelWidget extends StatelessWidget {
         ),
         SizedBox(height: 4),
         TextField(
+          maxLines: textInputType == TextInputType.multiline ? null : 1,
           keyboardType: textInputType,
           inputFormatters: formatters,
           readOnly: readOnly,

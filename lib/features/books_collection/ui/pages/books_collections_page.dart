@@ -57,7 +57,17 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
                 surfaceTintColor: context.colors.white,
                 title: AppBarWidget(
                   title: AppLocalizations.of(context)!.collections,
-                  actions: const [],
+                  actions: [
+                    IconButton(
+                      onPressed: () {
+                        context.push('/collections/new');
+                      },
+                      icon: Icon(
+                        Icons.add,
+                        color: context.colors.primary,
+                      ),
+                    ),
+                  ],
                 ),
                 pinned: true,
               ),

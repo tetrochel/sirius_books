@@ -27,6 +27,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get collection => 'Коллекция';
 
   @override
+  String get newCollection => 'Новая коллекция';
+
+  @override
   String get login => 'Войти';
 
   @override
@@ -112,6 +115,8 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get apply => 'Применить';
+
+  @override
   String get editing => 'Редактирование';
 
   @override

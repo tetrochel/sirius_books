@@ -131,6 +131,12 @@ abstract class AppLocalizations {
   /// **'Collection'**
   String get collection;
 
+  /// No description provided for @newCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'New collection'**
+  String get newCollection;
+
   /// No description provided for @login.
   ///
   /// In en, this message translates to:
@@ -304,6 +310,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Apply'**
   String get apply;
+
   /// No description provided for @editing.
   ///
   /// In en, this message translates to:
