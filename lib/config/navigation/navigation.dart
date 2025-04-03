@@ -104,7 +104,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: 'details',
               builder: (context, state) {
-                final book = state.extra as BookModel;
+                final book = state.extra as BookModel?;
                 return BookPage(mode: Mode.view, book: book);
               },
             ),
