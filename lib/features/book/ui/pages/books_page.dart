@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -25,54 +26,54 @@ class _BooksPageState extends State<BooksPage> {
     return BlocBuilder<BookBloc, BookState>(
       builder: (context, state) {
         books = state.bookList;
-        return RefreshIndicator(
-          onRefresh: () async => context.read<BookBloc>().add(OnLoadBook()),
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              SliverAppBar(
-                pinned: true,
-                shadowColor: Colors.black,
-                backgroundColor: context.colors.white,
-                surfaceTintColor: context.colors.white,
-                title: AppBarWidget(
-                  title: AppLocalizations.of(context)!.books,
-                  actions: [
-                    // IconButton(
-                    //   onPressed: () {},
-                    //   icon: Icon(
-                    //     Icons.search,
-                    //     color: context.colors.primary,
-                    //   ),
-                    // ),
-                    IconButton(
-                      onPressed: () {
-                        context.push('/filter');
-                        context.read<BookBloc>().add(OnFiltersReset());
-                      },
-                      icon: Icon(
-                        Icons.filter_alt,
-                        color: context.colors.primary,
-                      ),
+        return CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              pinned: true,
+              shadowColor: Colors.black,
+              backgroundColor: context.colors.white,
+              surfaceTintColor: context.colors.white,
+              title: AppBarWidget(
+                title: AppLocalizations.of(context)!.books,
+                actions: [
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   icon: Icon(
+                  //     Icons.search,
+                  //     color: context.colors.primary,
+                  //   ),
+                  // ),
+                  IconButton(
+                    onPressed: () {
+                      context.push('/filter');
+                      context.read<BookBloc>().add(OnFiltersReset());
+                    },
+                    icon: Icon(
+                      Icons.filter_alt,
+                      color: context.colors.primary,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              SliverList.builder(
-                itemBuilder: (context, index) => BookWidget(
-                  name: books[index].name,
-                  authorName: books[index].authorName,
-                  genre: books[index].genre,
-                  isFavorite: index.isEven,
-                  onTap: () {
-                    context.push('/books/details', extra: books[index]);
-                  },
-                  onTapFavorite: () {},
-                ),
-                itemCount: books.length,
+            ),
+            CupertinoSliverRefreshControl(
+              onRefresh: () async => context.read<BookBloc>().add(OnLoadBook()),
+            ),
+            SliverList.builder(
+              itemBuilder: (context, index) => BookWidget(
+                name: books[index].name,
+                authorName: books[index].authorName,
+                genre: books[index].genre,
+                isFavorite: index.isEven,
+                onTap: () {
+                  context.push('/books/details', extra: books[index]);
+                },
+                onTapFavorite: () {},
               ),
-            ],
-          ),
+              itemCount: books.length,
+            ),
+          ],
         );
       },
     );

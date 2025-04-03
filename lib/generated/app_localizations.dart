@@ -304,6 +304,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Apply'**
   String get apply;
+
   /// No description provided for @editing.
   ///
   /// In en, this message translates to:

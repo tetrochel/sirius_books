@@ -112,6 +112,8 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get apply => 'Применить';
+
+  @override
   String get editing => 'Редактирование';
 
   @override
