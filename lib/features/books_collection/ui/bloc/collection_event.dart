@@ -11,3 +11,5 @@ class OnAddCollection extends CollectionEvent {
     required this.collectionModel,
   });
 }
+
+class OnReselCollectionList extends CollectionEvent {}

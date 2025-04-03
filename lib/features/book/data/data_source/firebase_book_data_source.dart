@@ -32,50 +32,8 @@ class FirebaseBookDataSource {
 
       final bookModelList = <BookModel>[];
       for (final doc in querySnapshot.docs) {
-        //ai-generated methods
-        // Проверка цены
-        final priceString = doc.get('Стоимсоть').toString();
-        final price = priceString.isNotEmpty
-            ? double.parse(priceString.replaceAll(' ', '').replaceAll(',', '.'))
-            : 0.0;
-
-        // Проверка веса
-        final weightString = doc.get('Вес').toString();
-        final weight = weightString.isNotEmpty
-            ? int.parse(weightString.replaceAll(' ', '').replaceAll(',', '')) ~/
-                100
-            : 0;
-
-        // Проверка года издания
-        final yearString = doc.get('Год').toString();
-        final year = yearString.isNotEmpty ? int.parse(yearString) : 0;
-
-        // Проверка количества страниц
-        final pagesString = doc.get('Страниц').toString();
-        final pages = pagesString.isNotEmpty ? int.parse(pagesString) : 0;
-
-        // Проверка количества книг
-        final countString = doc.get('Количество').toString();
-        final count = countString.isNotEmpty ? int.parse(countString) : 0;
-
-        final idString = doc.id;
-
         bookModelList.add(
-          BookModel(
-            firebaseId: idString,
-            name: doc.get('Наименование').toString(),
-            authorName: doc.get('Автор').toString(),
-            publicationYear: year,
-            publisher: doc.get('Изд-во').toString(),
-            genre: 'Жанр',
-            isbn: doc.get('ISBN').toString(),
-            cover: _convertCover(doc.get('Переплет').toString()),
-            pagesCount: pages,
-            booksCount: count,
-            price: price,
-            weight: weight,
-            location: 'Место',
-          ),
+          BookModel.fromFirebase(doc.id, doc.data() as Map<String, dynamic>),
         );
       }
 
@@ -85,13 +43,29 @@ class FirebaseBookDataSource {
     }
   }
 
-  Cover _convertCover(String coverString) {
-    if (coverString == 'в пер') {
-      return Cover.hard;
-    } else if (coverString == 'в пер., супер.') {
-      return Cover.jacket;
-    } else {
-      return Cover.soft;
+  Future<void> updateBook(BookModel bookModel) async {
+    try {
+      if (bookModel.firebaseId == null) return;
+
+      await FirebaseFirestore.instance
+          .collection('myCollection')
+          .doc(bookModel.firebaseId)
+          .update({
+        'Наименование': bookModel.name.toString(),
+        'Автор': bookModel.authorName.toString(),
+        'Год': bookModel.publicationYear.toString(),
+        'Изд-во': bookModel.publisher.toString(),
+        'ISBN': bookModel.isbn.toString(),
+        'Переплет': _convertCoverToString(bookModel.cover).toString(),
+        'Страниц': bookModel.pagesCount.toString(),
+        'Количество': bookModel.booksCount.toString(),
+        'Стоимсоть': bookModel.price.toString(),
+        'Вес': (bookModel.weight * 100).toString(),
+        'Жанр': bookModel.genre.toString(),
+        'Место': bookModel.location.toString(),
+      });
+    } on Exception catch (_) {
+      return;
     }
   }
 

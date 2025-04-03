@@ -7,7 +7,10 @@ class LocalUserDataSource {
     final userEmail = prefs.getString('userEmail');
     final userRole = prefs.getString('userRole');
     if (userEmail != null && userRole != null) {
-      return UserModel(email: userEmail, role: (userRole == 'keeper') ? UserRole.keeper : UserRole.reader);
+      return UserModel(
+        email: userEmail,
+        role: (userRole == 'keeper') ? UserRole.keeper : UserRole.reader,
+      );
     } else {
       return null;
     }

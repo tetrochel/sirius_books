@@ -23,3 +23,8 @@ class OnFilterChanged<T> extends BookEvent {
 }
 
 class OnFiltersReset extends BookEvent {}
+
+class OnUpdateBook extends BookEvent {
+  BookModel bookModel;
+  OnUpdateBook({required this.bookModel});
+}

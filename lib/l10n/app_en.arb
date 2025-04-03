@@ -33,5 +33,10 @@
   "price": "Price",
   "weight": "Weight",
   "location": "Storage location",
-  "apply": "Apply"
+  "apply": "Apply",
+  "editing": "Editing",
+  "viewing": "Viewing",
+  "soft": "Soft",
+  "hard": "Hard",
+  "superB": "Super"
 }

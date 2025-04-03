@@ -5,16 +5,17 @@ import 'package:sirius_books/features/books_collection/repository/collection_rep
 class CollectionRepositoryImpl implements CollectionRepository {
   final FirebaseCollectionDataSource firebaseCollectionDataSource;
 
-  CollectionRepositoryImpl({required this.firebaseCollectionDataSource,});
+  CollectionRepositoryImpl({
+    required this.firebaseCollectionDataSource,
+  });
 
   @override
   Future<List<CollectionModel>?> getCollections() async {
-     return firebaseCollectionDataSource.getAllCollections();
+    return firebaseCollectionDataSource.getAllCollections();
   }
 
   @override
   Future<void> addCollection(CollectionModel collectionModel) async {
     await firebaseCollectionDataSource.addCollection(collectionModel);
   }
-
 }

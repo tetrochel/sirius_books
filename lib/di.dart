@@ -1,7 +1,8 @@
 import 'package:sirius_books/config/navigation/navigator_controller.dart';
 import 'package:sirius_books/features/book/data/data_source/firebase_book_data_source.dart';
 import 'package:sirius_books/features/book/repository/book_repository_impl.dart';
-import 'package:sirius_books/features/book/ui/bloc/book_bloc.dart';
+import 'package:sirius_books/features/books_collection/data/data_source/firebase_collection_data_source.dart';
+import 'package:sirius_books/features/books_collection/repository/collection_repository_impl.dart';
 import 'package:sirius_books/features/exposition/data/data_source/firebase_exposition_data_source.dart';
 import 'package:sirius_books/features/exposition/repository/exposition_repository_impl.dart';
 import 'package:sirius_books/features/user/data/data_source/firebase_user_data_source.dart';
@@ -33,14 +34,20 @@ class AppScopeContainer extends ScopeContainer {
       firebaseBookDataSource: firebaseBookDataSourceDep.get,
     ),
   );
-  late final bookBlocDep =
-      dep(() => BookBloc(bookRepository: bookRepositoryDep.get));
 
   late final firebaseExpositionDataSourceDep =
       dep(FirebaseExpositionDataSource.new);
   late final expositionRepositoryDep = dep(
     () => ExpositionRepositoryImpl(
       firebaseExpositionDataSource: firebaseExpositionDataSourceDep.get,
+    ),
+  );
+
+  late final firebaseCollectionDataSourceDep =
+      dep(FirebaseCollectionDataSource.new);
+  late final collectionRepositoryDep = dep(
+    () => CollectionRepositoryImpl(
+      firebaseCollectionDataSource: firebaseCollectionDataSourceDep.get,
     ),
   );
 }

@@ -22,7 +22,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
 
   late final List<CollectionModel> collections = [
     CollectionModel(
-      id: 1,
+      firebaseId: 1.toString(),
       name: 'Классика',
       description: 'Коллекция классической литературы',
       books: [
@@ -57,7 +57,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
       ],
     ),
     CollectionModel(
-      id: 2,
+      firebaseId: 2.toString(),
       name: 'Фантастика',
       description: 'Лучшие книги в жанре научной фантастики',
       books: [
@@ -154,21 +154,26 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                     const SizedBox(height: 12),
 
                     DropdownMenu(
-                      onSelected: (selected) => selectedCollectionId = selected as int,
+                      onSelected: (selected) =>
+                          selectedCollectionId = selected as int,
                       expandedInsets: EdgeInsets.zero,
                       initialSelection: selectedCollectionId,
                       label: Text(AppLocalizations.of(context)!.collection),
                       inputDecorationTheme: InputDecorationTheme(
-                        labelStyle: context.textStyles.s14w400.copyWith(color: context.colors.grey),
+                        labelStyle: context.textStyles.s14w400
+                            .copyWith(color: context.colors.grey),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(color: context.colors.grey, width: 1.5),
+                          borderSide: BorderSide(
+                            color: context.colors.grey,
+                            width: 1.5,
+                          ),
                         ),
                       ),
                       dropdownMenuEntries: collections
                           .map(
                             (collection) => DropdownMenuEntry(
-                              value: collection.id,
+                              value: collection.firebaseId,
                               label: collection.name,
                             ),
                           )

@@ -62,8 +62,10 @@ class ExpositionsPage extends StatelessWidget {
                     onTap: () {},
                     onTapSubscribe: () {},
                     isSubscribed: subscriptions.contains(expositions[index].id),
-                    startDate: defaultDateFormat.format(expositions[index].startDate),
-                    endDate: defaultDateFormat.format(expositions[index].endDate),
+                    startDate:
+                        defaultDateFormat.format(expositions[index].startDate),
+                    endDate:
+                        defaultDateFormat.format(expositions[index].endDate),
                   ),
                 ),
               ),

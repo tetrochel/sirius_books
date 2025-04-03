@@ -36,12 +36,20 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     Emitter<UserState> emit,
   ) async {
     try {
+      emit(UserState()..isLoading = true);
       final user = await userRepository.login(
         event.email,
         event.password,
       );
-      emit(UserState()..userModel = user);
-      await _handleSaveLocally(OnSaveLocally(userModel: state.userModel!), emit);
+      emit(
+        UserState()
+          ..userModel = user
+          ..isLoading = false,
+      );
+      await _handleSaveLocally(
+        OnSaveLocally(userModel: state.userModel!),
+        emit,
+      );
     } on FirebaseAuthException catch (e) {
       navigationController.showSnackBar('Ошибка аутентификации: ${e.message}');
     } on Exception catch (e) {
@@ -61,8 +69,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     Emitter<UserState> emit,
   ) async {
     try {
-      await userRepository.logout();
       emit(UserState()..userModel = null);
+      await userRepository.logout();
     } on FirebaseAuthException catch (e) {
       navigationController.showSnackBar('Ошибка выхода: ${e.message}');
     } on Exception catch (e) {

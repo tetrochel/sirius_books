@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
+import 'package:sirius_books/features/book/data/model/book_model.dart';
+import 'package:sirius_books/features/book/ui/pages/book_page.dart';
 import 'package:sirius_books/features/book/ui/pages/books_page.dart';
+import 'package:sirius_books/features/books_collection/data/model/book_collection_model.dart';
 import 'package:sirius_books/features/books_collection/ui/pages/books_collections_page.dart';
+import 'package:sirius_books/features/books_collection/ui/pages/collection_page.dart';
 import 'package:sirius_books/features/exposition/ui/pages/expositions_page.dart';
 import 'package:sirius_books/features/exposition/ui/pages/new_exposition_page.dart';
 import 'package:sirius_books/features/filter/ui/pages/filter_page.dart';
@@ -21,7 +25,8 @@ final GoRouter router = GoRouter(
       builder: (context, state, child) {
         var showActionButton = false;
         if (context.watch<UserBloc>().state.userModel != null &&
-            context.watch<UserBloc>().state.userModel!.role == UserRole.keeper) {
+            context.watch<UserBloc>().state.userModel!.role ==
+                UserRole.keeper) {
           showActionButton = true;
         }
         if (state.fullPath == '/collections') {
@@ -37,7 +42,7 @@ final GoRouter router = GoRouter(
                     if (state.fullPath == '/expositions') {
                       context.push('/expositions/new');
                     } else {
-                      context.push('/books/new');
+                      context.push('/books/details');
                     }
                   },
                   child: const Icon(Icons.add),
@@ -97,16 +102,6 @@ final GoRouter router = GoRouter(
               child: const BooksPage(),
             ),
           ),
-          routes: [
-            GoRoute(
-              path: 'details/:id',
-              builder: (context, state) {
-                // final id = state.pathParameters['id'];
-                return const SizedBox.shrink();
-                // return BookDetailsScreen(id: id);
-              },
-            ),
-          ],
         ),
         GoRoute(
           path: '/collections',
@@ -114,18 +109,11 @@ final GoRouter router = GoRouter(
             // ColoredBox для фона
             child: ColoredBox(
               color: context.colors.white,
-              child: BooksCollectionsPage(),
+              child: const BooksCollectionsPage(),
             ),
             state: state,
           ),
           routes: [
-            GoRoute(
-              path: 'details/:id',
-              builder: (context, state) {
-                // final id = state.pathParameters['id'];
-                return const SizedBox.shrink();
-              },
-            ),
             GoRoute(
               path: 'auth',
               builder: (context, state) => const AuthPage(),
@@ -159,6 +147,25 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/collections/new',
       builder: (context, state) => const SizedBox.shrink(),
+    ),
+    GoRoute(
+      path: '/collections/details',
+      builder: (context, state) {
+        final collection = state.extra as CollectionModel;
+        return CollectionPage(
+          collection: collection,
+        );
+      },
+    ),
+    GoRoute(
+      path: '/books/details',
+      builder: (context, state) {
+        final book = state.extra as BookModel?;
+        return BookPage(
+          mode: book == null ? Mode.edit : Mode.view,
+          book: book,
+        );
+      },
     ),
   ],
 );

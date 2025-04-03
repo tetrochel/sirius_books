@@ -108,10 +108,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     } else if (passwordController.text.length < 6) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Пароль должен содержать не менее 6 символов'),
+                          content: Text(
+                            'Пароль должен содержать не менее 6 символов',
+                          ),
                         ),
                       );
-                    }else {
+                    } else {
                       context.read<UserBloc>().add(
                             OnSignUpPressed(
                               email: emailController.text,
