@@ -27,6 +27,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get collection => 'Коллекция';
 
   @override
+  String get newCollection => 'Новая коллекция';
+
+  @override
   String get login => 'Войти';
 
   @override
@@ -72,7 +75,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get endDate => 'Дата окончания';
 
   @override
-  String get errorStartDateAfterEndDate => 'Дата начала не может быть раньше даты окончания';
+  String get errorStartDateAfterEndDate =>
+      'Дата начала не может быть раньше даты окончания';
 
   @override
   String get name => 'Название';

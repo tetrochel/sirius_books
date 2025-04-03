@@ -23,4 +23,15 @@ class BookRepositoryImpl implements BookRepository {
   Future<void> updateBook(BookModel bookModel) async {
     await firebaseBookDataSource.updateBook(bookModel);
   }
+
+  @override
+  Future<void> addBookToCollection(
+    BookModel bookModel,
+    String collectionModelId,
+  ) async {
+    await firebaseBookDataSource.addBookToCollection(
+      bookModel,
+      collectionModelId,
+    );
+  }
 }

@@ -63,7 +63,12 @@ class _SubrangeFilterWidgetState extends State<SubrangeFilterWidget> {
               setState(() {
                 _currentRangeValues = newValues;
               });
-              widget.onChanged((_currentRangeValues.start.round(), _currentRangeValues.end.round()));
+              widget.onChanged(
+                (
+                  _currentRangeValues.start.round(),
+                  _currentRangeValues.end.round()
+                ),
+              );
             }
           },
         ),
