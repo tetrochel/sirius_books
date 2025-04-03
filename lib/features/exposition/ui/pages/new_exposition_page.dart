@@ -129,7 +129,6 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                       readOnly: false,
                     ),
                     const SizedBox(height: 12),
-
                     TextFieldWithLabelWidget(
                       textController: descriptionController,
                       label: AppLocalizations.of(context)!.description,
@@ -143,20 +142,17 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                       label: AppLocalizations.of(context)!.startDate,
                     ),
                     const SizedBox(height: 12),
-
                     DateFieldWidget(
                       onTap: () => _selectDate(context, true),
                       controller: endDateController,
                       label: AppLocalizations.of(context)!.endDate,
                     ),
                     const SizedBox(height: 12),
-
                     Text(
                       AppLocalizations.of(context)!.collection,
                       style: context.textStyles.s16w600,
                     ),
                     const SizedBox(height: 4),
-
                     DropdownMenu(
                       onSelected: (selected) =>
                           selectedCollectionId = selected as int,

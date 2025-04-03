@@ -134,4 +134,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get superB => 'Super';
+
+  @override
+  String get delete => 'Delete';
 }

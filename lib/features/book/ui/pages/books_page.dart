@@ -18,7 +18,8 @@ class BooksPage extends StatefulWidget {
   State<BooksPage> createState() => _BooksPageState();
 }
 
-class _BooksPageState extends State<BooksPage> with SingleTickerProviderStateMixin {
+class _BooksPageState extends State<BooksPage>
+    with SingleTickerProviderStateMixin {
   late List<BookModel> books;
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -84,7 +85,8 @@ class _BooksPageState extends State<BooksPage> with SingleTickerProviderStateMix
                 ),
               ),
               CupertinoSliverRefreshControl(
-                onRefresh: () async => context.read<BookBloc>().add(OnLoadBook()),
+                onRefresh: () async =>
+                    context.read<BookBloc>().add(OnLoadBook()),
               ),
               if (books.isEmpty)
                 SliverFillRemaining(
