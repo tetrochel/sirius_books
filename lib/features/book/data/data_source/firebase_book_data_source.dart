@@ -46,7 +46,7 @@ class FirebaseBookDataSource {
   Future<void> updateBook(BookModel bookModel) async {
     try {
       if (bookModel.firebaseId == null) return;
-      
+
       await FirebaseFirestore.instance
           .collection('myCollection')
           .doc(bookModel.firebaseId)
