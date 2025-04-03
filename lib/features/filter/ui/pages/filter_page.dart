@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:presentation/widgets/filters/enum_filter_widget.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
@@ -54,7 +55,14 @@ class FilterPage extends StatelessWidget {
               surfaceTintColor: context.colors.white,
               title: AppBarWidget(
                 title: AppLocalizations.of(context)!.filters,
-                actions: const [],
+                actions: [
+                  IconButton(
+                    onPressed: () => context.pop(),
+                    icon: const Icon(
+                      Icons.close,
+                    ),
+                  ),
+                ],
               ),
             ),
             SliverPadding(

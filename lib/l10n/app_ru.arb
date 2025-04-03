@@ -19,7 +19,7 @@
   "endDate": "Дата окончания",
   "errorStartDateAfterEndDate": "Дата начала не может быть раньше даты окончания",
   "filters": "Фильтры",
-  "name": "Имя",
+  "name": "Название",
   "authorName": "Автор",
   "year": "Год",
   "publisher": "Издательство",
