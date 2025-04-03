@@ -1,13 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/config/constants.dart';
 import 'package:sirius_books/features/exposition/ui/bloc/exposition_bloc.dart';
+import 'package:sirius_books/features/exposition/ui/bloc/exposition_event.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class ExpositionsPage extends StatelessWidget {
-
   const ExpositionsPage({
     super.key,
   });
@@ -16,7 +17,6 @@ class ExpositionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final expositions = context.watch<ExpositionBloc>().state.expositionModelList;
     return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
       slivers: [
         SliverAppBar(
           pinned: true,
@@ -36,6 +36,9 @@ class ExpositionsPage extends StatelessWidget {
             ],
           ),
         ),
+        CupertinoSliverRefreshControl(
+          onRefresh: () async => context.read<ExpositionBloc>().add(OnLoadExposition()),
+        ),
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           sliver: SliverList(
@@ -54,10 +57,8 @@ class ExpositionsPage extends StatelessWidget {
                     },
                     onTapSubscribe: () {},
                     isSubscribed: false,
-                    startDate:
-                        defaultDateFormat.format(expositions[index].startDate),
-                    endDate:
-                        defaultDateFormat.format(expositions[index].endDate),
+                    startDate: defaultDateFormat.format(expositions[index].startDate),
+                    endDate: defaultDateFormat.format(expositions[index].endDate),
                   ),
                 ),
               ),
