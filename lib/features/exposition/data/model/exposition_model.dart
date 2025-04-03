@@ -20,4 +20,26 @@ class ExpositionModel {
     this.description,
     this.id,
   });
+
+  ExpositionModel copyWith({
+    String? id,
+    String? topic,
+    String? name,
+    String? description,
+    List<BookModel>? books,
+    String? location,
+    DateTime? startDate,
+    DateTime? endDate,
+  }) {
+    return ExpositionModel(
+      id: id ?? this.id,
+      topic: topic ?? this.topic,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      books: books ?? this.books,
+      location: location ?? this.location,
+      startDate: startDate ?? this.startDate,
+      endDate: endDate ?? this.endDate,
+    );
+  }
 }

@@ -18,4 +18,9 @@ class ExpositionRepositoryImpl implements ExpositionRepository {
   Future<void> addExposition(ExpositionModel expositionModel) async {
     await firebaseExpositionDataSource.addExposition(expositionModel);
   }
+
+  @override
+  Future<void> updateExposition(ExpositionModel expositionModel) async {
+    await firebaseExpositionDataSource.updateExposition(expositionModel);
+  }
 }

@@ -15,6 +15,8 @@ class ExpositionBloc extends Bloc<ExpositionEvent, ExpositionState> {
           await _handleOnLoadExposition(event, emit);
         case OnAddExpositionPressed():
           await _handleOnAddExpositionPressed(event, emit);
+        case OnUpdateExpositionPressed():
+          await _handleOnUpdateExpositionPressed(event, emit);
       }
     });
   }
@@ -37,6 +39,17 @@ class ExpositionBloc extends Bloc<ExpositionEvent, ExpositionState> {
   ) async {
     try {
       await expositionRepository.addExposition(event.expositionModel);
+    } on Exception catch (_) {
+      return;
+    }
+  }
+
+  Future<void> _handleOnUpdateExpositionPressed(
+    OnUpdateExpositionPressed event,
+    Emitter<ExpositionState> emit,
+  ) async {
+    try {
+      await expositionRepository.updateExposition(event.expositionModel);
     } on Exception catch (_) {
       return;
     }
