@@ -1,7 +1,7 @@
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 
 class ExpositionModel {
-  final int id;
+  final String? id;
   final String topic;
   final String name;
   final String? description;
@@ -11,7 +11,6 @@ class ExpositionModel {
   final DateTime endDate;
 
   ExpositionModel({
-    required this.id,
     required this.topic,
     required this.name,
     required this.books,
@@ -19,5 +18,6 @@ class ExpositionModel {
     required this.startDate,
     required this.endDate,
     this.description,
+    this.id,
   });
 }

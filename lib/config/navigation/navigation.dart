@@ -81,7 +81,7 @@ final GoRouter router = GoRouter(
             // ColoredBox для фона
             child: ColoredBox(
               color: context.colors.white,
-              child: ExpositionsPage(),
+              child: const ExpositionsPage(),
             ),
             state: state,
           ),

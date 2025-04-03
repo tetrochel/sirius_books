@@ -6,5 +6,8 @@ class OnLoadExposition extends ExpositionEvent {}
 
 class OnAddExpositionPressed extends ExpositionEvent {
   ExpositionModel expositionModel;
-  OnAddExpositionPressed({required this.expositionModel});
+
+  OnAddExpositionPressed({
+    required this.expositionModel,
+  });
 }
