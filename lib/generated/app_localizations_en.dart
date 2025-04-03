@@ -72,7 +72,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get endDate => 'End date';
 
   @override
-  String get errorStartDateAfterEndDate => 'The start date cannot be earlier than the end date';
+  String get errorStartDateAfterEndDate =>
+      'The start date cannot be earlier than the end date';
 
   @override
   String get name => 'Name';
@@ -109,4 +110,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get location => 'Storage location';
+
+  @override
+  String get editing => 'Editing';
+
+  @override
+  String get viewing => 'Viewing';
+
+  @override
+  String get soft => 'Soft';
+
+  @override
+  String get hard => 'Hard';
+
+  @override
+  String get superB => 'Super';
 }

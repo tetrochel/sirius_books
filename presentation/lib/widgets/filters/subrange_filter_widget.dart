@@ -25,7 +25,8 @@ class _SubrangeFilterWidgetState extends State<SubrangeFilterWidget> {
   @override
   void initState() {
     super.initState();
-    _currentRangeValues = RangeValues(widget.min.toDouble(), widget.max.toDouble());
+    _currentRangeValues =
+        RangeValues(widget.min.toDouble(), widget.max.toDouble());
   }
 
   @override

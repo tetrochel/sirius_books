@@ -2,7 +2,7 @@ import 'package:sirius_books/features/exposition/data/model/exposition_model.dar
 
 sealed class ExpositionEvent {}
 
-class OnLoadExposition extends ExpositionEvent{}
+class OnLoadExposition extends ExpositionEvent {}
 
 class OnAddExpositionPressed extends ExpositionEvent {
   ExpositionModel expositionModel;

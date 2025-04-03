@@ -8,12 +8,13 @@ class FirebaseExpositionDataSource {
       await FirebaseFirestore.instance.collection('expositions').add({
         'Название': expositionModel.name.toString(),
         'Тема': expositionModel.topic.toString(),
-        'Список книг': expositionModel.bookList.map((book) => book.firebaseId).toList(),
+        'Список книг':
+            expositionModel.bookList.map((book) => book.firebaseId).toList(),
         'Место проведения': expositionModel.location.toString(),
         'Дата начала': expositionModel.startDate.toString(),
         'Дата окончания': expositionModel.endDate.toString(),
       });
-    } on Exception catch(_) {
+    } on Exception catch (_) {
       return;
     }
   }
@@ -34,7 +35,7 @@ class FirebaseExpositionDataSource {
               .collection('myCollection')
               .doc(bookId)
               .get();
-          
+
           if (bookDoc.exists) {
             bookList.add(BookModel.fromFirebase(bookId, bookDoc.data()!));
           }

@@ -72,7 +72,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get endDate => 'Дата окончания';
 
   @override
-  String get errorStartDateAfterEndDate => 'Дата начала не может быть раньше даты окончания';
+  String get errorStartDateAfterEndDate =>
+      'Дата начала не может быть раньше даты окончания';
 
   @override
   String get name => 'Название';
@@ -109,4 +110,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get location => 'Место хранения';
+
+  @override
+  String get editing => 'Редактирование';
+
+  @override
+  String get viewing => 'Просмотр';
+
+  @override
+  String get soft => 'Мягкий';
+
+  @override
+  String get hard => 'Твёрдый';
+
+  @override
+  String get superB => 'Супер';
 }

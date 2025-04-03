@@ -32,7 +32,9 @@ class FirebaseBookDataSource {
 
       final bookModelList = <BookModel>[];
       for (final doc in querySnapshot.docs) {
-        bookModelList.add(BookModel.fromFirebase(doc.id, doc.data() as Map<String, dynamic>));
+        bookModelList.add(
+          BookModel.fromFirebase(doc.id, doc.data() as Map<String, dynamic>),
+        );
       }
 
       return bookModelList;

@@ -43,7 +43,7 @@ class BookModel {
     final count = countString.isNotEmpty ? int.parse(countString) : 0;
 
     final priceString = data['Стоимсоть'].toString();
-    final price = priceString.isNotEmpty 
+    final price = priceString.isNotEmpty
         ? double.parse(priceString.replaceAll(' ', '').replaceAll(',', '.'))
         : 0.0;
 

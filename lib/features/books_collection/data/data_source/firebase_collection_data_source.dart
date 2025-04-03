@@ -21,7 +21,7 @@ class FirebaseCollectionDataSource {
       for (final doc in querySnapshot.docs) {
         final idString = doc.id;
         final bookIds = List<String>.from(doc.get('Список книг') as List);
-        
+
         // Получаем список книг для коллекции
         final bookList = <BookModel>[];
         for (final bookId in bookIds) {
@@ -29,7 +29,7 @@ class FirebaseCollectionDataSource {
               .collection('myCollection')
               .doc(bookId)
               .get();
-          
+
           if (bookDoc.exists) {
             bookList.add(BookModel.fromFirebase(bookId, bookDoc.data()!));
           }
@@ -63,7 +63,8 @@ class FirebaseCollectionDataSource {
           .add({
         'Название': collectionModel.name.toString(),
         'Описание': collectionModel.description.toString(),
-        'Список книг': collectionModel.books.map((book) => book.firebaseId).toList(),
+        'Список книг':
+            collectionModel.books.map((book) => book.firebaseId).toList(),
       });
     } on Exception catch (_) {
       return;

@@ -32,5 +32,10 @@
   "booksCount": "Books",
   "price": "Price",
   "weight": "Weight",
-  "location": "Storage location"
+  "location": "Storage location",
+  "editing": "Editing",
+  "viewing": "Viewing",
+  "soft": "Soft",
+  "hard": "Hard",
+  "superB": "Super"
 }

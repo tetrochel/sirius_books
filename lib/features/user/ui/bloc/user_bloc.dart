@@ -41,7 +41,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         event.password,
       );
       emit(UserState()..userModel = user);
-      await _handleSaveLocally(OnSaveLocally(userModel: state.userModel!), emit);
+      await _handleSaveLocally(
+        OnSaveLocally(userModel: state.userModel!),
+        emit,
+      );
     } on FirebaseAuthException catch (e) {
       navigationController.showSnackBar('Ошибка аутентификации: ${e.message}');
     } on Exception catch (e) {

@@ -66,7 +66,9 @@ class _BooksPageState extends State<BooksPage> {
                   authorName: books[index].authorName,
                   genre: books[index].genre,
                   isFavorite: index.isEven,
-                  onTap: () {},
+                  onTap: () {
+                    context.push('/books/details', extra: books[index]);
+                  },
                   onTapFavorite: () {},
                 ),
                 itemCount: books.length,

@@ -33,10 +33,13 @@ class BookBloc extends Bloc<BookEvent, BookState> {
     }
   }
 
-  Future<void> _handleOnAddBook(OnAddBook event, Emitter<BookState> emit) async {
+  Future<void> _handleOnAddBook(
+    OnAddBook event,
+    Emitter<BookState> emit,
+  ) async {
     try {
       await bookRepository.addBook(event.bookModel);
-    } on Exception catch(_) {
+    } on Exception catch (_) {
       return;
     }
   }
