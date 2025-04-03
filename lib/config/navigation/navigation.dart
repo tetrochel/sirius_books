@@ -158,7 +158,7 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/filter',
-      pageBuilder: (context, state) => const ModalPage<void>(child: FilterPage()),
+      pageBuilder: (context, state) => ModalPage<void>(child: FilterPage()),
     ),
   ],
 );

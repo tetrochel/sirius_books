@@ -1,6 +1,6 @@
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 
-abstract class FilterModel<Param, F> {
+sealed class FilterModel<Param, F> {
   final String id;
   final Param Function(BookModel book) paramExtractor;
 
@@ -29,10 +29,15 @@ class SubStringFilterModel extends FilterModel<String, String> {
       paramExtractor(book).contains(value);
 }
 
-class SubRangeFilterModel extends FilterModel<num, ({num min, num max})> {
-  SubRangeFilterModel({
+class SubrangeFilterModel extends FilterModel<num, ({num min, num max})> {
+  final num min;
+  final num max;
+
+  SubrangeFilterModel({
     required super.id,
     required super.paramExtractor,
+    required this.min,
+    required this.max,
   });
 
   @override
@@ -67,9 +72,11 @@ class Filters {
       id: 'authorName',
       paramExtractor: (book) => book.authorName,
     ),
-    SubRangeFilterModel(
+    SubrangeFilterModel(
       id: 'publicationYear',
       paramExtractor: (book) => book.publicationYear,
+      min: 1980,
+      max: DateTime.now().year,
     ),
     SubStringFilterModel(
       id: 'publisher',
@@ -87,21 +94,29 @@ class Filters {
       id: 'cover',
       paramExtractor: (book) => book.cover,
     ),
-    SubRangeFilterModel(
+    SubrangeFilterModel(
       id: 'pagesCount',
       paramExtractor: (book) => book.pagesCount,
+      min: 1,
+      max: 10000,
     ),
-    SubRangeFilterModel(
+    SubrangeFilterModel(
       id: 'booksCount',
       paramExtractor: (book) => book.booksCount,
+      min: 1,
+      max: 10000,
     ),
-    SubRangeFilterModel(
+    SubrangeFilterModel(
       id: 'price',
       paramExtractor: (book) => book.price,
+      min: 1,
+      max: 100000,
     ),
-    SubRangeFilterModel(
+    SubrangeFilterModel(
       id: 'weight',
       paramExtractor: (book) => book.weight,
+      min: 1,
+      max: 100000,
     ),
     SubStringFilterModel(
       id: 'location',

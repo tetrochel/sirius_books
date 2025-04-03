@@ -176,8 +176,8 @@ abstract class AppLocalizations {
   /// No description provided for @filter.
   ///
   /// In en, this message translates to:
-  /// **'Filter'**
-  String get filter;
+  /// **'Filters'**
+  String get filters;
 
   /// No description provided for @repeatPassword.
   ///
@@ -226,6 +226,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The start date cannot be earlier than the end date'**
   String get errorStartDateAfterEndDate;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @authorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Author'**
+  String get authorName;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// No description provided for @publisher.
+  ///
+  /// In en, this message translates to:
+  /// **'Publisher'**
+  String get publisher;
+
+  /// No description provided for @genre.
+  ///
+  /// In en, this message translates to:
+  /// **'Genre'**
+  String get genre;
+
+  /// No description provided for @isbn.
+  ///
+  /// In en, this message translates to:
+  /// **'ISBN'**
+  String get isbn;
+
+  /// No description provided for @cover.
+  ///
+  /// In en, this message translates to:
+  /// **'Cover'**
+  String get cover;
+
+  /// No description provided for @pagesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get pagesCount;
+
+  /// No description provided for @booksCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Books'**
+  String get booksCount;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @weight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get weight;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage location'**
+  String get location;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

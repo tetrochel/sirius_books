@@ -45,10 +45,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotPassword => 'Forgot password?';
 
   @override
-  String get restorePassword => 'Restore password';
-
-  @override
-  String get filter => 'Filter';
+  String get filters => 'Filters';
 
   @override
   String get repeatPassword => 'Repeat password';
@@ -73,4 +70,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorStartDateAfterEndDate => 'The start date cannot be earlier than the end date';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get authorName => 'Author';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get publisher => 'Publisher';
+
+  @override
+  String get genre => 'Genre';
+
+  @override
+  String get isbn => 'ISBN';
+
+  @override
+  String get cover => 'Cover';
+
+  @override
+  String get pagesCount => 'Pages';
+
+  @override
+  String get booksCount => 'Books';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get weight => 'Weight';
+
+  @override
+  String get location => 'Storage location';
 }
