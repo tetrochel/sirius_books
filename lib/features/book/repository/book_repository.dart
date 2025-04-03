@@ -6,4 +6,9 @@ abstract interface class BookRepository {
   Future<void> addBook(BookModel bookModel);
 
   Future<void> updateBook(BookModel bookModel);
+
+  Future<void> addBookToCollection(
+    BookModel bookModel,
+    String collectionModelId,
+  );
 }
