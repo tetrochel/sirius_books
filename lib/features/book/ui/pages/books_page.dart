@@ -17,8 +17,33 @@ class BooksPage extends StatefulWidget {
   State<BooksPage> createState() => _BooksPageState();
 }
 
-class _BooksPageState extends State<BooksPage> {
+class _BooksPageState extends State<BooksPage>
+    with SingleTickerProviderStateMixin {
   late List<BookModel> books;
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat();
+
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: Curves.linear,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,19 +83,45 @@ class _BooksPageState extends State<BooksPage> {
                   ],
                 ),
               ),
-              SliverList.builder(
-                itemBuilder: (context, index) => BookWidget(
-                  name: books[index].name,
-                  authorName: books[index].authorName,
-                  genre: books[index].genre,
-                  isFavorite: index.isEven,
-                  onTap: () {
-                    context.push('/books/details', extra: books[index]);
-                  },
-                  onTapFavorite: () {},
+              if (books.isEmpty)
+                SliverFillRemaining(
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RotationTransition(
+                          turns: _animation,
+                          child: Icon(
+                            Icons.refresh,
+                            size: 48,
+                            color: context.colors.primary,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Загрузка...',
+                          style: context.textStyles.s20w400.copyWith(
+                            color: context.colors.primary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              else
+                SliverList.builder(
+                  itemBuilder: (context, index) => BookWidget(
+                    name: books[index].name,
+                    authorName: books[index].authorName,
+                    genre: books[index].genre,
+                    isFavorite: index.isEven,
+                    onTap: () {
+                      context.push('/books/details', extra: books[index]);
+                    },
+                    onTapFavorite: () {},
+                  ),
+                  itemCount: books.length,
                 ),
-                itemCount: books.length,
-              ),
             ],
           ),
         );

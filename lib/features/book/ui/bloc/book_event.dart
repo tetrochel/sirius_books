@@ -26,5 +26,16 @@ class OnFiltersReset extends BookEvent {}
 
 class OnUpdateBook extends BookEvent {
   BookModel bookModel;
+
   OnUpdateBook({required this.bookModel});
+}
+
+class OnAddBookToCollection extends BookEvent {
+  BookModel bookModel;
+  String collectionModelId;
+
+  OnAddBookToCollection({
+    required this.bookModel,
+    required this.collectionModelId,
+  });
 }
