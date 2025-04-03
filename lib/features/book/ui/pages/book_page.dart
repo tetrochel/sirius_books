@@ -103,7 +103,7 @@ class _BookPageState extends State<BookPage> {
                             weight: int.tryParse(weightController.text) ?? 0,
                             location: locationController.text,
                           ),
-                        )); } else {
+                        ),); } else {
                           context.read<BookBloc>().add(OnAddBook(
                             bookModel: BookModel(
                               name: nameController.text,
@@ -119,7 +119,7 @@ class _BookPageState extends State<BookPage> {
                               location: locationController.text,
                               cover: Cover.jacket,
                             ),
-                          ));
+                          ),);
                         }
                         setState(() {
                           mode = Mode.view;
