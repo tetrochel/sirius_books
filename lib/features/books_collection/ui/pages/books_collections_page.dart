@@ -97,15 +97,18 @@ class BooksCollectionsPage extends StatelessWidget {
             ),
           ),
         ),
-        SliverAppBar(
-          shadowColor: Colors.black,
-          backgroundColor: context.colors.white,
-          surfaceTintColor: context.colors.white,
-          title: AppBarWidget(
-            title: AppLocalizations.of(context)!.collections,
-            actions: const [],
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          sliver: SliverAppBar(
+            shadowColor: Colors.black,
+            backgroundColor: context.colors.white,
+            surfaceTintColor: context.colors.white,
+            title: AppBarWidget(
+              title: AppLocalizations.of(context)!.collections,
+              actions: const [],
+            ),
+            pinned: true,
           ),
-          pinned: true,
         ),
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
