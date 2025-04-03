@@ -27,6 +27,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get collection => 'Collection';
 
   @override
+  String get newCollection => 'New collection';
+
+  @override
   String get login => 'Login';
 
   @override

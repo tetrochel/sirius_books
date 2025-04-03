@@ -134,6 +134,12 @@ abstract class AppLocalizations {
   /// **'Collection'**
   String get collection;
 
+  /// No description provided for @newCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'New collection'**
+  String get newCollection;
+
   /// No description provided for @login.
   ///
   /// In en, this message translates to:
