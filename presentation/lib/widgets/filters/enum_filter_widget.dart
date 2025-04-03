@@ -6,13 +6,15 @@ class EnumFilterWidget<Enum> extends StatefulWidget {
   final String name;
   final List<Enum> enums;
   final List<String> names;
+  final void Function(List<Enum>) onChanged;
 
   const EnumFilterWidget({
-    super.key,
     required this.id,
     required this.name,
     required this.enums,
     required this.names,
+    required this.onChanged,
+    super.key,
   });
 
   @override
@@ -52,6 +54,7 @@ class _EnumFilterWidgetState<Enum> extends State<EnumFilterWidget<Enum>> {
             ),
           ),
           onSelectionChanged: (Set<Enum> newSelection) {
+            widget.onChanged(newSelection.toList());
             setState(
               () {
                 _selection = newSelection;

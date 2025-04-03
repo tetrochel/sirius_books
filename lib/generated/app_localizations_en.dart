@@ -109,4 +109,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get location => 'Storage location';
+
+  @override
+  String get apply => 'Apply';
 }

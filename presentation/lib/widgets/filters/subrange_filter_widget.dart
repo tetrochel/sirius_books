@@ -4,8 +4,9 @@ import 'package:presentation/presentation.dart';
 class SubrangeFilterWidget extends StatefulWidget {
   final String id;
   final String name;
-  final num min;
-  final num max;
+  final int min;
+  final int max;
+  final void Function((int, int)) onChanged;
 
   const SubrangeFilterWidget({
     super.key,
@@ -13,6 +14,7 @@ class SubrangeFilterWidget extends StatefulWidget {
     required this.name,
     required this.min,
     required this.max,
+    required this.onChanged,
   });
 
   @override
@@ -47,15 +49,21 @@ class _SubrangeFilterWidgetState extends State<SubrangeFilterWidget> {
             ),
           ],
         ),
-        SizedBox(height: 10),
         RangeSlider(
           values: _currentRangeValues,
           min: widget.min.toDouble(),
           max: widget.max.toDouble(),
           onChanged: (values) {
-            setState(() {
-              _currentRangeValues = values;
-            });
+            final newValues = RangeValues(
+              values.start.round().toDouble(),
+              values.end.round().toDouble(),
+            );
+            if (newValues != _currentRangeValues) {
+              setState(() {
+                _currentRangeValues = newValues;
+              });
+              widget.onChanged((_currentRangeValues.start.round(), _currentRangeValues.end.round()));
+            }
           },
         ),
         SizedBox(height: 16),

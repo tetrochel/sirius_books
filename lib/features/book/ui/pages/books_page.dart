@@ -50,6 +50,7 @@ class _BooksPageState extends State<BooksPage> {
                       IconButton(
                         onPressed: () {
                           context.push('/filter');
+                          context.read<BookBloc>().add(OnFiltersReset());
                         },
                         icon: Icon(
                           Icons.filter_alt,

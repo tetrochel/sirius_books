@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:presentation/presentation.dart';
 
-class SubStringFilterWidget extends StatelessWidget {
+class SubStringFilterWidget extends StatefulWidget {
   final String id;
   final String name;
-  final textController = TextEditingController();
+  final void Function(String) onChanged;
 
-  SubStringFilterWidget({
+  const SubStringFilterWidget({
     super.key,
     required this.id,
     required this.name,
+    required this.onChanged,
   });
+
+  @override
+  State<SubStringFilterWidget> createState() => _SubStringFilterWidgetState();
+}
+
+class _SubStringFilterWidgetState extends State<SubStringFilterWidget> {
+  final textController = TextEditingController();
+
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +33,7 @@ class SubStringFilterWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          name,
+          widget.name,
           style: context.textStyles.s16w600,
         ),
         SizedBox(height: 4),
@@ -32,6 +46,9 @@ class SubStringFilterWidget extends StatelessWidget {
             ),
           ),
           onTapOutside: (_) => FocusScope.of(context).unfocus(),
+          onChanged: (value) {
+            widget.onChanged(value.trim());
+          },
         ),
         SizedBox(height: 16),
       ],

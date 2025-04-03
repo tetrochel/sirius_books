@@ -298,6 +298,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Storage location'**
   String get location;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -32,5 +32,6 @@
   "booksCount": "Books",
   "price": "Price",
   "weight": "Weight",
-  "location": "Storage location"
+  "location": "Storage location",
+  "apply": "Apply"
 }
