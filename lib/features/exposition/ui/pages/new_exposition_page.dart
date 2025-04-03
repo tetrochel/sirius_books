@@ -115,6 +115,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
               title: AppBarWidget(
                 title: AppLocalizations.of(context)!.new_exposition,
                 actions: const [],
+                disablePadding: true,
               ),
             ),
             SliverPadding(
@@ -161,7 +162,10 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                           selectedCollectionId = selected as int,
                       expandedInsets: EdgeInsets.zero,
                       initialSelection: selectedCollectionId,
+                      label: Text(AppLocalizations.of(context)!.collection),
                       inputDecorationTheme: InputDecorationTheme(
+                        labelStyle: context.textStyles.s14w400
+                            .copyWith(color: context.colors.grey),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
@@ -192,7 +196,9 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                         ),
                       ),
                     ),
-                    // TODO(max): add image picker
+                    const SizedBox(
+                      height: 12,
+                    ),
                   ],
                 ),
               ),

@@ -28,7 +28,7 @@ class UserWidget extends StatelessWidget {
                 size: 40,
               ),
             Text(
-              email ?? loginLabel,
+              (email ?? loginLabel).split('@').first,
               style: context.textStyles.s20w400.copyWith(
                 color: context.colors.white,
               ),
