@@ -45,6 +45,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get forgotPassword => 'Забыли пароль?';
 
   @override
+  String get restorePassword => 'Восстановить пароль';
+
+  @override
   String get filters => 'Фильтры';
 
   @override

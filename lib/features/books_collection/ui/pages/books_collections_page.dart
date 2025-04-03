@@ -9,8 +9,8 @@ import 'package:sirius_books/features/user/ui/bloc/user_event.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class BooksCollectionsPage extends StatelessWidget {
-  late final List<BookCollectionModel> collections = [
-    BookCollectionModel(
+  late final List<CollectionModel> collections = [
+    CollectionModel(
       id: 1,
       name: 'Классика',
       description: 'Коллекция классической литературы',
@@ -45,7 +45,7 @@ class BooksCollectionsPage extends StatelessWidget {
         ),
       ],
     ),
-    BookCollectionModel(
+    CollectionModel(
       id: 2,
       name: 'Фантастика',
       description: 'Лучшие книги в жанре научной фантастики',
@@ -66,7 +66,7 @@ class BooksCollectionsPage extends StatelessWidget {
         ),
       ],
     ),
-    BookCollectionModel(
+    CollectionModel(
       id: 2,
       name: 'Фантастика',
       description: 'Лучшие книги в жанре научной фантастики',
