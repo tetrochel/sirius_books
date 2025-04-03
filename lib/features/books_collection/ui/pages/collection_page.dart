@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/features/books_collection/data/model/book_collection_model.dart';
+import 'package:sirius_books/features/utils/enums.dart';
+import 'package:sirius_books/generated/app_localizations.dart';
 
 class CollectionPage extends StatefulWidget {
+  final Mode mode;
   final CollectionModel collection;
 
   const CollectionPage({
     required this.collection,
+    required this.mode,
     super.key,
   });
 
@@ -16,15 +20,23 @@ class CollectionPage extends StatefulWidget {
 }
 
 class _CollectionPageState extends State<CollectionPage> {
+  late Mode mode;
   late CollectionModel collection;
+  late final TextEditingController nameController;
+  late final TextEditingController descriptionController;
+
   @override
   void initState() {
     super.initState();
+    mode = widget.mode;
     collection = widget.collection;
+    nameController = TextEditingController(text: collection.name);
+    descriptionController = TextEditingController(text: collection.description);
   }
 
   @override
   Widget build(BuildContext context) {
+    final readOnly = mode == Mode.view;
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
@@ -40,17 +52,47 @@ class _CollectionPageState extends State<CollectionPage> {
                 surfaceTintColor: context.colors.white,
                 title: AppBarWidget(
                   title: collection.name,
-                  actions: const [],
+                  actions: [
+                    if (mode == Mode.view)
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            mode = Mode.edit;
+                          });
+                        },
+                        icon: Icon(
+                          Icons.edit,
+                          color: context.colors.primary,
+                        ),
+                      )
+                    else
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.check,
+                          color: context.colors.primary,
+                        ),
+                      ),
+                  ],
                 ),
               ),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Text(
-                  collection.description,
-                  style: context.textStyles.s14w400,
-                ),
+            SliverPadding(
+              padding: const EdgeInsets.all(24),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  TextFieldWithLabelWidget(
+                    label: AppLocalizations.of(context)!.name,
+                    textController: nameController,
+                    readOnly: readOnly,
+                  ),
+                  TextFieldWithLabelWidget(
+                    label: AppLocalizations.of(context)!.description,
+                    textController: descriptionController,
+                    readOnly: readOnly,
+                    textInputType: TextInputType.multiline,
+                  ),
+                ]),
               ),
             ),
             SliverList.builder(

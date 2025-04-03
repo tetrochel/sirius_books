@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/config/constants.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
 import 'package:sirius_books/features/books_collection/data/model/book_collection_model.dart';
+import 'package:sirius_books/features/books_collection/ui/bloc/collection_bloc.dart';
+import 'package:sirius_books/features/books_collection/ui/bloc/collection_event.dart';
+import 'package:sirius_books/features/exposition/data/model/exposition_model.dart';
+import 'package:sirius_books/features/exposition/ui/bloc/exposition_bloc.dart';
+import 'package:sirius_books/features/exposition/ui/bloc/exposition_event.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class NewExpositionPage extends StatefulWidget {
@@ -97,10 +104,12 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
   DateTime? startDate;
   DateTime? endDate;
 
-  int? selectedCollectionId;
+  String? selectedCollectionId;
 
   @override
   Widget build(BuildContext context) {
+    context.watch<CollectionBloc>().add(OnLoadCollections());
+    final collections = context.watch<CollectionBloc>().state.collectionList;
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
@@ -159,7 +168,7 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
 
                     DropdownMenu(
                       onSelected: (selected) =>
-                          selectedCollectionId = selected as int,
+                          selectedCollectionId = selected,
                       expandedInsets: EdgeInsets.zero,
                       initialSelection: selectedCollectionId,
                       label: Text(AppLocalizations.of(context)!.collection),
@@ -188,7 +197,26 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                     ),
                     AppButton(
                       type: ButtonType.primary,
-                      onPressed: () {},
+                      onPressed: () {
+                        final selectedCollection = collections.firstWhere(
+                          (collection) => collection.firebaseId == selectedCollectionId.toString(),
+                        );
+
+                        context.read<ExpositionBloc>().add(
+                          OnAddExpositionPressed(
+                            expositionModel: ExpositionModel(
+                              name: nameController.text,
+                              topic: topicController.text,
+                              description: descriptionController.text,
+                              books: selectedCollection.books,
+                              location: locationController.text,
+                              startDate: startDate!,
+                              endDate: endDate!,
+                            ),
+                          ),
+                        );
+                        context.pop();
+                      },
                       child: Text(
                         AppLocalizations.of(context)!.create,
                         style: context.textStyles.s14w400.copyWith(

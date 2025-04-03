@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/config/constants.dart';
-import 'package:sirius_books/features/book/ui/pages/book_page.dart';
 import 'package:sirius_books/features/exposition/data/model/exposition_model.dart';
+import 'package:sirius_books/features/utils/enums.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class ExpositionDetailsPage extends StatefulWidget {

@@ -69,6 +69,7 @@ class MainApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp.router(
+              debugShowCheckedModeBanner: false,
               scaffoldMessengerKey: rootScope!.navigationControllerDep.get.scaffoldMessengerState,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
