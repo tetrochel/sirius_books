@@ -75,8 +75,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get endDate => 'Дата окончания';
 
   @override
-  String get errorStartDateAfterEndDate =>
-      'Дата начала не может быть раньше даты окончания';
+  String get errorStartDateAfterEndDate => 'Дата начала не может быть раньше даты окончания';
 
   @override
   String get name => 'Название';

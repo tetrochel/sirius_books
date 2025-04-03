@@ -6,18 +6,16 @@ class BookWidget extends StatelessWidget {
   final String name;
   final String authorName;
   final String genre;
-  final bool isFavorite;
   final void Function() onTap;
-  final void Function() onTapFavorite;
+  final void Function() onTapBookmark;
 
   const BookWidget({
     super.key,
     required this.name,
     required this.authorName,
     required this.genre,
-    required this.isFavorite,
     required this.onTap,
-    required this.onTapFavorite,
+    required this.onTapBookmark,
   });
 
   @override
@@ -55,8 +53,7 @@ class BookWidget extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style: context.textStyles.s14w600
-                            .copyWith(color: context.colors.primary),
+                        style: context.textStyles.s14w600.copyWith(color: context.colors.primary),
                       ),
                       Row(
                         children: [
@@ -67,8 +64,7 @@ class BookWidget extends StatelessWidget {
                               children: [
                                 Text(
                                   genre,
-                                  style: context.textStyles.s12w400
-                                      .copyWith(color: context.colors.grey),
+                                  style: context.textStyles.s12w400.copyWith(color: context.colors.grey),
                                 ),
                                 Text(
                                   authorName,
@@ -79,9 +75,9 @@ class BookWidget extends StatelessWidget {
                           ),
                           IconButton(
                             splashRadius: 10,
-                            onPressed: onTapFavorite,
+                            onPressed: onTapBookmark,
                             icon: Icon(
-                              isFavorite ? Icons.star : Icons.star_border,
+                              Icons.collections_bookmark,
                               size: 20,
                             ),
                           ),
