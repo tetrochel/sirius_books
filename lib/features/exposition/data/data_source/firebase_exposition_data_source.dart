@@ -9,7 +9,7 @@ class FirebaseExpositionDataSource {
         'Название': expositionModel.name.toString(),
         'Тема': expositionModel.topic.toString(),
         'Список книг':
-            expositionModel.bookList.map((book) => book.firebaseId).toList(),
+            expositionModel.books.map((book) => book.firebaseId).toList(),
         'Место проведения': expositionModel.location.toString(),
         'Дата начала': expositionModel.startDate.toString(),
         'Дата окончания': expositionModel.endDate.toString(),
@@ -46,7 +46,7 @@ class FirebaseExpositionDataSource {
             id: int.parse(idString),
             topic: doc.get('Тема').toString(),
             name: doc.get('Название').toString(),
-            bookList: bookList,
+            books: bookList,
             location: doc.get('Место проведения').toString(),
             startDate: DateTime.parse(doc.get('Дата начала').toString()),
             endDate: DateTime.parse(doc.get('Дата окончания').toString()),
