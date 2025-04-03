@@ -47,9 +47,9 @@ class BookBloc extends Bloc<BookEvent, BookState> {
   }
 
   Future<void> _handleOnUpdateBook(
-      OnUpdateBook event,
-      Emitter<BookState> emit,
-      ) async {
+    OnUpdateBook event,
+    Emitter<BookState> emit,
+  ) async {
     try {
       await bookRepository.updateBook(event.bookModel);
     } on Exception catch (_) {
