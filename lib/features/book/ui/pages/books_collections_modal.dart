@@ -64,12 +64,12 @@ class BooksCollectionsModal extends StatelessWidget {
                             IconButton(
                               onPressed: () {
                                 if (collection.books.contains(book)) {
-                                  // context.read<BookBloc>().add(
-                                  //       OnRemoveBookFromCollection(
-                                  //         bookModel: book,
-                                  //         collectionModelId: collection.firebaseId!,
-                                  //       ),
-                                  //     );
+                                  context.read<BookBloc>().add(
+                                        OnRemoveBookFromCollectionPressed(
+                                          bookModel: book,
+                                          collectionModelId: collection.firebaseId!,
+                                        ),
+                                      );
                                 }
                                 if (collection.firebaseId != null) {
                                   context.read<BookBloc>().add(
