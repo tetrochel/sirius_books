@@ -22,11 +22,9 @@ class FirebaseBookDataSource {
 
       if (!collectionDoc.exists) return;
 
-      final currentBookIds =
-          List.from(collectionDoc.data()?['Список книг'] ?? []);
+      final currentBookIds = List.from(collectionDoc.data()?['Список книг'] ?? []);
 
-      if (bookModel.firebaseId != null &&
-          !currentBookIds.contains(bookModel.firebaseId)) {
+      if (bookModel.firebaseId != null && !currentBookIds.contains(bookModel.firebaseId)) {
         currentBookIds.add(bookModel.firebaseId);
 
         await FirebaseFirestore.instance
@@ -66,10 +64,7 @@ class FirebaseBookDataSource {
 
   Future<List<BookModel>?> getBookList() async {
     try {
-      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('myCollection')
-          .limit(20)
-          .get();
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('myCollection').get();
 
       final bookModelList = <BookModel>[];
       for (final doc in querySnapshot.docs) {
@@ -88,10 +83,7 @@ class FirebaseBookDataSource {
     try {
       if (bookModel.firebaseId == null) return;
 
-      await FirebaseFirestore.instance
-          .collection('myCollection')
-          .doc(bookModel.firebaseId)
-          .update({
+      await FirebaseFirestore.instance.collection('myCollection').doc(bookModel.firebaseId).update({
         'Наименование': bookModel.name.toString(),
         'Автор': bookModel.authorName.toString(),
         'Год': bookModel.publicationYear.toString(),
@@ -150,10 +142,7 @@ class FirebaseBookDataSource {
     try {
       if (bookModel.firebaseId == null) return;
 
-      await FirebaseFirestore.instance
-          .collection('myCollection')
-          .doc(bookModel.firebaseId)
-          .delete();
+      await FirebaseFirestore.instance.collection('myCollection').doc(bookModel.firebaseId).delete();
     } on Exception catch (_) {
       return;
     }

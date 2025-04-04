@@ -68,6 +68,7 @@ class BooksCollectionsModal extends StatelessWidget {
                                         OnRemoveBookFromCollectionPressed(
                                           bookModel: book,
                                           collectionModelId: collection.firebaseId!,
+                                          callback: () => context.read<CollectionBloc>().add(OnLoadCollections()),
                                         ),
                                       );
                                 }
@@ -76,9 +77,9 @@ class BooksCollectionsModal extends StatelessWidget {
                                         OnAddBookToCollection(
                                           bookModel: book,
                                           collectionModelId: collection.firebaseId!,
+                                          callback: () => context.read<CollectionBloc>().add(OnLoadCollections()),
                                         ),
                                       );
-                                  context.read<CollectionBloc>().add(OnLoadCollections());
                                 }
                               },
                               icon: Icon(
