@@ -17,6 +17,7 @@ class UserWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: context.colors.primary,
+      margin: EdgeInsets.all(0),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

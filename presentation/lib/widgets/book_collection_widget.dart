@@ -25,20 +25,18 @@ class BookCollectionWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(
+            AspectRatio(
+              aspectRatio: 3,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(8),
                   topRight: Radius.circular(8),
                 ),
-                child: SizedBox(
-                  width: double
-                      .infinity, // TODO(Maks): probably find a better solution
-                  child: CustomPaint(
-                    painter: PlaceholderPainter(
-                      seed: name,
-                      isVertical: false,
-                    ),
+                child: CustomPaint(
+                  size: Size(double.infinity, double.infinity),
+                  painter: PlaceholderPainter(
+                    seed: name,
+                    isVertical: false,
                   ),
                 ),
               ),
@@ -49,18 +47,19 @@ class BookCollectionWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 50,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Text(
                       name,
-                      style: context.textStyles.s24w400
-                          .copyWith(color: context.colors.primary),
+                      style: context.textStyles.s24w400.copyWith(
+                        color: context.colors.primary,
+                        height: 1,
+                      ),
                     ),
                   ),
                   Text(
                     bookCount,
-                    style: context.textStyles.s14w400
-                        .copyWith(color: context.colors.grey),
+                    style: context.textStyles.s14w400.copyWith(color: context.colors.grey),
                   ),
                 ],
               ),

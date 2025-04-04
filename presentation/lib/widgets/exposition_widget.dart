@@ -58,11 +58,14 @@ class ExpositionWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 70,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
                           child: Text(
                             name,
-                            style: context.textStyles.s24w400.copyWith(color: context.colors.primary),
+                            style: context.textStyles.s24w400.copyWith(
+                              color: context.colors.primary,
+                              height: 1,
+                            ),
                           ),
                         ),
                         Text(
