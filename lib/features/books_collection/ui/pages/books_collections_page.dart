@@ -31,7 +31,7 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
           physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 24).copyWith(top: 16),
               sliver: SliverToBoxAdapter(
                 child: (!context.watch<UserBloc>().state.isLoading)
                     ? UserWidget(
@@ -76,19 +76,16 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
                 delegate: SliverChildBuilderDelegate(
                   (context, index) => Padding(
                     padding: const EdgeInsets.only(bottom: 24),
-                    child: AspectRatio(
-                      aspectRatio: 1.5,
-                      child: BookCollectionWidget(
-                        bookCount:
-                            '${AppLocalizations.of(context)!.bookCount.toString()}: ${collections[index].books.length.toString()}',
-                        name: collections[index].name,
-                        onTap: () {
-                          context.push(
-                            '/collections/details',
-                            extra: collections[index],
-                          );
-                        },
-                      ),
+                    child: BookCollectionWidget(
+                      bookCount:
+                          '${AppLocalizations.of(context)!.bookCount.toString()}: ${collections[index].books.length.toString()}',
+                      name: collections[index].name,
+                      onTap: () {
+                        context.push(
+                          '/collections/details',
+                          extra: collections[index],
+                        );
+                      },
                     ),
                   ),
                   childCount: collections.length,
