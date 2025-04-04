@@ -20,10 +20,10 @@ class CollectionPage extends StatefulWidget {
 }
 
 class _CollectionPageState extends State<CollectionPage> {
-  late Mode mode;
-  late CollectionModel collection;
   late final TextEditingController nameController;
   late final TextEditingController descriptionController;
+  late Mode mode;
+  late CollectionModel collection;
 
   @override
   void initState() {
@@ -106,7 +106,9 @@ class _CollectionPageState extends State<CollectionPage> {
                     extra: collection.books[index],
                   );
                 },
-                onTapBookmark: () {},
+                onTapBookmark: () {
+                  context.push('/books_collections', extra: collection.books[index]);
+                },
               ),
               itemCount: collection.books.length,
             ),

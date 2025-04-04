@@ -138,7 +138,6 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                       readOnly: false,
                     ),
                     const SizedBox(height: 12),
-
                     TextFieldWithLabelWidget(
                       textController: descriptionController,
                       label: AppLocalizations.of(context)!.description,
@@ -152,29 +151,27 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                       label: AppLocalizations.of(context)!.startDate,
                     ),
                     const SizedBox(height: 12),
-
                     DateFieldWidget(
                       onTap: () => _selectDate(context, true),
                       controller: endDateController,
                       label: AppLocalizations.of(context)!.endDate,
                     ),
                     const SizedBox(height: 12),
-
                     Text(
                       AppLocalizations.of(context)!.collection,
                       style: context.textStyles.s16w600,
                     ),
                     const SizedBox(height: 4),
-
                     DropdownMenu(
-                      onSelected: (selected) =>
-                          selectedCollectionId = selected,
+                      onSelected: (selected) => selectedCollectionId = selected,
                       expandedInsets: EdgeInsets.zero,
                       initialSelection: selectedCollectionId,
-                      label: Text(AppLocalizations.of(context)!.collection),
+                      label: Text(
+                        AppLocalizations.of(context)!.collection,
+                        style: context.textStyles.s14w400,
+                      ),
                       inputDecorationTheme: InputDecorationTheme(
-                        labelStyle: context.textStyles.s14w400
-                            .copyWith(color: context.colors.grey),
+                        labelStyle: context.textStyles.s14w400.copyWith(color: context.colors.grey),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
@@ -203,18 +200,18 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
                         );
 
                         context.read<ExpositionBloc>().add(
-                          OnAddExpositionPressed(
-                            expositionModel: ExpositionModel(
-                              name: nameController.text,
-                              topic: topicController.text,
-                              description: descriptionController.text,
-                              books: selectedCollection.books,
-                              location: locationController.text,
-                              startDate: startDate!,
-                              endDate: endDate!,
-                            ),
-                          ),
-                        );
+                              OnAddExpositionPressed(
+                                expositionModel: ExpositionModel(
+                                  name: nameController.text,
+                                  topic: topicController.text,
+                                  description: descriptionController.text,
+                                  books: selectedCollection.books,
+                                  location: locationController.text,
+                                  startDate: startDate!,
+                                  endDate: endDate!,
+                                ),
+                              ),
+                            );
                         context.pop();
                       },
                       child: Text(
