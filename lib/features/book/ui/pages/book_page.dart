@@ -246,16 +246,18 @@ class _BookPageState extends State<BookPage> {
                       textController: locationController,
                       readOnly: readOnly,
                     ),
-                    AppButton(
-                      type: ButtonType.delete,
-                      onPressed: () {},
-                      child: Text(
-                        AppLocalizations.of(context)!.delete,
-                        style: context.textStyles.s14w400.copyWith(
-                          color: context.colors.white,
+                    if (context.watch<UserBloc>().state.userModel != null &&
+                        context.watch<UserBloc>().state.userModel!.role == UserRole.keeper)
+                      AppButton(
+                        type: ButtonType.delete,
+                        onPressed: () {},
+                        child: Text(
+                          AppLocalizations.of(context)!.delete,
+                          style: context.textStyles.s14w400.copyWith(
+                            color: context.colors.white,
+                          ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
