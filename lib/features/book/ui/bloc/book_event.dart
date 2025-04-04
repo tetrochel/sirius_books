@@ -33,20 +33,24 @@ class OnUpdateBook extends BookEvent {
 class OnAddBookToCollection extends BookEvent {
   BookModel bookModel;
   String collectionModelId;
+  void Function() callback;
 
   OnAddBookToCollection({
     required this.bookModel,
     required this.collectionModelId,
+    required this.callback,
   });
 }
 
 class OnRemoveBookFromCollectionPressed extends BookEvent {
-  BookModel bookModel;
-  String collectionModelId;
+  final BookModel bookModel;
+  final String collectionModelId;
+  void Function() callback;
 
   OnRemoveBookFromCollectionPressed({
     required this.bookModel,
     required this.collectionModelId,
+    required this.callback,
   });
 }
 

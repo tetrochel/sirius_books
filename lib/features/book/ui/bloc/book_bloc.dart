@@ -52,6 +52,7 @@ class BookBloc extends Bloc<BookEvent, BookState> {
         event.bookModel,
         event.collectionModelId,
       );
+      event.callback();
     } on Exception catch (_) {
       return;
     }
@@ -148,6 +149,7 @@ class BookBloc extends Bloc<BookEvent, BookState> {
         event.bookModel,
         event.collectionModelId,
       );
+      event.callback();
     } on Exception catch (_) {
       return;
     }

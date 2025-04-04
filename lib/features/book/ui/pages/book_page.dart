@@ -270,6 +270,7 @@ class _BookPageState extends State<BookPage> {
                             context.read<BookBloc>().add(
                                   OnDeleteBookPressed(
                                     bookModel: widget.book!,
+                                    
                                   ),
                                 );
                             context.pop();
