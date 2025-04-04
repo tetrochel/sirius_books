@@ -7,7 +7,14 @@ abstract interface class BookRepository {
 
   Future<void> updateBook(BookModel bookModel);
 
+  Future<void> deleteBook(BookModel bookModel);
+
   Future<void> addBookToCollection(
+    BookModel bookModel,
+    String collectionModelId,
+  );
+
+  Future<void> removeBookFromCollection(
     BookModel bookModel,
     String collectionModelId,
   );
