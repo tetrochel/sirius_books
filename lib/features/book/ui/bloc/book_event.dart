@@ -39,3 +39,21 @@ class OnAddBookToCollection extends BookEvent {
     required this.collectionModelId,
   });
 }
+
+class OnRemoveBookFromCollectionPressed extends BookEvent {
+  BookModel bookModel;
+  String collectionModelId;
+
+  OnRemoveBookFromCollectionPressed({
+    required this.bookModel,
+    required this.collectionModelId,
+  });
+}
+
+class OnDeleteBookPressed extends BookEvent {
+  BookModel bookModel;
+
+  OnDeleteBookPressed({
+    required this.bookModel,
+  });
+}

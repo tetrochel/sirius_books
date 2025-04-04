@@ -110,6 +110,55 @@ class FirebaseBookDataSource {
     }
   }
 
+  Future<void> removeBookFromCollection(
+    BookModel bookModel,
+    String collectionModelId,
+  ) async {
+    try {
+      final currentUser = _auth.currentUser;
+      if (currentUser == null) return;
+
+      final collectionDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid)
+          .collection('collections')
+          .doc(collectionModelId)
+          .get();
+
+      if (!collectionDoc.exists) return;
+
+      final currentBookIds = List.from(collectionDoc.data()?['Список книг'] ?? []);
+
+      if (bookModel.firebaseId != null) {
+        currentBookIds.remove(bookModel.firebaseId);
+
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(currentUser.uid)
+            .collection('collections')
+            .doc(collectionModelId)
+            .update({
+          'Список книг': currentBookIds,
+        });
+      }
+    } on Exception catch (_) {
+      return;
+    }
+  }
+
+  Future<void> deleteBook(BookModel bookModel) async {
+    try {
+      if (bookModel.firebaseId == null) return;
+
+      await FirebaseFirestore.instance
+          .collection('myCollection')
+          .doc(bookModel.firebaseId)
+          .delete();
+    } on Exception catch (_) {
+      return;
+    }
+  }
+
   String _convertCoverToString(Cover cover) {
     switch (cover) {
       case Cover.hard:

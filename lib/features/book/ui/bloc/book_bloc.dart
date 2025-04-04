@@ -35,6 +35,10 @@ class BookBloc extends Bloc<BookEvent, BookState> {
           await _handleOnUpdateBook(event, emit);
         case OnAddBookToCollection():
           await _handleOnAddBookToCollection(event, emit);
+        case OnRemoveBookFromCollectionPressed():
+          await _handleOnRemoveBookFromCollectionPressed(event, emit);
+        case OnDeleteBookPressed():
+          await _handleOnDeleteBookPressed(event, emit);
       }
     });
   }
@@ -133,6 +137,33 @@ class BookBloc extends Bloc<BookEvent, BookState> {
       List<Cover>: {},
     };
     emit(BookState()..bookList = allLoadedBooks);
+  }
+
+  Future<void> _handleOnRemoveBookFromCollectionPressed(
+    OnRemoveBookFromCollectionPressed event,
+    Emitter<BookState> emit,
+  ) async {
+    try {
+      await bookRepository.removeBookFromCollection(
+        event.bookModel,
+        event.collectionModelId,
+      );
+    } on Exception catch (_) {
+      return;
+    }
+  }
+
+  Future<void> _handleOnDeleteBookPressed(
+    OnDeleteBookPressed event,
+    Emitter<BookState> emit,
+  ) async {
+    try {
+      await bookRepository.deleteBook(event.bookModel);
+      allLoadedBooks.removeWhere((book) => book.firebaseId == event.bookModel.firebaseId);
+      emit(BookState()..bookList = allLoadedBooks);
+    } on Exception catch (_) {
+      return;
+    }
   }
 }
 
