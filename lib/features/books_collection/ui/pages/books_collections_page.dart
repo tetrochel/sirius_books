@@ -48,30 +48,27 @@ class _BooksCollectionsPageState extends State<BooksCollectionsPage> {
                     : const LoadingCard(),
               ),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              sliver: SliverAppBar(
-                shadowColor: Colors.black,
-                backgroundColor: context.colors.white,
-                surfaceTintColor: context.colors.white,
-                title: AppBarWidget(
-                  title: AppLocalizations.of(context)!.collections,
-                  actions: (context.watch<UserBloc>().state.userModel != null)
-                      ? [
-                          IconButton(
-                            onPressed: () {
-                              context.push('/collections/new');
-                            },
-                            icon: Icon(
-                              Icons.add,
-                              color: context.colors.primary,
-                            ),
+            SliverAppBar(
+              shadowColor: Colors.black,
+              backgroundColor: context.colors.white,
+              surfaceTintColor: context.colors.white,
+              title: AppBarWidget(
+                title: AppLocalizations.of(context)!.collections,
+                actions: (context.watch<UserBloc>().state.userModel != null)
+                    ? [
+                        IconButton(
+                          onPressed: () {
+                            context.push('/collections/new');
+                          },
+                          icon: Icon(
+                            Icons.add,
+                            color: context.colors.primary,
                           ),
-                        ]
-                      : [],
-                ),
-                pinned: true,
+                        ),
+                      ]
+                    : [],
               ),
+              pinned: true,
             ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 24),

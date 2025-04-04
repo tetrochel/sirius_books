@@ -27,13 +27,14 @@ class UserWidget extends StatelessWidget {
                 color: context.colors.white,
                 size: 40,
               ),
-            Text(
-              (email ?? loginLabel).split('@').first,
-              style: context.textStyles.s20w400.copyWith(
-                color: context.colors.white,
+            Expanded(
+              child: Text(
+                (email ?? loginLabel).split('@').first,
+                style: context.textStyles.s20w400.copyWith(
+                  color: context.colors.white,
+                ),
               ),
             ),
-            Spacer(),
             IconButton(
               onPressed: onPressed,
               icon: Icon(

@@ -23,11 +23,12 @@ class AppBarWidget extends StatelessWidget {
       child: Row(
         spacing: 4,
         children: [
-          Text(
-            title,
-            style: context.textStyles.s24w400,
+          Expanded(
+            child: Text(
+              title,
+              style: context.textStyles.s24w400,
+            ),
           ),
-          Spacer(),
           ...actions,
         ],
       ),

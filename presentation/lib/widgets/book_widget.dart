@@ -8,6 +8,7 @@ class BookWidget extends StatelessWidget {
   final String genre;
   final void Function() onTap;
   final void Function() onTapBookmark;
+  final bool showBookmarkButton;
 
   const BookWidget({
     super.key,
@@ -16,6 +17,7 @@ class BookWidget extends StatelessWidget {
     required this.genre,
     required this.onTap,
     required this.onTapBookmark,
+    this.showBookmarkButton = true,
   });
 
   @override
@@ -73,14 +75,15 @@ class BookWidget extends StatelessWidget {
                               ],
                             ),
                           ),
-                          IconButton(
-                            splashRadius: 10,
-                            onPressed: onTapBookmark,
-                            icon: Icon(
-                              Icons.collections_bookmark,
-                              size: 20,
+                          if (showBookmarkButton)
+                            IconButton(
+                              splashRadius: 10,
+                              onPressed: onTapBookmark,
+                              icon: Icon(
+                                Icons.collections_bookmark,
+                                size: 20,
+                              ),
                             ),
-                          ),
                         ],
                       ),
                     ],

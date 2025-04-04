@@ -48,7 +48,7 @@ class _EnumSelectorWidgetState extends State<EnumSelectorWidget> {
               value: widget.enums[index],
               label: Text(
                 widget.names[index],
-                // TODO(ivan): добавить стиль тексту
+                style: context.textStyles.s12w400,
               ),
             ),
           ),

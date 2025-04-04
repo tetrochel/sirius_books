@@ -7,6 +7,7 @@ import 'package:sirius_books/features/book/data/model/book_model.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_bloc.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_event.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_state.dart';
+import 'package:sirius_books/features/user/ui/bloc/user_bloc.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class BooksPage extends StatefulWidget {
@@ -18,8 +19,7 @@ class BooksPage extends StatefulWidget {
   State<BooksPage> createState() => _BooksPageState();
 }
 
-class _BooksPageState extends State<BooksPage>
-    with SingleTickerProviderStateMixin {
+class _BooksPageState extends State<BooksPage> with SingleTickerProviderStateMixin {
   late List<BookModel> books;
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -122,6 +122,7 @@ class _BooksPageState extends State<BooksPage>
                   onTapBookmark: () {
                     context.push('/books_collections', extra: books[index]);
                   },
+                  showBookmarkButton: context.watch<UserBloc>().state.userModel != null,
                 ),
                 itemCount: books.length,
               ),

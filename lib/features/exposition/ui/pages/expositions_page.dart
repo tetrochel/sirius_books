@@ -26,15 +26,7 @@ class ExpositionsPage extends StatelessWidget {
           surfaceTintColor: context.colors.white,
           title: AppBarWidget(
             title: AppLocalizations.of(context)!.expositions,
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search,
-                  color: context.colors.primary,
-                ),
-              ),
-            ],
+            actions: const [],
           ),
         ),
         CupertinoSliverRefreshControl(

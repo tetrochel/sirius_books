@@ -6,6 +6,7 @@ import 'package:sirius_books/features/book/data/model/book_model.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_bloc.dart';
 import 'package:sirius_books/features/book/ui/bloc/book_event.dart';
 import 'package:sirius_books/features/books_collection/ui/bloc/collection_bloc.dart';
+import 'package:sirius_books/features/books_collection/ui/bloc/collection_event.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
 class BooksCollectionsModal extends StatelessWidget {
@@ -77,6 +78,7 @@ class BooksCollectionsModal extends StatelessWidget {
                                           collectionModelId: collection.firebaseId!,
                                         ),
                                       );
+                                  context.read<CollectionBloc>().add(OnLoadCollections());
                                 }
                               },
                               icon: Icon(
