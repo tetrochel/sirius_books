@@ -70,45 +70,54 @@ class FilterPage extends StatelessWidget {
       child: DraggableScrollableSheet(
         expand: false,
         builder: (context, scrollController) => SafeArea(
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-            controller: scrollController,
-            slivers: [
-              SliverAppBar(
-                pinned: true,
-                automaticallyImplyLeading: false,
-                shadowColor: Colors.black,
-                backgroundColor: context.colors.white,
-                surfaceTintColor: context.colors.white,
-                title: AppBarWidget(
-                  title: AppLocalizations.of(context)!.filters,
-                  actions: [
-                    IconButton(
-                      onPressed: () => context.pop(),
-                      icon: const Icon(
-                        Icons.close,
+          child: Column(
+            children: [
+              Expanded(
+                child: CustomScrollView(
+                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  controller: scrollController,
+                  slivers: [
+                    SliverAppBar(
+                      pinned: true,
+                      automaticallyImplyLeading: false,
+                      shadowColor: Colors.black,
+                      backgroundColor: context.colors.white,
+                      surfaceTintColor: context.colors.white,
+                      title: AppBarWidget(
+                        title: AppLocalizations.of(context)!.filters,
+                        actions: [
+                          IconButton(
+                            onPressed: () => context.pop(),
+                            icon: const Icon(
+                              Icons.close,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SliverPadding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      sliver: SliverList(
+                        delegate: SliverChildListDelegate(
+                          filterWidgets,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-              SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                sliver: SliverList(
-                  delegate: SliverChildListDelegate(
-                    filterWidgets,
-                  ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
                 ),
-              ),
-              SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: 24).copyWith(bottom: 16),
-                sliver: SliverToBoxAdapter(
-                  child: AppButton(
-                    type: ButtonType.primary,
-                    onPressed: () {
-                      context.read<BookBloc>().add(OnFilterBooks());
-                      context.pop();
-                    },
+                child: AppButton(
+                  type: ButtonType.primary,
+                  onPressed: () {
+                    context.read<BookBloc>().add(OnFilterBooks());
+                    context.pop();
+                  },
+                  child: Center(
                     child: Text(
                       AppLocalizations.of(context)!.apply,
                       style: context.textStyles.s16w600.copyWith(color: context.colors.white),
