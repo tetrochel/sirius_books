@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/config/constants.dart';
 import 'package:sirius_books/features/book/data/model/book_model.dart';
-import 'package:sirius_books/features/books_collection/data/model/book_collection_model.dart';
 import 'package:sirius_books/features/books_collection/ui/bloc/collection_bloc.dart';
 import 'package:sirius_books/features/books_collection/ui/bloc/collection_event.dart';
 import 'package:sirius_books/features/exposition/data/model/exposition_model.dart';
@@ -26,79 +25,6 @@ class _NewExpositionPageState extends State<NewExpositionPage> {
   final locationController = TextEditingController();
   final startDateController = TextEditingController();
   final endDateController = TextEditingController();
-
-  late final List<CollectionModel> collections = [
-    CollectionModel(
-      firebaseId: 1.toString(),
-      name: 'Классика',
-      description: 'Коллекция классической литературы',
-      books: [
-        BookModel(
-          name: 'Война и мир',
-          authorName: 'Лев Толстой',
-          publicationYear: 1869,
-          publisher: 'АСТ',
-          genre: 'Роман',
-          isbn: '978-5-17-118366-3',
-          cover: Cover.hard,
-          pagesCount: 1225,
-          booksCount: 5,
-          price: 1500.0,
-          weight: 1200,
-          location: 'Москва, ул. Ленина, д. 10',
-        ),
-        BookModel(
-          name: 'Преступление и наказание',
-          authorName: 'Фёдор Достоевский',
-          publicationYear: 1866,
-          publisher: 'Эксмо',
-          genre: 'Роман',
-          isbn: '978-5-04-116437-3',
-          cover: Cover.hard,
-          pagesCount: 672,
-          booksCount: 3,
-          price: 1200.0,
-          weight: 900,
-          location: 'Санкт-Петербург, Невский проспект, д. 20',
-        ),
-      ],
-    ),
-    CollectionModel(
-      firebaseId: 2.toString(),
-      name: 'Фантастика',
-      description: 'Лучшие книги в жанре научной фантастики',
-      books: [
-        BookModel(
-          name: 'Дюна',
-          authorName: 'Фрэнк Герберт',
-          publicationYear: 1965,
-          publisher: 'Азбука',
-          genre: 'Фантастика',
-          isbn: '978-5-389-15844-3',
-          cover: Cover.jacket,
-          pagesCount: 704,
-          booksCount: 4,
-          price: 1800.0,
-          weight: 1100,
-          location: 'Москва, ул. Арбат, д. 5',
-        ),
-        BookModel(
-          name: '1984',
-          authorName: 'Джордж Оруэлл',
-          publicationYear: 1949,
-          publisher: 'АСТ',
-          genre: 'Антиутопия',
-          isbn: '978-5-17-080201-4',
-          cover: Cover.soft,
-          pagesCount: 320,
-          booksCount: 6,
-          price: 800.0,
-          weight: 500,
-          location: 'Екатеринбург, ул. Ленина, д. 7',
-        ),
-      ],
-    ),
-  ];
   late final List<BookModel> books;
 
   DateTime? startDate;

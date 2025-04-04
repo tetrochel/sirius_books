@@ -4,4 +4,6 @@ abstract interface class ExpositionRepository {
   Future<List<ExpositionModel>> getAllExposition();
 
   Future<void> addExposition(ExpositionModel expositionModel);
+
+  Future<void> updateExposition(ExpositionModel expositionModel);
 }

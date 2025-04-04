@@ -59,4 +59,21 @@ class FirebaseExpositionDataSource {
       return [];
     }
   }
+
+  Future<void> updateExposition(ExpositionModel expositionModel) async {
+    try {
+      if (expositionModel.id == null) return;
+
+      await FirebaseFirestore.instance.collection('expositions').doc(expositionModel.id).update({
+        'Название': expositionModel.name.toString(),
+        'Тема': expositionModel.topic.toString(),
+        'Список книг': expositionModel.books.map((book) => book.firebaseId).toList(),
+        'Место проведения': expositionModel.location.toString(),
+        'Дата начала': expositionModel.startDate.toString(),
+        'Дата окончания': expositionModel.endDate.toString(),
+      });
+    } on Exception catch (_) {
+      return;
+    }
+  }
 }

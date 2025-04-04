@@ -11,3 +11,11 @@ class OnAddExpositionPressed extends ExpositionEvent {
     required this.expositionModel,
   });
 }
+
+class OnUpdateExpositionPressed extends ExpositionEvent {
+  ExpositionModel expositionModel;
+
+  OnUpdateExpositionPressed({
+    required this.expositionModel,
+  });
+}

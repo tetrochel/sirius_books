@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/presentation.dart';
 import 'package:sirius_books/config/constants.dart';
 import 'package:sirius_books/features/exposition/data/model/exposition_model.dart';
+import 'package:sirius_books/features/exposition/ui/bloc/exposition_bloc.dart';
+import 'package:sirius_books/features/exposition/ui/bloc/exposition_event.dart';
 import 'package:sirius_books/features/utils/enums.dart';
 import 'package:sirius_books/generated/app_localizations.dart';
 
@@ -81,7 +84,23 @@ class _ExpositionDetailsPageState extends State<ExpositionDetailsPage> {
                     )
                   else
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          mode = Mode.view;
+                        });
+                        context.read<ExpositionBloc>().add(
+                              OnUpdateExpositionPressed(
+                                expositionModel: exposition.copyWith(
+                                  name: nameController.text,
+                                  topic: topicController.text,
+                                  description: descriptionController.text,
+                                  location: locationController.text,
+                                  startDate: startDate ?? exposition.startDate,
+                                  endDate: endDate ?? exposition.endDate,
+                                ),
+                              ),
+                            );
+                      },
                       icon: Icon(
                         Icons.check,
                         color: context.colors.primary,
@@ -116,7 +135,9 @@ class _ExpositionDetailsPageState extends State<ExpositionDetailsPage> {
                     readOnly: readOnly,
                   ),
                   DateFieldWidget(
-                    onTap: mode == Mode.edit ? () => _selectDate(context, false) : null,
+                    onTap: mode == Mode.edit
+                        ? () => _selectDate(context, false)
+                        : null,
                     controller: startDateController,
                     label: AppLocalizations.of(context)!.startDate,
                   ),
@@ -124,7 +145,9 @@ class _ExpositionDetailsPageState extends State<ExpositionDetailsPage> {
                     height: 14,
                   ),
                   DateFieldWidget(
-                    onTap: mode == Mode.edit ? () => _selectDate(context, true) : null,
+                    onTap: mode == Mode.edit
+                        ? () => _selectDate(context, true)
+                        : null,
                     controller: endDateController,
                     label: AppLocalizations.of(context)!.endDate,
                   ),
